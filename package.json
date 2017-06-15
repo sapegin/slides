@@ -9,10 +9,12 @@
     "url": "http://sapegin.me/"
   },
   "scripts": {
+    "deploy": "gh-pages -d public",
     "build:cdd": "cleaver cdd.md",
     "watch:cdd": "cleaver watch cdd.md"
   },
   "devDependencies": {
-    "cleaver": "^0.8.4"
+    "cleaver": "^0.8.4",
+    "gh-pages": "^1.0.0"
   }
 }
