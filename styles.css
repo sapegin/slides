@@ -111,6 +111,7 @@
 
 body {
     font-family: roboto, sans-serif;
+	background-color: var(--bgColor);
     color: var(--baseColor);
     font-feature-settings: "kern","pnum",common-ligatures discretionary-ligatures contextual historical-ligatures;
     -webkit-font-kerning: normal;

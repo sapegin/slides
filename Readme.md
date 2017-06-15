@@ -1,6 +1,6 @@
-# Slider of Artem Sapegin’s talks
+# Slides of Artem Sapegin’s talks
 
-
+* [https://sapegin.github.io/slides/cdd.html](Component-driven development with React)
 
 ## Author
 
