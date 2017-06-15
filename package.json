@@ -1,0 +1,18 @@
+{
+  "name": "sapegin-slides",
+  "description": "Slider of Artem Sapegin’s talks",
+  "version": "0.0.0",
+  "private": true,
+  "license": "See license in <Readme.md>",
+  "author": {
+    "name": "Artem Sapegin",
+    "url": "http://sapegin.me/"
+  },
+  "scripts": {
+    "build:cdd": "cleaver cdd.md",
+    "watch:cdd": "cleaver watch cdd.md"
+  },
+  "devDependencies": {
+    "cleaver": "^0.8.4"
+  }
+}
