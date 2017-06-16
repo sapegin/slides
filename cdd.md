@@ -16,7 +16,7 @@ output: public/cdd.html
 
 1. Change the code
 2. Refresh the app in the browser
-3. Click-click-click to reproduce the desired state
+3. Click-click-click to reproduce a desired state
 4. Go to step 1
 
 --
@@ -148,9 +148,9 @@ Large size:
 1. Run a style guide server: `npm run styleguide`
 2. Create a new component
 3. Create an example file: `Readme.md` or `ComponentName.md`
-4. Add some examples to this Markdown file
+4. Add some examples
 5. Open your component in isolated mode in Styleguidist
-6. Start making changes to your component
+6. Start making changes
 
 -- teal
 
@@ -171,6 +171,11 @@ const propTypes = {
   isLiked: PropTypes.bool,
   /** SoundCloud song ID */
   songId: PropTypes.number,
+  /**
+   * Will not be visible in the documentation
+   * @ignore
+   */
+  hiddenProp: React.PropTypes.string,
 };
 ```
 
@@ -179,6 +184,22 @@ const propTypes = {
 ### PropTypes
 
 ![](images/cdd/proptypes.png)
+
+--
+
+### Public methods
+
+```js
+/**
+ * Insert text at cursor position.
+ *
+ * @param {string} text
+ * @public
+ */
+insertAtCursor(text) {
+  // ...
+}
+```
 
 --
 
@@ -214,6 +235,15 @@ initialState = { on: false };
   isOn={state.on}
   toggleFunc={() => setState({ on: !state.on })}
 />
+```
+
+--
+
+### Loading fixtures from files
+
+```js
+const mockData = require('./mocks');
+<Message content={mockData.hello} />
 ```
 
 --

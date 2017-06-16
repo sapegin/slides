@@ -360,6 +360,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     --uiColor: rgba(0, 0, 0, 0.3);
     --uiHoverColor: rgba(0, 0, 0, 0.8);
 	--bgColor: #fff;
+    --lightBgColor: #fafafa;
 	--baseColor: #222;
 	--darkColor: #666;
 	--lightColor: #999;
@@ -469,6 +470,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
 body {
     font-family: roboto, sans-serif;
+	background-color: var(--bgColor);
     color: var(--baseColor);
     font-feature-settings: "kern","pnum",common-ligatures discretionary-ligatures contextual historical-ligatures;
     -webkit-font-kerning: normal;
@@ -483,8 +485,15 @@ code {
 }
 
 pre {
+    margin: -3vmin;
+    padding: 3vmin;
     font-size: 3vmin;
     line-height: 1.4;
+    background-color: var(--lightBgColor);
+}
+
+p code {
+    color: var(--darkColor);
 }
 
 img {
@@ -681,7 +690,7 @@ a:active {
 <ol>
 <li>Change the code</li>
 <li>Refresh the app in the browser</li>
-<li>Click-click-click to reproduce the desired state</li>
+<li>Click-click-click to reproduce a desired state</li>
 <li>Go to step 1</li>
 </ol>
 </section>
@@ -800,9 +809,9 @@ Large size:
 <li>Run a style guide server: <code>npm run styleguide</code></li>
 <li>Create a new component</li>
 <li>Create an example file: <code>Readme.md</code> or <code>ComponentName.md</code></li>
-<li>Add some examples to this Markdown file</li>
+<li>Add some examples</li>
 <li>Open your component in isolated mode in Styleguidist</li>
-<li>Start making changes to your component</li>
+<li>Start making changes</li>
 </ol>
 </section>
   </div>
@@ -822,6 +831,11 @@ Large size:
   isLiked: PropTypes.bool,
   <span class="hljs-comment">/** SoundCloud song ID */</span>
   songId: PropTypes.number,
+  <span class="hljs-comment">/**
+   * Will not be visible in the documentation
+   * @ignore
+   */</span>
+  hiddenProp: React.PropTypes.string,
 };</code></pre>
 </section>
   </div>
@@ -831,6 +845,19 @@ Large size:
 </section>
   </div>
   <div class="slide hidden" id="slide-20">
+    <section class="slide-content"><h3 id="public-methods">Public methods</h3>
+<pre><code class="lang-js"><span class="hljs-comment">/**
+ * Insert text at cursor position.
+ *
+ * @param {string} text
+ * @public
+ */</span>
+insertAtCursor(text) {
+  <span class="hljs-comment">// ...</span>
+}</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-21">
     <section class="slide-content"><h3 id="markdown-examples">Markdown examples</h3>
 <pre><code>Logged out:
 
@@ -845,12 +872,12 @@ I like this song:
     &lt;SongHeart authed={{user: {}}} dispatch={() =&gt; {}} isLiked /&gt;</code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-21">
+  <div class="slide hidden" id="slide-22">
     <section class="slide-content"><h3 id="markdown-examples">Markdown examples</h3>
 <p><img src="images/cdd/mdexample.png" alt=""></p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-22">
+  <div class="slide hidden" id="slide-23">
     <section class="slide-content"><h3 id="controlled-components">Controlled components</h3>
 <pre><code class="lang-js">initialState = { on: <span class="hljs-literal">false</span> };
 <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Switch</span>
@@ -859,16 +886,22 @@ I like this song:
 /&gt;</span></code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-23">
+  <div class="slide hidden" id="slide-24">
+    <section class="slide-content"><h3 id="loading-fixtures-from-files">Loading fixtures from files</h3>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> mockData = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./mocks'</span>);
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Message</span> <span class="hljs-attr">content</span>=<span class="hljs-string">{mockData.hello}</span> /&gt;</span></span></code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-25">
     <section class="slide-content"><h3 id="controlled-components">Controlled components</h3>
 <p><img src="images/cdd/controlled.gif" alt=""></p>
 </section>
   </div>
-  <div class="slide hidden  image" id="slide-24">
+  <div class="slide hidden  image" id="slide-26">
     <section class="slide-content"><p><img src="images/cdd/rs-logo-with-background.svg" alt=""></p>
 </section>
   </div>
-  <div class="slide hidden author-slide" id="slide-25">
+  <div class="slide hidden author-slide" id="slide-27">
     <section class="slide-content"><div class="author">
   <h1 class="name">Artem Sapegin</h1>
     <h3 class="twitter">
