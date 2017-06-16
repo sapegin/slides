@@ -2,6 +2,7 @@
     --uiColor: rgba(0, 0, 0, 0.3);
     --uiHoverColor: rgba(0, 0, 0, 0.8);
 	--bgColor: #fff;
+    --lightBgColor: #fafafa;
 	--baseColor: #222;
 	--darkColor: #666;
 	--lightColor: #999;
@@ -126,8 +127,15 @@ code {
 }
 
 pre {
+    margin: -3vmin;
+    padding: 3vmin;
     font-size: 3vmin;
     line-height: 1.4;
+    background-color: var(--lightBgColor);
+}
+
+p code {
+    color: var(--darkColor);
 }
 
 img {
