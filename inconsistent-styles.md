@@ -100,12 +100,12 @@ output: public/inconsistent-styles.html
 
 ### Whitespace
 
-* Whitespace inside components, like paddings
-* Whitespace to glue several components together
+* Paddings inside components
+* Glue components together
 
 ---
 
-### Whitespace framework by Nathan Curtis
+### Nathan Curtis’s framework
 
 ![](images/inconsistent-styles/whitespace.png)
 
@@ -113,9 +113,9 @@ output: public/inconsistent-styles.html
 
 ### [React Spaceman](https://github.com/sapegin/react-spaceman)
 
-* Based on 8px grid
-* Names to define amount of whitespace
-* `xxs` (2px) to `xxl` (128px) in geometric progression
+* 8px grid
+* `xxs` (2px) to `xxl` (128px)
+* geometric progression
 
 --
 
