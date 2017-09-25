@@ -1,14 +1,12 @@
 title: Custom CSS is the path to inconsistent UI
-author:
-  name: Artem Sapegin
-  twitter: iamsapegin
-  url: http://sapegin.me
 style: styles.css
 output: public/inconsistent-styles.html
 
 --
 
 # Custom CSS is the path to inconsistent UI
+
+Artem Sapegin
 
 --
 
@@ -49,7 +47,7 @@ output: public/inconsistent-styles.html
 }
 ```
 
---- orange
+-- orange
 
 # Why not variables?
 
@@ -103,9 +101,9 @@ output: public/inconsistent-styles.html
 * Paddings inside components
 * Glue components together
 
----
+--
 
-### Nathan Curtis’s framework
+### Nathan Curtis’ framework
 
 ![](images/inconsistent-styles/whitespace.png)
 
@@ -119,9 +117,26 @@ output: public/inconsistent-styles.html
 
 --
 
+### React Spaceman
+
+```html
+<Panel
+  below="xxs|xs|s|m|l|xl|xxl"
+  inset="xxs|xs|s|m|l|xl|xxl"
+  x="xxs|xs|s|m|l|xl|xxl"
+  y="xxs|xs|s|m|l|xl|xxl"
+  between="xxs|xs|s|m|l|xl|xxl"
+  squish
+  inline
+>...</Panel>
+```
+
+--
+
 ### Space inside components
 
 ```js
+import Panel from 'react-spaceman'
 const Button = props => (
   <Panel
     inset="m"
@@ -132,8 +147,14 @@ const Button = props => (
   >
     {props.children}
   </Panel>
-);
+)
 ```
+
+--
+
+### Glue components together
+
+![](images/inconsistent-styles/glue.png)
 
 --
 
@@ -170,8 +191,19 @@ const Button = props => (
 
 --
 
+### Thanks for listening and use components
+
+Slides: [bit.ly/consistent-css](https://sapegin.github.io/slides/inconsistent-styles)<br>
+Me: [sapegin.me](http://sapegin.me/)<br>
+Twitter: [iamsapegin](https://twitter.com/iamsapegin)<br>
+GitHub: [sapegin](https://github.com/sapegin)
+
+<img src="images/inconsistent-styles/dogs.jpg" style="height:35vh">
+
+--
+
 ### Image credits
 
 * [Max Stoiber](https://mxstbr.com/)
 * [Priyanka Godbole](https://blog.prototypr.io/10-practical-steps-to-create-a-predictable-accessible-and-harmonious-typography-system-a-case-6c85d901bedd)
-* [Nathan Curtis](https://medium.com/eightshapes-llc/space-in-design-systems-188bcbae0d62))
+* [Nathan Curtis](https://medium.com/eightshapes-llc/space-in-design-systems-188bcbae0d62)

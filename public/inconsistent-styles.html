@@ -357,51 +357,45 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 }
 
 :root {
-    --uiColor: rgba(0, 0, 0, 0.3);
-    --uiHoverColor: rgba(0, 0, 0, 0.8);
+	--uiColor: rgba(0, 0, 0, 0.3);
+	--uiHoverColor: rgba(0, 0, 0, 0.8);
 	--bgColor: #fff;
-    --lightBgColor: #fafafa;
+	--lightBgColor: #fafafa;
 	--baseColor: #222;
 	--darkColor: #666;
 	--lightColor: #999;
 	--accentColor: #dc8b0c;
-    --otherColor: #38bfd8;
-    --addColor:#2d7b43;
-    --removeColor: #bb2c2c;
-    --pagePadding: calc(3vmin + 32px);
+	--otherColor: #38bfd8;
+	--addColor:#2d7b43;
+	--removeColor: #bb2c2c;
+	--pagePadding: calc(3vmin + 32px);
 }
 
 /* Fonts */
 
 @font-face {
-  font-family: roboto;
-  src: url(fonts/Roboto-Regular.woff2) format("woff2");
-  font-style: normal;
-  font-weight: normal;
+	font-family: roboto;
+	src: url(fonts/Roboto-Regular.woff2) format("woff2");
+	font-style: normal;
+	font-weight: normal;
 }
 @font-face {
-  font-family: roboto;
-  src: url(fonts/Roboto-Bold.woff2) format("woff2");
-  font-style: normal;
-  font-weight: bold;
+	font-family: roboto;
+	src: url(fonts/Roboto-Bold.woff2) format("woff2");
+	font-style: normal;
+	font-weight: bold;
 }
 @font-face {
-  font-family: roboto;
-  src: url(fonts/Roboto-Italic.woff2) format("woff2");
-  font-style: italic;
-  font-weight: normal;
+	font-family: roboto;
+	src: url(fonts/Roboto-Italic.woff2) format("woff2");
+	font-style: italic;
+	font-weight: normal;
 }
 @font-face {
-  font-family: roboto;
-  src: url(fonts/Roboto-Light.woff2) format("woff2");
-  font-style: normal;
-  font-weight: 200;
-}
-@font-face {
-  font-family: roboto-mono;
-  src: url(fonts/RobotoMono-Regular.woff2) format("woff2");
-  font-style: normal;
-  font-weight: normal;
+	font-family: roboto-mono;
+	src: url(fonts/RobotoMono-Regular.woff2) format("woff2");
+	font-style: normal;
+	font-weight: normal;
 }
 
 /* Highlight.js theme */
@@ -411,26 +405,26 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 .hljs-link,
 .hljs-built_in,
 .hljs-builtin-name {
-  color: var(--baseColor);
+	color: var(--baseColor);
 }
 .hljs-keyword,
 .hljs-selector-tag,
 .hljs-subst,
 .hljs-regexp,
 .hljs-tag .hljs-attr {
-  color: var(--darkColor);
+	color: var(--darkColor);
 }
 .hljs-comment,
 .hljs-quote,
 .hljs-number,
 .hljs-literal,
 .hljs-meta {
-  color: var(--lightColor);
+	color: var(--lightColor);
 }
 .hljs-string,
 .hljs-doctag,
 .hljs-formula {
-  color: var(--accentColor);
+	color: var(--accentColor);
 }
 .hljs-tag,
 .hljs-class .hljs-title,
@@ -439,73 +433,73 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 .hljs-title,
 .hljs-section,
 .hljs-selector-id {
-  color: var(--otherColor);
-  font-weight: normal;
+	color: var(--otherColor);
+	font-weight: normal;
 }
 .hljs-built_in,
 .hljs-builtin-name {
-  text-decoration: underline;
+	text-decoration: underline;
 }
 .hljs-subst {
-  font-weight: normal;
+	font-weight: normal;
 }
 .hljs-emphasis {
-  font-style: italic;
+	font-style: italic;
 }
 .hljs-strong {
-  font-weight: bold;
+	font-weight: bold;
 }
 .hljs-deletion {
-  background: var(--removeColor);
+	background: var(--removeColor);
 }
 .hljs-addition {
-  background: var(--addColor);
+	background: var(--addColor);
 }
 
 /* Common styles */
 
 * {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 body {
-    font-family: roboto, sans-serif;
+	font-family: roboto, sans-serif;
 	background-color: var(--bgColor);
-    color: var(--baseColor);
-    font-feature-settings: "kern","pnum",common-ligatures discretionary-ligatures contextual historical-ligatures;
-    -webkit-font-kerning: normal;
-    font-kerning: normal;
-    font-variant-numeric: proportional-nums;
-    font-variant-ligatures: common-ligatures discretionary-ligatures contextual historical-ligatures;
+	color: var(--baseColor);
+	font-feature-settings: "kern","pnum",common-ligatures contextual historical-ligatures;
+	-webkit-font-kerning: normal;
+	font-kerning: normal;
+	font-variant-numeric: proportional-nums;
+	font-variant-ligatures: common-ligatures contextual historical-ligatures;
 }
 
 pre,
 code {
-    font-family: roboto-mono, monospace;
+	font-family: roboto-mono, monospace;
 }
 
 pre {
-    margin: -3vmin;
-    padding: 3vmin;
-    font-size: 3vmin;
-    line-height: 1.4;
-    background-color: var(--lightBgColor);
+	margin: -3vmin;
+	padding: 3vmin;
+	font-size: 3vmin;
+	line-height: 1.4;
+	background-color: var(--lightBgColor);
 }
 
 p code {
-    color: var(--darkColor);
+	color: var(--darkColor);
 }
 
 img {
-    display: block;    
-    width: auto;
-    height: auto;
-    max-width: calc(100vw - var(--pagePadding) * 2);
-    max-height: calc(100vh - var(--pagePadding) * 2);
-    margin: auto;
+	display: block;
+	width: auto;
+	height: auto;
+	max-width: calc(100vw - var(--pagePadding) * 2);
+	max-height: calc(100vh - var(--pagePadding) * 2);
+	margin: auto;
 }
 h3 + p img {
-    max-height: 70vh;
+	max-height: 70vh;
 }
 
 h1,
@@ -514,56 +508,58 @@ h3,
 h4,
 h5,
 h6 {
-    margin: 0;
-    padding: 0;
-    font-weight: 200;
-    border: 0;
-    line-height: 1.1;
+	margin: 0;
+	padding: 0;
+	font-weight: normal;
+	border: 0;
+	line-height: 1.1;
 }
 
 h1 {
-    margin-left: auto;
-    margin-right: auto;
-    font-weight: normal;
-    font-size: 15vmin;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 15vmin;
 }
 h2 {
-    margin-left: auto;
-    margin-right: auto;
-    font-weight: normal;
-    font-size: 12vmin;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 12vmin;
 }
 h1:first-child,
 h2:first-child {
-    margin-top: auto;
+	margin-top: auto;
 }
 h1:last-child,
 h2:last-child {
-    margin-bottom: auto;
+	margin-bottom: auto;
 }
 h1 + h2 {
-    margin-top: 8vmin;
+	margin-top: 8vmin;
+}
+h1 + p {
+	margin-top: 8vmin;
+	text-align: center;
 }
 h3 {
-    margin-bottom: 4vmin;
-    font-size: 8vmin;
+	margin-bottom: 4vmin;
+	font-size: 8vmin;
 }
 h4 {
-    margin-bottom: 2vmin;
-    font-size: 4vmin;
+	margin-bottom: 2vmin;
+	font-size: 4vmin;
 }
 
 ul,
 ol {
-    margin: 0;
-    padding-left: 6vmin;
+	margin: 0;
+	padding-left: 6vmin;
 }
 
 p,
 li,
 pre {
-    margin-top: 0;
-    margin-bottom: 2vmin;
+	margin-top: 0;
+	margin-bottom: 2vmin;
 }
 
 a,
@@ -572,109 +568,110 @@ a:visited,
 a:hover,
 a:focus,
 a:active {
-    color: var(--accentColor);
+	color: var(--accentColor);
 }
 a:hover,
 a:focus,
 a:active {
-    text-decoration: underline;
+	text-decoration: underline;
 }
 
 /* UI */
 
 .slide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--bgColor);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--bgColor);
 }
 .slide.hidden {
-    display: none;
+	display: none;
 }
 
 .slide-content {
-    display: flex;
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-    padding: var(--pagePadding);
-    flex-direction: column;
-    font-size: 5vmin;
+	display: flex;
+	width: 100vw;
+	height: 100vh;
+	margin: 0;
+	padding: var(--pagePadding);
+	flex-direction: column;
+	font-size: 7vmin;
 }
 
 .slide-content > *:first-child:last-child {
-    margin: auto;
+	margin: auto;
 }
 
 .progress-bar {
-    background-color: var(--uiColor);
+	background-color: var(--uiColor);
 }
 
 .arrow {
-    margin-right: 2.5vmin;
-    border-width: 4vmin;
-    transition: border ease-out 0.15s;
+	margin-right: 2.5vmin;
+	border-width: 4vmin;
+	transition: border ease-out 0.15s;
 }
 .prev {
-    border-right-width: 5.7vmin;
-    border-right-color: var(--uiColor);
+	border-right-width: 5.7vmin;
+	border-right-color: var(--uiColor);
 }
 .prev:hover {
-    border-right-color: var(--uiHoverColor);
+	border-right-color: var(--uiHoverColor);
 }
 .next {
-    border-left-width: 5.7vmin;
-    border-left-color: var(--uiColor);
+	border-left-width: 5.7vmin;
+	border-left-color: var(--uiColor);
 }
 .next:hover {
-    border-left-color: var(--uiHoverColor);
+	border-left-color: var(--uiHoverColor);
 }
 
 .controls {
-    margin-left: -4vmin;
-    margin-bottom: 0;
-    transition: opacity ease-out 0.5s;
+	margin-left: -4vmin;
+	margin-bottom: 0;
+	transition: opacity ease-out 0.5s;
 }
 :-webkit-full-screen .controls {
-    opacity: 0;
+	opacity: 0;
 }
 
 /* Custom backgrounds */
 
 #slide-1,
 .orange {
-    background-color: var(--accentColor);
-    color: var(--bgColor);
+	background-color: var(--accentColor);
+	color: var(--bgColor);
 }
 
 .teal {
-    background-color: var(--otherColor);
-    color: var(--bgColor);
+	background-color: var(--otherColor);
+	color: var(--bgColor);
 }
 
 /* Two pane split */
 
 .split .slide-content {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-areas: "heading heading" "caption caption" "code code";
-    grid-column-gap: 2vmin;
+	display: grid;
+	grid-template-columns: 50% 50%;
+	grid-template-areas: "heading heading" "caption caption" "code code";
+	grid-column-gap: 2vmin;
 }
 .split h3 {
-    grid-area: heading;
+	grid-area: heading;
 }
 .split h4 {
-    grid-area: caption;
+	grid-area: caption;
 }
 .split pre {
-    grid-area: code;
+	grid-area: code;
 }
 .split h4:nth-of-type(2),
 .split pre:nth-of-type(2) {
-    grid-column-start: 2;
+	grid-column-start: 2;
 }
 
   </style>
+    <script async src="http://localhost:35729/livereload.js"></script>
 </head>
 <body>
     <div class="progress">
@@ -683,6 +680,7 @@ a:active {
 
   <div class="slide" id="slide-1">
     <section class="slide-content"><h1 id="custom-css-is-the-path-to-inconsistent-ui">Custom CSS is the path to inconsistent UI</h1>
+<p>Artem Sapegin</p>
 </section>
   </div>
   <div class="slide hidden" id="slide-2">
@@ -721,7 +719,7 @@ a:active {
 }</code></pre>
 </section>
   </div>
-  <div class="slide hidden - orange" id="slide-6">
+  <div class="slide hidden  orange" id="slide-6">
     <section class="slide-content"><h1 id="why-not-variables-">Why not variables?</h1>
 </section>
   </div>
@@ -768,8 +766,8 @@ a:active {
 </ul>
 </section>
   </div>
-  <div class="slide hidden -" id="slide-13">
-    <section class="slide-content"><h3 id="nathan-curtis-s-framework">Nathan Curtis’s framework</h3>
+  <div class="slide hidden" id="slide-13">
+    <section class="slide-content"><h3 id="nathan-curtis-framework">Nathan Curtis’ framework</h3>
 <p><img src="images/inconsistent-styles/whitespace.png" alt=""></p>
 </section>
   </div>
@@ -783,8 +781,22 @@ a:active {
 </section>
   </div>
   <div class="slide hidden" id="slide-15">
+    <section class="slide-content"><h3 id="react-spaceman">React Spaceman</h3>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">Panel</span>
+  <span class="hljs-attr">below</span>=<span class="hljs-string">"xxs|xs|s|m|l|xl|xxl"</span>
+  <span class="hljs-attr">inset</span>=<span class="hljs-string">"xxs|xs|s|m|l|xl|xxl"</span>
+  <span class="hljs-attr">x</span>=<span class="hljs-string">"xxs|xs|s|m|l|xl|xxl"</span>
+  <span class="hljs-attr">y</span>=<span class="hljs-string">"xxs|xs|s|m|l|xl|xxl"</span>
+  <span class="hljs-attr">between</span>=<span class="hljs-string">"xxs|xs|s|m|l|xl|xxl"</span>
+  <span class="hljs-attr">squish</span>
+  <span class="hljs-attr">inline</span>
+&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">Panel</span>&gt;</span></code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-16">
     <section class="slide-content"><h3 id="space-inside-components">Space inside components</h3>
-<pre><code class="lang-js"><span class="hljs-keyword">const</span> Button = props =&gt; (
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> Panel <span class="hljs-keyword">from</span> <span class="hljs-string">'react-spaceman'</span>
+<span class="hljs-keyword">const</span> Button = props =&gt; (
   <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Panel</span>
     <span class="hljs-attr">inset</span>=<span class="hljs-string">"m"</span>
     <span class="hljs-attr">squish</span>
@@ -794,10 +806,15 @@ a:active {
   &gt;</span>
     {props.children}
   <span class="hljs-tag">&lt;/<span class="hljs-name">Panel</span>&gt;</span>
-)</span>;</code></pre>
+)</span></code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-16">
+  <div class="slide hidden" id="slide-17">
+    <section class="slide-content"><h3 id="glue-components-together">Glue components together</h3>
+<p><img src="images/inconsistent-styles/glue.png" alt=""></p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-18">
     <section class="slide-content"><h3 id="glue-components-together">Glue components together</h3>
 <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">Panel</span> <span class="hljs-attr">inset</span>=<span class="hljs-string">"m"</span> <span class="hljs-attr">between</span>=<span class="hljs-string">"m"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">Panel</span> <span class="hljs-attr">between</span>=<span class="hljs-string">"s"</span>&gt;</span>
@@ -812,11 +829,11 @@ a:active {
 <span class="hljs-tag">&lt;/<span class="hljs-name">Panel</span>&gt;</span></code></pre>
 </section>
   </div>
-  <div class="slide hidden  teal" id="slide-17">
+  <div class="slide hidden  teal" id="slide-19">
     <section class="slide-content"><h1 id="what-s-the-point-">What’s the point?</h1>
 </section>
   </div>
-  <div class="slide hidden" id="slide-18">
+  <div class="slide hidden" id="slide-20">
     <section class="slide-content"><h3 id="components">Components</h3>
 <ul>
 <li>Limited freedom → consistency</li>
@@ -828,25 +845,22 @@ a:active {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-19">
+  <div class="slide hidden" id="slide-21">
+    <section class="slide-content"><h3 id="thanks-for-listening-and-use-components">Thanks for listening and use components</h3>
+<p>Slides: <a href="https://sapegin.github.io/slides/inconsistent-styles">bit.ly/consistent-css</a><br>
+Me: <a href="http://sapegin.me/">sapegin.me</a><br>
+Twitter: <a href="https://twitter.com/iamsapegin">iamsapegin</a><br>
+GitHub: <a href="https://github.com/sapegin">sapegin</a></p>
+<p><img src="images/inconsistent-styles/dogs.jpg" style="height:35vh"></p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-22">
     <section class="slide-content"><h3 id="image-credits">Image credits</h3>
 <ul>
 <li><a href="https://mxstbr.com/">Max Stoiber</a></li>
 <li><a href="https://blog.prototypr.io/10-practical-steps-to-create-a-predictable-accessible-and-harmonious-typography-system-a-case-6c85d901bedd">Priyanka Godbole</a></li>
-<li><a href="https://medium.com/eightshapes-llc/space-in-design-systems-188bcbae0d62">Nathan Curtis</a>)</li>
+<li><a href="https://medium.com/eightshapes-llc/space-in-design-systems-188bcbae0d62">Nathan Curtis</a></li>
 </ul>
-</section>
-  </div>
-  <div class="slide hidden author-slide" id="slide-20">
-    <section class="slide-content"><div class="author">
-  <h1 class="name">Artem Sapegin</h1>
-    <h3 class="twitter">
-      <a href="http://twitter.com/@iamsapegin">@iamsapegin</a>
-    </h3>
-    <h3 class="url">
-      <a href="http://sapegin.me">http://sapegin.me</a>
-    </h3>
-</div>
 </section>
   </div>
 

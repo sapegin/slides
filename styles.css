@@ -178,6 +178,11 @@ h2:last-child {
 h1 + h2 {
 	margin-top: 8vmin;
 }
+h1 + p {
+	margin-top: 8vmin;
+	margin-bottom: auto;
+	text-align: center;
+}
 h3 {
 	margin-bottom: 4vmin;
 	font-size: 8vmin;
