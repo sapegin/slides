@@ -34,12 +34,6 @@
 	font-weight: normal;
 }
 @font-face {
-	font-family: roboto;
-	src: url(fonts/Roboto-Light.woff2) format("woff2");
-	font-style: normal;
-	font-weight: 200;
-}
-@font-face {
 	font-family: roboto-mono;
 	src: url(fonts/RobotoMono-Regular.woff2) format("woff2");
 	font-style: normal;
@@ -114,11 +108,11 @@ body {
 	font-family: roboto, sans-serif;
 	background-color: var(--bgColor);
 	color: var(--baseColor);
-	font-feature-settings: "kern","pnum",common-ligatures discretionary-ligatures contextual historical-ligatures;
+	font-feature-settings: "kern","pnum",common-ligatures contextual historical-ligatures;
 	-webkit-font-kerning: normal;
 	font-kerning: normal;
 	font-variant-numeric: proportional-nums;
-	font-variant-ligatures: common-ligatures discretionary-ligatures contextual historical-ligatures;
+	font-variant-ligatures: common-ligatures contextual historical-ligatures;
 }
 
 pre,
@@ -158,7 +152,7 @@ h5,
 h6 {
 	margin: 0;
 	padding: 0;
-	font-weight: 200;
+	font-weight: normal;
 	border: 0;
 	line-height: 1.1;
 }
@@ -166,13 +160,11 @@ h6 {
 h1 {
 	margin-left: auto;
 	margin-right: auto;
-	font-weight: normal;
 	font-size: 15vmin;
 }
 h2 {
 	margin-left: auto;
 	margin-right: auto;
-	font-weight: normal;
 	font-size: 12vmin;
 }
 h1:first-child,
@@ -241,7 +233,7 @@ a:active {
 	margin: 0;
 	padding: var(--pagePadding);
 	flex-direction: column;
-	font-size: 5vmin;
+	font-size: 7vmin;
 }
 
 .slide-content > *:first-child:last-child {
