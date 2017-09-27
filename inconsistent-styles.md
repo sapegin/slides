@@ -1,12 +1,14 @@
-title: Custom CSS is the path to inconsistent UI
+title: Custom CSS is the path to inconsistent UI by Artem Sapegin
 style: styles.css
 output: public/inconsistent-styles.html
 
---
+-- cover
 
-# Custom CSS is the path to inconsistent UI
+![](images/inconsistent-styles/first-slide.jpg)
 
-Artem Sapegin
+-- cover
+
+![](images/inconsistent-styles/second-slide.jpg)
 
 --
 
@@ -195,7 +197,7 @@ const Button = props => (
 
 Slides: [bit.ly/consistent-css](https://sapegin.github.io/slides/inconsistent-styles)<br>
 Me: [sapegin.me](http://sapegin.me/)<br>
-Twitter: [iamsapegin](https://twitter.com/iamsapegin)<br>
+Twitter: [@iamsapegin](https://twitter.com/iamsapegin)<br>
 GitHub: [sapegin](https://github.com/sapegin)
 
 <img src="images/inconsistent-styles/dogs.jpg" style="height:35vh">

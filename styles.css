@@ -291,6 +291,20 @@ a:active {
 	color: var(--bgColor);
 }
 
+/* Cover image */
+
+.cover img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+	height: 100vh;
+	max-width: none;
+	max-height: none;
+    margin: 0;
+    object-fit: cover;
+}
+
 /* Two pane split */
 
 .split .slide-content {
