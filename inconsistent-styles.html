@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <title>Custom CSS is the path to inconsistent UI</title>
+  <title>Custom CSS is the path to inconsistent UI by Artem Sapegin</title>
   <style type="text/css">
     body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -649,6 +649,20 @@ a:active {
 	color: var(--bgColor);
 }
 
+/* Cover image */
+
+.cover img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+	height: 100vh;
+	max-width: none;
+	max-height: none;
+    margin: 0;
+    object-fit: cover;
+}
+
 /* Two pane split */
 
 .split .slide-content {
@@ -678,21 +692,24 @@ a:active {
     <div class="progress-bar"></div>
   </div>
 
-  <div class="slide" id="slide-1">
-    <section class="slide-content"><h1 id="custom-css-is-the-path-to-inconsistent-ui">Custom CSS is the path to inconsistent UI</h1>
-<p>Artem Sapegin</p>
+  <div class="slide  cover" id="slide-1">
+    <section class="slide-content"><p><img src="images/inconsistent-styles/first-slide.jpg" alt=""></p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-2">
+  <div class="slide hidden  cover" id="slide-2">
+    <section class="slide-content"><p><img src="images/inconsistent-styles/second-slide.jpg" alt=""></p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-3">
     <section class="slide-content"><h3 id="inconsistency-in-the-ui">Inconsistency in the UI</h3>
 <p><img src="images/inconsistent-styles/doors.jpg" alt=""></p>
 </section>
   </div>
-  <div class="slide hidden  teal" id="slide-3">
+  <div class="slide hidden  teal" id="slide-4">
     <section class="slide-content"><h2 id="what-s-the-issue-">What’s the issue?</h2>
 </section>
   </div>
-  <div class="slide hidden" id="slide-4">
+  <div class="slide hidden" id="slide-5">
     <section class="slide-content"><h3 id="sources-of-custom-css">Sources of custom CSS</h3>
 <ul>
 <li>Typography</li>
@@ -700,7 +717,7 @@ a:active {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-5">
+  <div class="slide hidden" id="slide-6">
     <section class="slide-content"><h3 id="custom-css">Custom CSS</h3>
 <pre><code class="lang-css"><span class="hljs-selector-class">.description</span> {
   <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">20px</span>;
@@ -719,11 +736,11 @@ a:active {
 }</code></pre>
 </section>
   </div>
-  <div class="slide hidden  orange" id="slide-6">
+  <div class="slide hidden  orange" id="slide-7">
     <section class="slide-content"><h1 id="why-not-variables-">Why not variables?</h1>
 </section>
   </div>
-  <div class="slide hidden" id="slide-7">
+  <div class="slide hidden" id="slide-8">
     <section class="slide-content"><h3 id="css-preprocessor-variables">CSS (preprocessor) variables</h3>
 <p>+ Inconsistency</p>
 <p>– More writing and thinking</p>
@@ -731,20 +748,20 @@ a:active {
 <p>– May be hard to update</p>
 </section>
   </div>
-  <div class="slide hidden  teal" id="slide-8">
+  <div class="slide hidden  teal" id="slide-9">
     <section class="slide-content"><h1 id="what-s-the-solution-">What’s the solution?</h1>
 </section>
   </div>
-  <div class="slide hidden  orange" id="slide-9">
+  <div class="slide hidden  orange" id="slide-10">
     <section class="slide-content"><h1 id="components">Components</h1>
 </section>
   </div>
-  <div class="slide hidden" id="slide-10">
+  <div class="slide hidden" id="slide-11">
     <section class="slide-content"><h3 id="typography">Typography</h3>
 <p><img src="images/inconsistent-styles/text.png" alt=""></p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-11">
+  <div class="slide hidden" id="slide-12">
     <section class="slide-content"><h3 id="-lt-text-">&lt;Text&gt;</h3>
 <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">Header</span> <span class="hljs-attr">level</span>=<span class="hljs-string">{2}</span>&gt;</span>Saluki<span class="hljs-tag">&lt;/<span class="hljs-name">Header</span>&gt;</span>
@@ -758,7 +775,7 @@ a:active {
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-12">
+  <div class="slide hidden" id="slide-13">
     <section class="slide-content"><h3 id="whitespace">Whitespace</h3>
 <ul>
 <li>Paddings inside components</li>
@@ -766,12 +783,12 @@ a:active {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-13">
+  <div class="slide hidden" id="slide-14">
     <section class="slide-content"><h3 id="nathan-curtis-framework">Nathan Curtis’ framework</h3>
 <p><img src="images/inconsistent-styles/whitespace.png" alt=""></p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-14">
+  <div class="slide hidden" id="slide-15">
     <section class="slide-content"><h3 id="-react-spaceman-https-github-com-sapegin-react-spaceman-"><a href="https://github.com/sapegin/react-spaceman">React Spaceman</a></h3>
 <ul>
 <li>8px grid</li>
@@ -780,7 +797,7 @@ a:active {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-15">
+  <div class="slide hidden" id="slide-16">
     <section class="slide-content"><h3 id="react-spaceman">React Spaceman</h3>
 <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">Panel</span>
   <span class="hljs-attr">below</span>=<span class="hljs-string">"xxs|xs|s|m|l|xl|xxl"</span>
@@ -793,7 +810,7 @@ a:active {
 &gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">Panel</span>&gt;</span></code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-16">
+  <div class="slide hidden" id="slide-17">
     <section class="slide-content"><h3 id="space-inside-components">Space inside components</h3>
 <pre><code class="lang-js"><span class="hljs-keyword">import</span> Panel <span class="hljs-keyword">from</span> <span class="hljs-string">'react-spaceman'</span>
 <span class="hljs-keyword">const</span> Button = props =&gt; (
@@ -809,12 +826,12 @@ a:active {
 )</span></code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-17">
+  <div class="slide hidden" id="slide-18">
     <section class="slide-content"><h3 id="glue-components-together">Glue components together</h3>
 <p><img src="images/inconsistent-styles/glue.png" alt=""></p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-18">
+  <div class="slide hidden" id="slide-19">
     <section class="slide-content"><h3 id="glue-components-together">Glue components together</h3>
 <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">Panel</span> <span class="hljs-attr">inset</span>=<span class="hljs-string">"m"</span> <span class="hljs-attr">between</span>=<span class="hljs-string">"m"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">Panel</span> <span class="hljs-attr">between</span>=<span class="hljs-string">"s"</span>&gt;</span>
@@ -829,11 +846,11 @@ a:active {
 <span class="hljs-tag">&lt;/<span class="hljs-name">Panel</span>&gt;</span></code></pre>
 </section>
   </div>
-  <div class="slide hidden  teal" id="slide-19">
+  <div class="slide hidden  teal" id="slide-20">
     <section class="slide-content"><h1 id="what-s-the-point-">What’s the point?</h1>
 </section>
   </div>
-  <div class="slide hidden" id="slide-20">
+  <div class="slide hidden" id="slide-21">
     <section class="slide-content"><h3 id="components">Components</h3>
 <ul>
 <li>Limited freedom → consistency</li>
@@ -845,16 +862,16 @@ a:active {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-21">
+  <div class="slide hidden" id="slide-22">
     <section class="slide-content"><h3 id="thanks-for-listening-and-use-components">Thanks for listening and use components</h3>
 <p>Slides: <a href="https://sapegin.github.io/slides/inconsistent-styles">bit.ly/consistent-css</a><br>
 Me: <a href="http://sapegin.me/">sapegin.me</a><br>
-Twitter: <a href="https://twitter.com/iamsapegin">iamsapegin</a><br>
+Twitter: <a href="https://twitter.com/iamsapegin">@iamsapegin</a><br>
 GitHub: <a href="https://github.com/sapegin">sapegin</a></p>
 <p><img src="images/inconsistent-styles/dogs.jpg" style="height:35vh"></p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-22">
+  <div class="slide hidden" id="slide-23">
     <section class="slide-content"><h3 id="image-credits">Image credits</h3>
 <ul>
 <li><a href="https://mxstbr.com/">Max Stoiber</a></li>
