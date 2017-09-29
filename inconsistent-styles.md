@@ -101,7 +101,7 @@ Variables can help with consistency
 
 --
 
-### Nathan Curtis’ framework
+### [Nathan Curtis’ framework](https://medium.com/eightshapes-llc/space-in-design-systems-188bcbae0d62)
 
 ![](images/inconsistent-styles/whitespace.png)
 
@@ -112,6 +112,10 @@ Variables can help with consistency
 * 8px grid
 * `xxs` (2px) to `xxl` (128px)
 * geometric progression
+
+&nbsp;
+
+[github.com/sapegin/react-spaceman](https://github.com/sapegin/react-spaceman)
 
 --
 
