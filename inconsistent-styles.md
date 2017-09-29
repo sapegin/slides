@@ -10,15 +10,13 @@ output: public/inconsistent-styles.html
 
 ![](images/inconsistent-styles/second-slide.jpg)
 
---
-
-### Inconsistency in the UI
-
-![](images/inconsistent-styles/doors.jpg)
-
 -- teal
 
 ## What’s the issue?
+
+-- cover
+
+![Inconsistency in the UI](images/inconsistent-styles/doors.jpg)
 
 --
 
@@ -27,7 +25,7 @@ output: public/inconsistent-styles.html
 * Typography
 * Whitespace
 
---
+-- split
 
 ### Custom CSS
 
@@ -36,12 +34,9 @@ output: public/inconsistent-styles.html
   margin-bottom: 20px;
   font-size: 16px;
 }
+```
 
-.contacts {
-  margin-bottom: 10px;
-  font-size: 14px;
-}
-
+```css
 .count {
   margin-left: 0.75em;
   font-size: 14px;
@@ -55,15 +50,15 @@ output: public/inconsistent-styles.html
 
 --
 
-### CSS (preprocessor) variables
+Variables can help with consistency
 
-\+ Inconsistency
+--
 
-– More writing and thinking
+### But
 
-– Hard to ensure correct usage
-
-– May be hard to update
+* More writing and thinking
+* Hard to ensure correct usage
+* May be hard to update
 
 -- teal
 
@@ -92,7 +87,8 @@ output: public/inconsistent-styles.html
     Salukis are “sight” hounds—hunting by sight—and
     run their quarry down to kill or retrieve it.
   </Text>
-  <Text small>Don’t leave any food on a table when saluki is around.</Text>
+  <Text small>Don’t leave any food on a
+    table when saluki is around.</Text>
 </div>
 ```
 
@@ -166,7 +162,7 @@ const Button = props => (
 <Panel inset="m" between="m">
   <Panel between="s">
     <h3>Saluki</h3>
-    <div>The Saluki is classed as a sighthound…</div>
+    <div>The Saluki is classed as a…</div>
   </Panel>
   <Panel between="s" inline>
     <Tag href="/sighthounds">Sighthounds</Tag>
@@ -175,10 +171,6 @@ const Button = props => (
   <Button>Buy a puppy</Button>
 </Panel>
 ```
-
--- teal
-
-# What’s the point?
 
 --
 
@@ -189,11 +181,14 @@ const Button = props => (
 * Easier code reviews
 * Easier to document
 * TypeScript and Flow
-* More natural to use
+
+-- orange
+
+## Consistent by default<br>Custom when required by&nbsp;design, not&nbsp;randomly custom
 
 --
 
-### Thanks for listening and use components
+### Thank you and use components
 
 Slides: [bit.ly/consistent-css](https://sapegin.github.io/slides/inconsistent-styles)<br>
 Me: [sapegin.me](http://sapegin.me/)<br>

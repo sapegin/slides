@@ -123,7 +123,7 @@ code {
 pre {
 	margin: -3vmin;
 	padding: 3vmin;
-	font-size: 3vmin;
+	font-size: 4vmin;
 	line-height: 1.4;
 	background-color: var(--lightBgColor);
 }
@@ -291,8 +291,9 @@ a:active {
 	color: var(--bgColor);
 }
 
-/* Cover image */
+/* Full screen images */
 
+.contain img,
 .cover img {
     position: fixed;
     top: 0;
@@ -302,6 +303,13 @@ a:active {
 	max-width: none;
 	max-height: none;
     margin: 0;
+}
+
+.contain img {
+    object-fit: contain;
+}
+
+.cover img {
     object-fit: cover;
 }
 
