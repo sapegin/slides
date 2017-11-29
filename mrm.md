@@ -10,9 +10,9 @@ output: public/mrm.html
 
 --
 
-## Typical open source project
+### Typical open source project
 
-![](images/typical-oss.png)
+![](images/mrm/typical-oss.png)
 
 --
 
@@ -21,17 +21,17 @@ output: public/mrm.html
 * 1 × documentation file
 * 11 × support files
 
+--
+
+<video src="images/mrm/nooooo.mp4" autoplay loop></video>
+
 -- teal
-
-<video src="images/nooooo.mp4" autoplay></video>
-
--- orange
 
 # `.somethingrc`
 
---
+-- small center
 
-.babelignore
+`.babelignore
 .babelrc
 .editorconfig
 .eslintignore
@@ -63,19 +63,23 @@ open-bot.yaml
 package.json
 Pull_Request_Template.md
 Readme.md
-tsconfig.json
+tsconfig.json`
 
 --
 
 ## × number of your projects
 
--- teal
+--
 
-<video src="images/hamster.mp4" autoplay></video>
+<video src="images/mrm/hamster.mp4" autoplay loop></video>
 
 --
 
 ## Support files are *slightly different* in different projects
+
+--
+
+<video src="images/mrm/puppies.mp4" autoplay loop></video>
 
 --
 
@@ -97,6 +101,8 @@ tsconfig.json
 
 # Mrm
 
+## [github.com/sapegin/mrm](https://github.com/sapegin/mrm)
+
 -- teal
 
 # Example: gitignore task
@@ -109,7 +115,7 @@ npx mrm gitignore
 
 --
 
-![](http://wow.sapegin.me/3V3q3v2y071W/Image%202017-11-28%20at%206.08.53%20PM.png)
+![](images/mrm/mrm-gitignore-diff.png)
 
 -- teal
 
@@ -119,15 +125,11 @@ npx mrm gitignore
 
 ```bash
 npx mrm license
-# Overwrite defaults
-npx mrm license --config:name "Gandalf the Grey" \
-                --config:email "gandalf@middleearth.com" \
-                --config:url "http://middleearth.com"
 ```
 
 --
 
-![](http://wow.sapegin.me/0G2d1X3G2B1R/Image%202017-11-28%20at%206.18.56%20PM.png)
+![](images/mrm/mrm-license-diff.png)
 
 -- teal
 
@@ -141,44 +143,66 @@ npx mrm jest
 
 --
 
-* Adds npm scripts to run Jest, watch mode and coverage report
-* Adds configuration to package.json if needed
-* Updates .gitignore, .npmignore, .eslintignore with common patterns
-* Creates a sample test file, test.js, when the project has index.js in the root folder
+* Adds npm scripts
+* Config in `package.json`
+* `.gitignore`, `.npmignore`, `.eslintignore`
 * Installs Jest
-* Installs babel-jest if project depends on Babel
-* Installs ts-jest if project depends on TypeScript
-* Installs Enzyme if project depends on React
-* Tries to get rid of Mocha and AVA configs and dependencies
-* Suggests to us jest-codemods if projects used other test frameworks
+* babel-jest, ts-jest, Enzyme if needed
+* Removes Mocha and AVA
+* And more
 
 --
 
-## Default tasks
-
-CodeCov, EditorConfig, ESLint, Jest, lint-staged, Prettier, semantic-release, React Styleguidist, stylelint, Travis CI, TypeScript, package.json, contributing guidelines, license and readme file
+![](images/mrm/mrm-jest.png)
 
 --
 
-## API for writing tasks.
+![](images/mrm/mrm-jest-diff.png)
 
-* JSON, YAML, INI, new line separated text files
-* npm install / uninstall
-* file operations
-* EditorConfig utilities
+-- orange
 
---
-
-## Minimal configuration
-
-Infer configuration from the project itself or from the environment
+# Details
 
 --
 
-## Minimal changes
+### Default tasks
+
+CodeCov, EditorConfig, ESLint, Jest, lint-staged, Prettier, semantic-release, React Styleguidist, stylelint, Travis CI, TypeScript, package.json, contributing guidelines, license and readme files
+
+--
+
+### Minimal configuration
+
+* Infer configuration from the project itself or from the environment
+
+--
+
+### Minimal changes
 
 * Infer indentation style or read from EditorConfig
 * Keep comments in JSON
+
+--
+
+### Configuration
+
+* Command line:
+
+  ```
+  npx mrm license --config:licenseFile README
+  ```
+
+* Config file:
+
+  * `~/.mrm/config.json`
+  * `~/dotfiles/mrm/config.json`
+
+--
+
+### Sharing tasks
+
+* `mrm-task-<TASK>`
+* `mrm-preset-<PRESET>`
 
 -- orange
 
@@ -186,8 +210,18 @@ Infer configuration from the project itself or from the environment
 
 --
 
+### API for writing tasks — `mrm-core`
+
+* JSON, YAML, INI, new line separated text files
+* npm install / uninstall
+* File operations
+* EditorConfig utilities
+
+--
+
+### Simplest task
+
 ```js
-// Mrm module to work with new line separated text files
 const { lines } = require('mrm-core');
 module.exports = () => {
   // Read .gitignore if it exists
@@ -202,16 +236,94 @@ module.exports = () => {
 
 --
 
+### Configurable task
 
+```js
+module.exports = (config) => {
+  // npm mrm eslint --config:eslintPreset airbnb
+  const { eslintPreset } = config
+    .defaults({
+      // Default values
+      eslintPreset: 'eslint:recommended'
+    })
+    .values();
+  /* _ */
+};
+```
+
+--
+
+### JSON files
+
+```js
+const { json } = require('mrm-core');
+module.exports = (config) => {
+  // Read .eslintrc if it exists
+  json('.eslintrc')
+    // Merge content with new options
+    .merge({
+      parser: 'babel-eslint',
+      extends: 'eslint:recommended'
+    })
+    .save();
+};
+```
+
+--
+
+### `package.json` files
+
+```js
+const { packageJson } = require('mrm-core');
+module.exports = (config) => {
+  // Read project’s package.json
+  packageJson()
+    // Add lint script
+    .setScript('lint', 'eslint . --cache --fix')
+    // Add pretest script
+    .prependScript('pretest', 'npm run lint')
+    .save();
+};
+```
+
+--
+
+### npm dependencies
+
+```js
+const { packageJson, install } = require('mrm-core');
+module.exports = (config) => {
+    const packages = ['eslint'];
+const pkg = packageJson();
+  if (pkg.get('devDependencies.babel-core')) {
+    packages.push('babel-eslint');
+  }
+    // Install npm dependencies
+  install(packages);
+};
+```
+
+--
+
+# And much more
+
+[github.com/sapegin/mrm-core](https://github.com/sapegin/mrm-core)
+
+--
+
+<video src="images/mrm/happy.mp4" autoplay loop></video>
+
+--
 
 ### Thank you and automate your configs
 
+Mrm: [github.com/sapegin/mrm](https://github.com/sapegin/mrm)<br>
 Slides: [bit.ly/consistent-css](https://sapegin.github.io/slides/inconsistent-styles)<br>
 Me: [sapegin.me](http://sapegin.me/)<br>
 Twitter: [@iamsapegin](https://twitter.com/iamsapegin)<br>
 GitHub: [sapegin](https://github.com/sapegin)
 
-<img src="images/inconsistent-styles/dogs.jpg" style="height:35vh">
+<img src="images/dogs.jpg" style="height:30vh">
 
 --
 

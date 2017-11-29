@@ -286,10 +286,29 @@ a:active {
 	color: var(--bgColor);
 }
 
+.orange a,
+.orange a:link,
+.orange a:visited,
+.orange a:hover,
+.orange a:focus,
+.orange a:active {
+	color: var(--bgColor);
+}
+
 .teal {
 	background-color: var(--otherColor);
 	color: var(--bgColor);
 }
+
+.teal a,
+.teal a:link,
+.teal a:visited,
+.teal a:hover,
+.teal a:focus,
+.teal a:active {
+	color: var(--bgColor);
+}
+
 
 /* Full screen images */
 
@@ -311,6 +330,18 @@ a:active {
 
 .cover img {
     object-fit: cover;
+}
+
+/* Smaller fonts */
+
+.small .slide-content {
+	font-size: 5vmin;
+}
+
+/* Centered text */
+
+.center {
+	text-align: center;
 }
 
 /* Two pane split */
