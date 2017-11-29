@@ -8,7 +8,7 @@
 	--lightColor: #999;
 	--accentColor: #dc8b0c;
 	--otherColor: #38bfd8;
-	--addColor:#2d7b43;
+	--addColor: #2d7b43;
 	--removeColor: #bb2c2c;
 	--pagePadding: calc(3vmin + 32px);
 }
@@ -17,25 +17,25 @@
 
 @font-face {
 	font-family: roboto;
-	src: url(fonts/Roboto-Regular.woff2) format("woff2");
+	src: url(fonts/Roboto-Regular.woff2) format('woff2');
 	font-style: normal;
 	font-weight: normal;
 }
 @font-face {
 	font-family: roboto;
-	src: url(fonts/Roboto-Bold.woff2) format("woff2");
+	src: url(fonts/Roboto-Bold.woff2) format('woff2');
 	font-style: normal;
 	font-weight: bold;
 }
 @font-face {
 	font-family: roboto;
-	src: url(fonts/Roboto-Italic.woff2) format("woff2");
+	src: url(fonts/Roboto-Italic.woff2) format('woff2');
 	font-style: italic;
 	font-weight: normal;
 }
 @font-face {
 	font-family: roboto-mono;
-	src: url(fonts/RobotoMono-Regular.woff2) format("woff2");
+	src: url(fonts/RobotoMono-Regular.woff2) format('woff2');
 	font-style: normal;
 	font-weight: normal;
 }
@@ -108,7 +108,8 @@ body {
 	font-family: roboto, sans-serif;
 	background-color: var(--bgColor);
 	color: var(--baseColor);
-	font-feature-settings: "kern","pnum",common-ligatures contextual historical-ligatures;
+	font-feature-settings: 'kern', 'pnum',
+		common-ligatures contextual historical-ligatures;
 	-webkit-font-kerning: normal;
 	font-kerning: normal;
 	font-variant-numeric: proportional-nums;
@@ -309,27 +310,26 @@ a:active {
 	color: var(--bgColor);
 }
 
-
 /* Full screen images */
 
 .contain img,
 .cover img {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
 	height: 100vh;
 	max-width: none;
 	max-height: none;
-    margin: 0;
+	margin: 0;
 }
 
 .contain img {
-    object-fit: contain;
+	object-fit: contain;
 }
 
 .cover img {
-    object-fit: cover;
+	object-fit: cover;
 }
 
 /* Smaller fonts */
@@ -349,7 +349,7 @@ a:active {
 .split .slide-content {
 	display: grid;
 	grid-template-columns: 50% 50%;
-	grid-template-areas: "heading heading" "caption caption" "code code";
+	grid-template-areas: 'heading heading' 'caption caption' 'code code';
 	grid-column-gap: 2vmin;
 }
 .split h3 {

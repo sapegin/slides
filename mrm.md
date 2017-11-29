@@ -16,10 +16,10 @@ output: public/mrm.html
 
 --
 
-* 1 × source code file
-* 1 × test file
-* 1 × documentation file
-* 11 × support files
+* 1 × source code file
+* 1 × test file
+* 1 × documentation file
+* 11 × support files
 
 --
 
@@ -31,43 +31,11 @@ output: public/mrm.html
 
 -- small center
 
-`.babelignore
-.babelrc
-.editorconfig
-.eslintignore
-.eslintrc
-.flowconfig
-.gitattributes
-.gitignore
-.istanbul.yml
-.npmignore
-.nvmrc
-.prettierignore
-.prettierrc
-.proselintrc
-.remarkrc
-.shipit
-.stylelintrc
-.textlintrc
-.travis.yml
-appveyor.yml
-Changelog.md
-Code_of_Conduct.md
-codecov.yml
-Contributing.md
-Issue_Template.md
-jsconfig.json
-lerna.json
-License.md
-open-bot.yaml
-package.json
-Pull_Request_Template.md
-Readme.md
-tsconfig.json`
+`.babelignore .babelrc .editorconfig .eslintignore .eslintrc .flowconfig .gitattributes .gitignore .istanbul.yml .npmignore .nvmrc .prettierignore .prettierrc .proselintrc .remarkrc .shipit .stylelintrc .textlintrc .travis.yml appveyor.yml Changelog.md Code_of_Conduct.md codecov.yml Contributing.md Issue_Template.md jsconfig.json lerna.json License.md open-bot.yaml package.json Pull_Request_Template.md Readme.md tsconfig.json`
 
 --
 
-## × number of your projects
+## × number of your projects
 
 --
 
@@ -75,7 +43,7 @@ tsconfig.json`
 
 --
 
-## Support files are *slightly different* in different projects
+## Support files are _slightly different_ in different projects
 
 --
 
@@ -239,7 +207,7 @@ module.exports = () => {
 ### Configurable task
 
 ```js
-module.exports = (config) => {
+module.exports = config => {
   // npm mrm eslint --config:eslintPreset airbnb
   const { eslintPreset } = config
     .defaults({
@@ -257,7 +225,7 @@ module.exports = (config) => {
 
 ```js
 const { json } = require('mrm-core');
-module.exports = (config) => {
+module.exports = config => {
   // Read .eslintrc if it exists
   json('.eslintrc')
     // Merge content with new options
@@ -275,7 +243,7 @@ module.exports = (config) => {
 
 ```js
 const { packageJson } = require('mrm-core');
-module.exports = (config) => {
+module.exports = config => {
   // Read project’s package.json
   packageJson()
     // Add lint script
@@ -292,13 +260,13 @@ module.exports = (config) => {
 
 ```js
 const { packageJson, install } = require('mrm-core');
-module.exports = (config) => {
-    const packages = ['eslint'];
-const pkg = packageJson();
+module.exports = config => {
+  const packages = ['eslint'];
+  const pkg = packageJson();
   if (pkg.get('devDependencies.babel-core')) {
     packages.push('babel-eslint');
   }
-    // Install npm dependencies
+  // Install npm dependencies
   install(packages);
 };
 ```
