@@ -77,7 +77,7 @@ output: public/mrm.html
 npx mrm gitignore
 ```
 
---
+-- contain
 
 ![](images/mrm/mrm-gitignore-diff.png)
 
@@ -91,7 +91,7 @@ npx mrm gitignore
 npx mrm license
 ```
 
---
+-- contain
 
 ![](images/mrm/mrm-license-diff.png)
 
@@ -115,11 +115,11 @@ npx mrm jest
 * Removes Mocha and AVA
 * And more
 
---
+-- contain
 
 ![](images/mrm/mrm-jest.png)
 
---
+-- contain
 
 ![](images/mrm/mrm-jest-diff.png)
 
@@ -137,13 +137,14 @@ CodeCov, EditorConfig, ESLint, Jest, lint-staged, Prettier, semantic-release, Re
 
 ### Minimal configuration
 
-* Infer configuration from the project itself or from the environment
+* Project: dependencies
+* Environment: Git or npm configs
 
 --
 
 ### Minimal changes
 
-* Infer indentation style or read from EditorConfig
+* Tries to keep formatting
 * Keep comments in JSON
 
 --
