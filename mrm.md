@@ -21,10 +21,6 @@ output: public/mrm.html
 * 1 × documentation file
 * 11 × support files
 
---
-
-<video src="images/mrm/nooooo.mp4" autoplay loop></video>
-
 -- teal
 
 # `.somethingrc`
@@ -32,6 +28,10 @@ output: public/mrm.html
 -- small center
 
 `.babelignore .babelrc .editorconfig .eslintignore .eslintrc .flowconfig .gitattributes .gitignore .istanbul.yml .npmignore .nvmrc .prettierignore .prettierrc .proselintrc .remarkrc .shipit .stylelintrc .textlintrc .travis.yml appveyor.yml Changelog.md Code_of_Conduct.md codecov.yml Contributing.md Issue_Template.md jsconfig.json lerna.json License.md open-bot.yaml package.json Pull_Request_Template.md Readme.md tsconfig.json`
+
+--
+
+<video src="images/mrm/nooooo.mp4" autoplay loop></video>
 
 --
 
@@ -48,10 +48,6 @@ output: public/mrm.html
 --
 
 <video src="images/mrm/puppies.mp4" autoplay loop></video>
-
---
-
-## Very similar but not exactly the same
 
 --
 
@@ -209,11 +205,13 @@ module.exports = () => {
 ```js
 module.exports = config => {
   // npm mrm eslint --config:eslintPreset airbnb
-  const { eslintPreset } = config
+  const { indent, eslintPreset } = config
     .defaults({
-      // Default values
+      // Default value
       eslintPreset: 'eslint:recommended'
     })
+    // Required option
+    .require('indent')
     .values();
   /* _ */
 };
@@ -286,17 +284,9 @@ module.exports = config => {
 ### Thank you and automate your configs
 
 Mrm: [github.com/sapegin/mrm](https://github.com/sapegin/mrm)<br>
-Slides: [bit.ly/consistent-css](https://sapegin.github.io/slides/inconsistent-styles)<br>
+Slides: [bit.ly/mrm-slides](https://sapegin.github.io/slides/mrm)<br>
 Me: [sapegin.me](http://sapegin.me/)<br>
 Twitter: [@iamsapegin](https://twitter.com/iamsapegin)<br>
 GitHub: [sapegin](https://github.com/sapegin)
 
 <img src="images/dogs.jpg" style="height:30vh">
-
---
-
-### Image credits
-
-* [Max Stoiber](https://mxstbr.com/)
-* [Priyanka Godbole](https://blog.prototypr.io/10-practical-steps-to-create-a-predictable-accessible-and-harmonious-typography-system-a-case-6c85d901bedd)
-* [Nathan Curtis](https://medium.com/eightshapes-llc/space-in-design-systems-188bcbae0d62)
