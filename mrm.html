@@ -1,0 +1,1169 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>Automating open source project configuration with Mrm by Artem Sapegin</title>
+  <style type="text/css">
+    body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #222;
+  font-size: 100%;
+}
+
+.slide {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 0; right: 0;
+  background-color: #f7f7f7;
+}
+
+.slide-content {
+  width: 800px;
+  height: 600px;
+  overflow: hidden;
+  margin: 80px auto 0 auto;
+  padding: 30px;
+
+  font-weight: 200;
+  font-size: 200%;
+  line-height: 1.375;
+}
+
+.controls {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
+.arrow {
+  width: 0; height: 0;
+  border: 30px solid #333;
+  float: left;
+  margin-right: 30px;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.prev {
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+
+  border-left-width: 0;
+  border-right-width: 50px;
+}
+
+.next {
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+
+  border-left-width: 50px;
+  border-right-width: 0;
+}
+
+.prev:hover {
+  border-right-color: #888;
+  cursor: pointer;
+}
+
+.next:hover {
+  border-left-color: #888;
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 300%;
+  line-height: 1.2;
+  text-align: center;
+  margin: 170px 0 0;
+}
+
+h2 {
+  font-size: 100%;
+  line-height: 1.2;
+  margin: 5px 0;
+  text-align: center;
+  font-weight: 200;
+}
+
+h3 {
+  font-size: 140%;
+  line-height: 1.2;
+  border-bottom: 1px solid #aaa;
+  margin: 0;
+  padding-bottom: 15px;
+}
+
+ul {
+  padding: 20px 0 0 60px;
+  font-weight: 200;
+  line-height: 1.375;
+}
+
+.author h1 {
+  font-size: 170%;
+  font-weight: 200;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.author h3 {
+  font-weight: 100;
+  text-align: center;
+  font-size: 95%;
+  border: none;
+}
+
+a {
+  text-decoration: none;
+  color: #44a4dd;
+}
+
+a:hover {
+  color: #66b5ff;
+}
+
+pre {
+  font-size: 60%;
+  line-height: 1.3;
+}
+
+.progress {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  z-index: 1;
+}
+
+.progress-bar {
+  width: 0%;
+  height: 3px;
+  background-color: #b4b4b4;
+
+  -webkit-transition: width 0.05s ease-out;
+  -moz-transition: width 0.05s ease-out;
+  -o-transition: width 0.05s ease-out;
+  transition: width 0.05s ease-out;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 850px) {
+
+  body {
+    font-size: 70%;
+  }
+
+  .slide-content {
+    width: auto;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  h1 {
+    margin-top: 120px;
+  }
+
+  .prev, .prev:hover {
+    border-right-color: rgba(135, 135, 135, 0.5);
+  }
+
+  .next, .next:hover {
+    border-left-color: rgba(135, 135, 135, 0.5);
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 50%;
+    overflow: hidden;
+  }
+
+  .slide-content {
+    padding: 10px;
+    margin-top: 10px;
+    height: 340px;
+  }
+
+  h1 {
+    margin-top: 50px;
+  }
+
+  ul {
+    padding-left: 25px;
+  }
+}
+
+@media print {
+  * {
+    -webkit-print-color-adjust: exact;
+  }
+
+  @page {
+    size: letter;
+  }
+
+  .hidden {
+    display: inline;
+  }
+
+  html {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  body {
+    margin: 0 auto !important;
+    border: 0;
+    padding: 0;
+    float: none !important;
+    overflow: visible;
+    background: none !important;
+    font-size: 52%;
+  }
+
+  .progress, .controls {
+    display: none;
+  }
+
+  .slide {
+    position: static;
+  }
+
+  .slide-content {
+    border: 1px solid #222;
+    margin-top: 0;
+    margin-bottom: 40px;
+    height: 3.5in;
+    overflow: visible;
+  }
+
+  .slide:nth-child(even) {
+    /* 2 slides per page */
+    page-break-before: always;
+  }
+}
+
+/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #333;
+  background: #f8f8f8;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #998;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #333;
+  font-weight: bold;
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+  color: #008080;
+}
+
+.hljs-string,
+.hljs-doctag {
+  color: #d14;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+  color: #900;
+  font-weight: bold;
+}
+
+.hljs-subst {
+  font-weight: normal;
+}
+
+.hljs-type,
+.hljs-class .hljs-title {
+  color: #458;
+  font-weight: bold;
+}
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+  color: #000080;
+  font-weight: normal;
+}
+
+.hljs-regexp,
+.hljs-link {
+  color: #009926;
+}
+
+.hljs-symbol,
+.hljs-bullet {
+  color: #990073;
+}
+
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #0086b3;
+}
+
+.hljs-meta {
+  color: #999;
+  font-weight: bold;
+}
+
+.hljs-deletion {
+  background: #fdd;
+}
+
+.hljs-addition {
+  background: #dfd;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+:root {
+	--uiColor: rgba(0, 0, 0, 0.3);
+	--uiHoverColor: rgba(0, 0, 0, 0.8);
+	--bgColor: #fff;
+	--lightBgColor: #fafafa;
+	--baseColor: #222;
+	--darkColor: #666;
+	--lightColor: #999;
+	--accentColor: #dc8b0c;
+	--otherColor: #38bfd8;
+	--addColor: #2d7b43;
+	--removeColor: #bb2c2c;
+	--pagePadding: calc(3vmin + 32px);
+}
+
+/* Fonts */
+
+@font-face {
+	font-family: roboto;
+	src: url(fonts/Roboto-Regular.woff2) format('woff2');
+	font-style: normal;
+	font-weight: normal;
+}
+@font-face {
+	font-family: roboto;
+	src: url(fonts/Roboto-Bold.woff2) format('woff2');
+	font-style: normal;
+	font-weight: bold;
+}
+@font-face {
+	font-family: roboto;
+	src: url(fonts/Roboto-Italic.woff2) format('woff2');
+	font-style: italic;
+	font-weight: normal;
+}
+@font-face {
+	font-family: roboto-mono;
+	src: url(fonts/RobotoMono-Regular.woff2) format('woff2');
+	font-style: normal;
+	font-weight: normal;
+}
+
+/* Highlight.js theme */
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link,
+.hljs-built_in,
+.hljs-builtin-name {
+	color: var(--baseColor);
+}
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst,
+.hljs-regexp,
+.hljs-tag .hljs-attr {
+	color: var(--darkColor);
+}
+.hljs-comment,
+.hljs-quote,
+.hljs-number,
+.hljs-literal,
+.hljs-meta {
+	color: var(--lightColor);
+}
+.hljs-string,
+.hljs-doctag,
+.hljs-formula {
+	color: var(--accentColor);
+}
+.hljs-tag,
+.hljs-class .hljs-title,
+.hljs-type,
+.hljs-name,
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+	color: var(--otherColor);
+	font-weight: normal;
+}
+.hljs-built_in,
+.hljs-builtin-name {
+	text-decoration: underline;
+}
+.hljs-subst {
+	font-weight: normal;
+}
+.hljs-emphasis {
+	font-style: italic;
+}
+.hljs-strong {
+	font-weight: bold;
+}
+.hljs-deletion {
+	background: var(--removeColor);
+}
+.hljs-addition {
+	background: var(--addColor);
+}
+
+/* Common styles */
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: roboto, sans-serif;
+	background-color: var(--bgColor);
+	color: var(--baseColor);
+	font-feature-settings: 'kern', 'pnum',
+		common-ligatures contextual historical-ligatures;
+	-webkit-font-kerning: normal;
+	font-kerning: normal;
+	font-variant-numeric: proportional-nums;
+	font-variant-ligatures: common-ligatures contextual historical-ligatures;
+}
+
+pre,
+code {
+	font-family: roboto-mono, monospace;
+}
+
+pre {
+	margin: -3vmin;
+	padding: 3vmin;
+	font-size: 4vmin;
+	line-height: 1.4;
+	background-color: var(--lightBgColor);
+}
+
+p code {
+	color: var(--darkColor);
+}
+
+img {
+	display: block;
+	width: auto;
+	height: auto;
+	max-width: calc(100vw - var(--pagePadding) * 2);
+	max-height: calc(100vh - var(--pagePadding) * 2);
+	margin: auto;
+}
+h3 + p img {
+	max-height: 70vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	padding: 0;
+	font-weight: normal;
+	border: 0;
+	line-height: 1.1;
+}
+
+h1 {
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 15vmin;
+}
+h2 {
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 12vmin;
+}
+h1:first-child,
+h2:first-child {
+	margin-top: auto;
+}
+h1:last-child,
+h2:last-child {
+	margin-bottom: auto;
+}
+h1 + h2 {
+	margin-top: 8vmin;
+}
+h1 + p {
+	margin-top: 8vmin;
+	margin-bottom: auto;
+	text-align: center;
+}
+h3 {
+	margin-bottom: 4vmin;
+	font-size: 8vmin;
+}
+h4 {
+	margin-bottom: 2vmin;
+	font-size: 4vmin;
+}
+
+ul,
+ol {
+	margin: 0;
+	padding-left: 6vmin;
+}
+
+p,
+li,
+pre {
+	margin-top: 0;
+	margin-bottom: 2vmin;
+}
+
+a,
+a:link,
+a:visited,
+a:hover,
+a:focus,
+a:active {
+	color: var(--accentColor);
+}
+a:hover,
+a:focus,
+a:active {
+	text-decoration: underline;
+}
+
+/* UI */
+
+.slide {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--bgColor);
+}
+.slide.hidden {
+	display: none;
+}
+
+.slide-content {
+	display: flex;
+	width: 100vw;
+	height: 100vh;
+	margin: 0;
+	padding: var(--pagePadding);
+	flex-direction: column;
+	font-size: 7vmin;
+}
+
+.slide-content > *:first-child:last-child {
+	margin: auto;
+}
+
+.progress-bar {
+	background-color: var(--uiColor);
+}
+
+.arrow {
+	margin-right: 2.5vmin;
+	border-width: 4vmin;
+	transition: border ease-out 0.15s;
+}
+.prev {
+	border-right-width: 5.7vmin;
+	border-right-color: var(--uiColor);
+}
+.prev:hover {
+	border-right-color: var(--uiHoverColor);
+}
+.next {
+	border-left-width: 5.7vmin;
+	border-left-color: var(--uiColor);
+}
+.next:hover {
+	border-left-color: var(--uiHoverColor);
+}
+
+.controls {
+	margin-left: -4vmin;
+	margin-bottom: 0;
+	transition: opacity ease-out 0.5s;
+}
+:-webkit-full-screen .controls {
+	opacity: 0;
+}
+
+/* Custom backgrounds */
+
+#slide-1,
+.orange {
+	background-color: var(--accentColor);
+	color: var(--bgColor);
+}
+
+.orange a,
+.orange a:link,
+.orange a:visited,
+.orange a:hover,
+.orange a:focus,
+.orange a:active {
+	color: var(--bgColor);
+}
+
+.teal {
+	background-color: var(--otherColor);
+	color: var(--bgColor);
+}
+
+.teal a,
+.teal a:link,
+.teal a:visited,
+.teal a:hover,
+.teal a:focus,
+.teal a:active {
+	color: var(--bgColor);
+}
+
+/* Full screen images */
+
+.contain img,
+.cover img {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	max-width: none;
+	max-height: none;
+	margin: 0;
+}
+
+.contain img {
+	object-fit: contain;
+}
+
+.cover img {
+	object-fit: cover;
+}
+
+/* Smaller fonts */
+
+.small .slide-content {
+	font-size: 5vmin;
+}
+
+/* Centered text */
+
+.center {
+	text-align: center;
+}
+
+/* Two pane split */
+
+.split .slide-content {
+	display: grid;
+	grid-template-columns: 50% 50%;
+	grid-template-areas: 'heading heading' 'caption caption' 'code code';
+	grid-column-gap: 2vmin;
+}
+.split h3 {
+	grid-area: heading;
+}
+.split h4 {
+	grid-area: caption;
+}
+.split pre {
+	grid-area: code;
+}
+.split h4:nth-of-type(2),
+.split pre:nth-of-type(2) {
+	grid-column-start: 2;
+}
+
+  </style>
+</head>
+<body>
+    <div class="progress">
+    <div class="progress-bar"></div>
+  </div>
+
+  <div class="slide  cover" id="slide-1">
+    <section class="slide-content"><h1 id="automating-open-source-project-configuration-with-mrm">Automating open source project configuration with Mrm</h1>
+<h2 id="artem-sapegin">Artem Sapegin</h2>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-2">
+    <section class="slide-content"><h3 id="typical-open-source-project">Typical open source project</h3>
+<p><img src="images/mrm/typical-oss.png" alt=""></p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-3">
+    <section class="slide-content"><ul>
+<li>1 × source code file</li>
+<li>1 × test file</li>
+<li>1 × documentation file</li>
+<li>11 × support files</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden  teal" id="slide-4">
+    <section class="slide-content"><h1 id="-somethingrc-"><code>.somethingrc</code></h1>
+</section>
+  </div>
+  <div class="slide hidden  small center" id="slide-5">
+    <section class="slide-content"><p><code>.babelignore .babelrc .editorconfig .eslintignore .eslintrc .flowconfig .gitattributes .gitignore .istanbul.yml .npmignore .nvmrc .prettierignore .prettierrc .proselintrc .remarkrc .shipit .stylelintrc .textlintrc .travis.yml appveyor.yml Changelog.md Code_of_Conduct.md codecov.yml Contributing.md Issue_Template.md jsconfig.json lerna.json License.md open-bot.yaml package.json Pull_Request_Template.md Readme.md tsconfig.json</code></p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-6">
+    <section class="slide-content"><video src="images/mrm/nooooo.mp4" autoplay loop></video></section>
+  </div>
+  <div class="slide hidden" id="slide-7">
+    <section class="slide-content"><h2 id="-number-of-your-projects">× number of your projects</h2>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-8">
+    <section class="slide-content"><video src="images/mrm/hamster.mp4" autoplay loop></video></section>
+  </div>
+  <div class="slide hidden" id="slide-9">
+    <section class="slide-content"><h2 id="support-files-are-_slightly-different_-in-different-projects">Support files are <em>slightly different</em> in different projects</h2>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-10">
+    <section class="slide-content"><video src="images/mrm/puppies.mp4" autoplay loop></video></section>
+  </div>
+  <div class="slide hidden" id="slide-11">
+    <section class="slide-content"><h2 id="templates-are-ok-for-bootstrapping-new-projects">Templates are OK for bootstrapping new projects</h2>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-12">
+    <section class="slide-content"><h2 id="updates-are-hard">Updates are hard</h2>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-13">
+    <section class="slide-content"><h2 id="we-need-codemods-for-config-files">We need codemods for config files</h2>
+</section>
+  </div>
+  <div class="slide hidden  orange" id="slide-14">
+    <section class="slide-content"><h1 id="mrm">Mrm</h1>
+<h2 id="-github-com-sapegin-mrm-https-github-com-sapegin-mrm-"><a href="https://github.com/sapegin/mrm">github.com/sapegin/mrm</a></h2>
+</section>
+  </div>
+  <div class="slide hidden  teal" id="slide-15">
+    <section class="slide-content"><h1 id="example-gitignore-task">Example: gitignore task</h1>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-16">
+    <section class="slide-content"><pre><code>npx mrm gitignore</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-17">
+    <section class="slide-content"><p><img src="images/mrm/mrm-gitignore-diff.png" alt=""></p>
+</section>
+  </div>
+  <div class="slide hidden  teal" id="slide-18">
+    <section class="slide-content"><h1 id="example-license-task">Example: license task</h1>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-19">
+    <section class="slide-content"><pre><code class="lang-bash">npx mrm license</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-20">
+    <section class="slide-content"><p><img src="images/mrm/mrm-license-diff.png" alt=""></p>
+</section>
+  </div>
+  <div class="slide hidden  teal" id="slide-21">
+    <section class="slide-content"><h1 id="example-jest-task">Example: Jest task</h1>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-22">
+    <section class="slide-content"><pre><code>npx mrm jest</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-23">
+    <section class="slide-content"><ul>
+<li>Adds npm scripts</li>
+<li>Config in <code>package.json</code></li>
+<li><code>.gitignore</code>, <code>.npmignore</code>, <code>.eslintignore</code></li>
+<li>Installs Jest</li>
+<li>babel-jest, ts-jest, Enzyme if needed</li>
+<li>Removes Mocha and AVA</li>
+<li>And more</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-24">
+    <section class="slide-content"><p><img src="images/mrm/mrm-jest.png" alt=""></p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-25">
+    <section class="slide-content"><p><img src="images/mrm/mrm-jest-diff.png" alt=""></p>
+</section>
+  </div>
+  <div class="slide hidden  orange" id="slide-26">
+    <section class="slide-content"><h1 id="details">Details</h1>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-27">
+    <section class="slide-content"><h3 id="default-tasks">Default tasks</h3>
+<p>CodeCov, EditorConfig, ESLint, Jest, lint-staged, Prettier, semantic-release, React Styleguidist, stylelint, Travis CI, TypeScript, package.json, contributing guidelines, license and readme files</p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-28">
+    <section class="slide-content"><h3 id="minimal-configuration">Minimal configuration</h3>
+<ul>
+<li>Infer configuration from the project itself or from the environment</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-29">
+    <section class="slide-content"><h3 id="minimal-changes">Minimal changes</h3>
+<ul>
+<li>Infer indentation style or read from EditorConfig</li>
+<li>Keep comments in JSON</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-30">
+    <section class="slide-content"><h3 id="configuration">Configuration</h3>
+<ul>
+<li><p>Command line:</p>
+<pre><code>npx mrm license --config:licenseFile README</code></pre>
+</li>
+<li><p>Config file:</p>
+<ul>
+<li><code>~/.mrm/config.json</code></li>
+<li><code>~/dotfiles/mrm/config.json</code></li>
+</ul>
+</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-31">
+    <section class="slide-content"><h3 id="sharing-tasks">Sharing tasks</h3>
+<ul>
+<li><code>mrm-task-&lt;TASK&gt;</code></li>
+<li><code>mrm-preset-&lt;PRESET&gt;</code></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden  orange" id="slide-32">
+    <section class="slide-content"><h1 id="writing-custom-tasks">Writing custom tasks</h1>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-33">
+    <section class="slide-content"><h3 id="api-for-writing-tasks-mrm-core-">API for writing tasks — <code>mrm-core</code></h3>
+<ul>
+<li>JSON, YAML, INI, new line separated text files</li>
+<li>npm install / uninstall</li>
+<li>File operations</li>
+<li>EditorConfig utilities</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-34">
+    <section class="slide-content"><h3 id="simplest-task">Simplest task</h3>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> { lines } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mrm-core'</span>);
+<span class="hljs-built_in">module</span>.exports = () =&gt; {
+  <span class="hljs-comment">// Read .gitignore if it exists</span>
+  lines(<span class="hljs-string">'.gitignore'</span>)
+    <span class="hljs-comment">// Add lines that do not exist in a file yet,</span>
+    <span class="hljs-comment">// but keep all existing lines</span>
+    .add([<span class="hljs-string">'node_modules/'</span>, <span class="hljs-string">'.DS_Store'</span>])
+    <span class="hljs-comment">// Update or create a file</span>
+    .save();
+};</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-35">
+    <section class="slide-content"><h3 id="configurable-task">Configurable task</h3>
+<pre><code class="lang-js"><span class="hljs-built_in">module</span>.exports = config =&gt; {
+  <span class="hljs-comment">// npm mrm eslint --config:eslintPreset airbnb</span>
+  <span class="hljs-keyword">const</span> { indent, eslintPreset } = config
+    .defaults({
+      <span class="hljs-comment">// Default value</span>
+      eslintPreset: <span class="hljs-string">'eslint:recommended'</span>
+    })
+    <span class="hljs-comment">// Required option</span>
+    .require(<span class="hljs-string">'indent'</span>)
+    .values();
+  <span class="hljs-comment">/* _ */</span>
+};</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-36">
+    <section class="slide-content"><h3 id="json-files">JSON files</h3>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> { json } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mrm-core'</span>);
+<span class="hljs-built_in">module</span>.exports = config =&gt; {
+  <span class="hljs-comment">// Read .eslintrc if it exists</span>
+  json(<span class="hljs-string">'.eslintrc'</span>)
+    <span class="hljs-comment">// Merge content with new options</span>
+    .merge({
+      parser: <span class="hljs-string">'babel-eslint'</span>,
+      extends: <span class="hljs-string">'eslint:recommended'</span>
+    })
+    .save();
+};</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-37">
+    <section class="slide-content"><h3 id="-package-json-files"><code>package.json</code> files</h3>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> { packageJson } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mrm-core'</span>);
+<span class="hljs-built_in">module</span>.exports = config =&gt; {
+  <span class="hljs-comment">// Read project’s package.json</span>
+  packageJson()
+    <span class="hljs-comment">// Add lint script</span>
+    .setScript(<span class="hljs-string">'lint'</span>, <span class="hljs-string">'eslint . --cache --fix'</span>)
+    <span class="hljs-comment">// Add pretest script</span>
+    .prependScript(<span class="hljs-string">'pretest'</span>, <span class="hljs-string">'npm run lint'</span>)
+    .save();
+};</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-38">
+    <section class="slide-content"><h3 id="npm-dependencies">npm dependencies</h3>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> { packageJson, install } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mrm-core'</span>);
+<span class="hljs-built_in">module</span>.exports = config =&gt; {
+  <span class="hljs-keyword">const</span> packages = [<span class="hljs-string">'eslint'</span>];
+  <span class="hljs-keyword">const</span> pkg = packageJson();
+  <span class="hljs-keyword">if</span> (pkg.get(<span class="hljs-string">'devDependencies.babel-core'</span>)) {
+    packages.push(<span class="hljs-string">'babel-eslint'</span>);
+  }
+  <span class="hljs-comment">// Install npm dependencies</span>
+  install(packages);
+};</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-39">
+    <section class="slide-content"><h1 id="and-much-more">And much more</h1>
+<p><a href="https://github.com/sapegin/mrm-core">github.com/sapegin/mrm-core</a></p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-40">
+    <section class="slide-content"><video src="images/mrm/happy.mp4" autoplay loop></video></section>
+  </div>
+  <div class="slide hidden" id="slide-41">
+    <section class="slide-content"><h3 id="thank-you-and-automate-your-configs">Thank you and automate your configs</h3>
+<p>Mrm: <a href="https://github.com/sapegin/mrm">github.com/sapegin/mrm</a><br>
+Slides: <a href="https://sapegin.github.io/slides/inconsistent-styles">bit.ly/consistent-css</a><br>
+Me: <a href="http://sapegin.me/">sapegin.me</a><br>
+Twitter: <a href="https://twitter.com/iamsapegin">@iamsapegin</a><br>
+GitHub: <a href="https://github.com/sapegin">sapegin</a></p>
+<p><img src="images/dogs.jpg" style="height:30vh"></p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-42">
+    <section class="slide-content"><h3 id="image-credits">Image credits</h3>
+<ul>
+<li><a href="https://mxstbr.com/">Max Stoiber</a></li>
+<li><a href="https://blog.prototypr.io/10-practical-steps-to-create-a-predictable-accessible-and-harmonious-typography-system-a-case-6c85d901bedd">Priyanka Godbole</a></li>
+<li><a href="https://medium.com/eightshapes-llc/space-in-design-systems-188bcbae0d62">Nathan Curtis</a></li>
+</ul>
+</section>
+  </div>
+
+  <div class="controls">
+    <div class="arrow prev"></div>
+    <div class="arrow next"></div>
+  </div>
+
+
+  <script type="text/javascript">
+    /**
+ * Returns the current page number of the presentation.
+ */
+function currentPosition() {
+  return parseInt(document.querySelector('.slide:not(.hidden)').id.slice(6));
+}
+
+
+/**
+ * Navigates forward n pages
+ * If n is negative, we will navigate in reverse
+ */
+function navigate(n) {
+  var position = currentPosition();
+  var numSlides = document.getElementsByClassName('slide').length;
+
+  /* Positions are 1-indexed, so we need to add and subtract 1 */
+  var nextPosition = (position - 1 + n) % numSlides + 1;
+
+  /* Normalize nextPosition in-case of a negative modulo result */
+  nextPosition = (nextPosition - 1 + numSlides) % numSlides + 1;
+
+  document.getElementById('slide-' + position).classList.add('hidden');
+  document.getElementById('slide-' + nextPosition).classList.remove('hidden');
+
+  updateProgress();
+  updateURL();
+  updateTabIndex();
+}
+
+
+/**
+ * Updates the current URL to include a hashtag of the current page number.
+ */
+function updateURL() {
+  try {
+    window.history.replaceState({} , null, '#' + currentPosition());
+  } catch (e) {
+    window.location.hash = currentPosition();
+  }
+}
+
+
+/**
+ * Sets the progress indicator.
+ */
+function updateProgress() {
+  var progressBar = document.querySelector('.progress-bar');
+
+  if (progressBar !== null) {
+    var numSlides = document.getElementsByClassName('slide').length;
+    var position = currentPosition() - 1;
+    var percent = (numSlides === 1) ? 100 : 100 * position / (numSlides - 1);
+    progressBar.style.width = percent.toString() + '%';
+  }
+}
+
+
+/**
+ * Removes tabindex property from all links on the current slide, sets
+ * tabindex = -1 for all links on other slides. Prevents slides from appearing
+ * out of control.
+ */
+function updateTabIndex() {
+  var allLinks = document.querySelectorAll('.slide a');
+  var position = currentPosition();
+  var currentPageLinks = document.getElementById('slide-' + position).querySelectorAll('a');
+  var i;
+
+  for (i = 0; i < allLinks.length; i++) {
+    allLinks[i].setAttribute('tabindex', -1);
+  }
+
+  for (i = 0; i < currentPageLinks.length; i++) {
+    currentPageLinks[i].removeAttribute('tabindex');
+  }
+}
+
+/**
+ * Determines whether or not we are currently in full screen mode
+ */
+function isFullScreen() {
+  return document.fullscreenElement ||
+         document.mozFullScreenElement ||
+         document.webkitFullscreenElement ||
+         document.msFullscreenElement;
+}
+
+/**
+ * Toggle fullScreen mode on document element.
+ * Works on chrome (>= 15), firefox (>= 9), ie (>= 11), opera(>= 12.1), safari (>= 5).
+ */
+function toggleFullScreen() {
+  /* Convenient renames */
+  var docElem = document.documentElement;
+  var doc = document;
+
+  docElem.requestFullscreen =
+      docElem.requestFullscreen ||
+      docElem.msRequestFullscreen ||
+      docElem.mozRequestFullScreen ||
+      docElem.webkitRequestFullscreen.bind(docElem, Element.ALLOW_KEYBOARD_INPUT);
+
+  doc.exitFullscreen =
+      doc.exitFullscreen ||
+      doc.msExitFullscreen ||
+      doc.mozCancelFullScreen ||
+      doc.webkitExitFullscreen;
+
+  isFullScreen() ? doc.exitFullscreen() : docElem.requestFullscreen();
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Update the tabindex to prevent weird slide transitioning
+  updateTabIndex();
+
+  // If the location hash specifies a page number, go to it.
+  var page = window.location.hash.slice(1);
+  if (page) {
+    navigate(parseInt(page) - 1);
+  }
+
+  document.onkeydown = function (e) {
+    var kc = e.keyCode;
+
+    // left, down, H, J, backspace, PgUp - BACK
+    // up, right, K, L, space, PgDn - FORWARD
+    // enter - FULLSCREEN
+    if (kc === 37 || kc === 40 || kc === 8 || kc === 72 || kc === 74 || kc === 33) {
+      navigate(-1);
+    } else if (kc === 38 || kc === 39 || kc === 32 || kc === 75 || kc === 76 || kc === 34) {
+      navigate(1);
+    } else if (kc === 13) {
+      toggleFullScreen();
+    }
+  };
+
+  if (document.querySelector('.next') && document.querySelector('.prev')) {
+    document.querySelector('.next').onclick = function (e) {
+      e.preventDefault();
+      navigate(1);
+    };
+
+    document.querySelector('.prev').onclick = function (e) {
+      e.preventDefault();
+      navigate(-1);
+    };
+  }
+});
+
+
+  </script>
+</body>
+</html>
