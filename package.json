@@ -20,8 +20,8 @@
     "posttest": "npm run format"
   },
   "devDependencies": {
-    "cleaver": "^0.8.5",
+    "cleaver": "^0.8.7",
     "gh-pages": "^1.1.0",
-    "prettier": "^1.8.2"
+    "prettier": "^1.11.1"
   }
 }
