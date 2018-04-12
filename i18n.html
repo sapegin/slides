@@ -369,6 +369,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 	--tertiaryColor: #f9bb53;
 	--addColor: #1f893f;
 	--removeColor: #c2312c;
+	--markColor: #f9bb53;
 	--pagePadding: calc(3vmin + 32px);
 }
 
@@ -492,6 +493,12 @@ p code {
 	color: var(--darkColor);
 }
 
+mark {
+	margin: 0 0.5vmin;
+	padding: 0 0.5vmin;
+	background-color: var(--markColor);
+}
+
 img {
 	display: block;
 	width: auto;
@@ -549,7 +556,8 @@ h3 {
 }
 h4 {
 	margin-bottom: 2vmin;
-	font-size: 4vmin;
+	font-size: 6vmin;
+	font-weight: bold;
 }
 
 ul,
@@ -560,7 +568,8 @@ ol {
 
 p,
 li,
-pre {
+pre,
+table {
 	margin-top: 0;
 	margin-bottom: 3vmin;
 }
@@ -577,6 +586,19 @@ a:hover,
 a:focus,
 a:active {
 	text-decoration: underline;
+}
+
+table {
+	border-collapse: collapse;
+}
+th {
+	text-align: left;
+	border-bottom: 0.5vmin solid var(--lightColor);
+}
+td,
+th {
+	padding-bottom: 1vmin;
+	padding-right: 3vmin;
 }
 
 /* UI */
@@ -834,9 +856,9 @@ a:active {
   <div class="slide hidden" id="slide-9">
     <section class="slide-content"><h3 id="numeric-formats">Numeric formats</h3>
 <ul>
-<li>1,025.66 — US</li>
-<li>1.025,66 — Germany</li>
-<li>1 025,66 — Russia</li>
+<li>1,025.63 — US</li>
+<li>1.025,63 — Germany</li>
+<li>1&thinsp;025,63 — Russia</li>
 </ul>
 </section>
   </div>
@@ -857,11 +879,23 @@ a:active {
 </section>
   </div>
   <div class="slide hidden" id="slide-12">
+    <section class="slide-content"><h3 id="typography">Typography</h3>
+<!-- https://en.wikipedia.org/wiki/Quotation_mark -->
+<ul>
+<li>‘…’ “…” — English (UK)</li>
+<li>“…” ‘…’ — English (US, Canada)</li>
+<li>„…“ ‚…‘ or »…« ›…‹ — German</li>
+<li>« … » « … » or “…” — French</li>
+<li>«…» „…“ — Russian</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-13">
     <section class="slide-content"><h3 id="brands">Brands</h3>
 <p><img src="images/i18n/sosasola.jpg" alt=""></p>
 </section>
   </div>
-  <div class="slide hidden  split" id="slide-13">
+  <div class="slide hidden  split" id="slide-14">
     <section class="slide-content"><h3 id="brands">Brands</h3>
 <h4 id="everywhere-else">Everywhere else</h4>
 <p><img src="images/i18n/burgerking.svg" alt=""></p>
@@ -869,22 +903,22 @@ a:active {
 <p><img src="images/i18n/hungryjacks.svg" alt=""></p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-14">
+  <div class="slide hidden" id="slide-15">
     <section class="slide-content"><h1 id="and-many-more-things">And many more things</h1>
 </section>
   </div>
-  <div class="slide hidden" id="slide-15">
+  <div class="slide hidden" id="slide-16">
     <section class="slide-content"><video src="images/i18n/dramatichamster.mp4" autoplay loop></video></section>
   </div>
-  <div class="slide hidden  secondary" id="slide-16">
+  <div class="slide hidden  secondary" id="slide-17">
     <section class="slide-content"><h1 id="best-practices">Best practices</h1>
 </section>
   </div>
-  <div class="slide hidden  tertiary" id="slide-17">
+  <div class="slide hidden  tertiary" id="slide-18">
     <section class="slide-content"><h1 id="don-t-concatenate-strings">Don’t concatenate strings</h1>
 </section>
   </div>
-  <div class="slide hidden" id="slide-18">
+  <div class="slide hidden" id="slide-19">
     <section class="slide-content"><h3 id="don-t-concatenate-strings">Don’t concatenate strings</h3>
 <h4 id="bad">Bad</h4>
 <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">Lnrs</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"Greeting1"</span>&gt;</span>Hey <span class="hljs-tag">&lt;/<span class="hljs-name">Lnrs</span>&gt;</span>
@@ -897,7 +931,7 @@ a:active {
 </code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-19">
+  <div class="slide hidden" id="slide-20">
     <section class="slide-content"><h3 id="don-t-concatenate-strings">Don’t concatenate strings</h3>
 <ul>
 <li>“red pencil” — English</li>
@@ -905,11 +939,11 @@ a:active {
 </ul>
 </section>
   </div>
-  <div class="slide hidden  tertiary" id="slide-20">
+  <div class="slide hidden  tertiary" id="slide-21">
     <section class="slide-content"><h1 id="put-punctuation-inside-localization-strings">Put punctuation inside localization strings</h1>
 </section>
   </div>
-  <div class="slide hidden" id="slide-21">
+  <div class="slide hidden" id="slide-22">
     <section class="slide-content"><h3 id="put-punctuation-inside-localization-strings">Put punctuation inside localization strings</h3>
 <h4 id="bad">Bad</h4>
 <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">Lnrs</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"Username"</span>&gt;</span>Username<span class="hljs-tag">&lt;/<span class="hljs-name">Lnrs</span>&gt;</span>{': '}
@@ -921,29 +955,31 @@ a:active {
 </code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-22">
+  <div class="slide hidden" id="slide-23">
     <section class="slide-content"><h3 id="put-punctuation-inside-localization-strings">Put punctuation inside localization strings</h3>
 <ul>
-<li>“Username:” — English</li>
-<li>“Nom d’utilisateur :” — French</li>
+<li>“Username<mark>:</mark>” — English</li>
+<li>“Nom d’utilisateur<mark>␣:</mark>” — French</li>
 </ul>
 </section>
   </div>
-  <div class="slide hidden  tertiary" id="slide-23">
+  <div class="slide hidden  tertiary" id="slide-24">
     <section class="slide-content"><h1 id="don-t-reuse-translations-indifferent-contexts">Don’t reuse translations in&nbsp;different contexts</h1>
 </section>
   </div>
-  <div class="slide hidden" id="slide-24">
+  <div class="slide hidden" id="slide-25">
     <section class="slide-content"><h3 id="don-t-reuse-translations-in-different-contexts">Don’t reuse translations in different contexts</h3>
 <h4 id="bad">Bad</h4>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">Lnrs</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"Bookmark"</span>&gt;</span>Name<span class="hljs-tag">&lt;/<span class="hljs-name">Lnrs</span>&gt;</span>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">Lnrs</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"Bookmark"</span>&gt;</span>Name<span class="hljs-tag">&lt;/<span class="hljs-name">Lnrs</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">Lnrs</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"Bookmark"</span>&gt;</span>Name<span class="hljs-tag">&lt;/<span class="hljs-name">Lnrs</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 </code></pre>
 <h4 id="good">Good</h4>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">Lnrs</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"ProductBookmarkButton"</span>&gt;</span>Name<span class="hljs-tag">&lt;/<span class="hljs-name">Lnrs</span>&gt;</span>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">Lnrs</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"ProductBookmarkHeading"</span>&gt;</span>Name<span class="hljs-tag">&lt;/<span class="hljs-name">Lnrs</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">Lnrs</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"ProductBookmarkButton"</span>&gt;</span>Name<span class="hljs-tag">&lt;/<span class="hljs-name">Lnrs</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 </code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-25">
+  <div class="slide hidden" id="slide-26">
     <section class="slide-content"><h3 id="don-t-reuse-translations-in-different-contexts">Don’t reuse translations in different contexts</h3>
 <ul>
 <li>“Bookmark” (heading) and “Bookmark” (button) — English</li>
@@ -951,11 +987,11 @@ a:active {
 </ul>
 </section>
   </div>
-  <div class="slide hidden  tertiary" id="slide-26">
+  <div class="slide hidden  tertiary" id="slide-27">
     <section class="slide-content"><h1 id="don-t-hardcode-pluralization">Don’t hardcode pluralization</h1>
 </section>
   </div>
-  <div class="slide hidden" id="slide-27">
+  <div class="slide hidden" id="slide-28">
     <section class="slide-content"><h3 id="don-t-hardcode-pluralization">Don’t hardcode pluralization</h3>
 <h4 id="bad">Bad</h4>
 <pre><code class="lang-js">props.resultCount &gt; <span class="hljs-number">1</span> ? (
@@ -970,25 +1006,25 @@ a:active {
 </code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-28">
+  <div class="slide hidden" id="slide-29">
     <section class="slide-content"><h3 id="don-t-hardcode-pluralization">Don’t hardcode pluralization</h3>
 <h4 id="good">Good</h4>
 <p><img src="images/i18n/underconstruction.gif" alt=""></p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-29">
+  <div class="slide hidden" id="slide-30">
     <section class="slide-content"><h3 id="don-t-hardcode-pluralization">Don’t hardcode pluralization</h3>
 <ul>
 <li>“1 dog, 2 dogs, 5 dogs” — English</li>
-<li>“1 собака, 2 собаки, 5 собак” — Russian.</li>
+<li>“1 собака, 2 собаки, 5 собак” — Russian</li>
 </ul>
 </section>
   </div>
-  <div class="slide hidden  tertiary" id="slide-30">
+  <div class="slide hidden  tertiary" id="slide-31">
     <section class="slide-content"><h1 id="use-proper-typography-characters">Use proper typography characters</h1>
 </section>
   </div>
-  <div class="slide hidden" id="slide-31">
+  <div class="slide hidden" id="slide-32">
     <section class="slide-content"><h3 id="use-proper-typography-characters">Use proper typography characters</h3>
 <h4 id="bad">Bad</h4>
 <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">Lnrs</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"NameError"</span>&gt;</span>
@@ -1002,39 +1038,91 @@ a:active {
 </code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-32">
+  <div class="slide hidden" id="slide-33">
     <section class="slide-content"><h3 id="use-proper-typography-characters">Use proper typography characters</h3>
-<ul>
-<li>Single quotes: ‘ ’ → &amp;lsquo; &amp;rsquo;</li>
-<li>Double quotes: “ ” → &amp;ldquo; &amp;rdquo;</li>
-<li>Em (long) dash: — → &amp;mdash;</li>
-<li>Ampersand: &amp; → &amp;amp;</li>
-</ul>
-</section>
+<h4 id="english">English</h4>
+<table>
+  <tbody>
+    <tr>
+      <td>Single quotes</td>
+      <td>‘ ’</td>
+      <td><code>&amp;lsquo; &amp;rsquo;</code></td>
+    </tr>
+    <tr>
+      <td>Double quotes</td>
+      <td>“ ”</td>
+      <td><code>&amp;ldquo; &amp;rdquo;</code></td>
+    </tr>
+    <tr>
+      <td>Em (long) dash</td>
+      <td>—</td>
+      <td><code>&amp;mdash;</code></td>
+    </tr>
+    <tr>
+      <td>Ampersand</td>
+      <td>&amp;</td>
+      <td><code>&amp;amp;</code></td>
+    </tr>
+  </tbody>
+</table></section>
   </div>
-  <div class="slide hidden  tertiary" id="slide-33">
+  <div class="slide hidden  tertiary" id="slide-34">
     <section class="slide-content"><h1 id="use-language-names-instead-offlags">Use language names instead of&nbsp;flags</h1>
 </section>
   </div>
-  <div class="slide hidden" id="slide-34">
+  <div class="slide hidden" id="slide-35">
     <section class="slide-content"><h3 id="use-language-names-instead-of-flags">Use language names instead of flags</h3>
-<p>TODO</p>
-</section>
-  </div>
-  <div class="slide hidden  tertiary" id="slide-35">
-    <section class="slide-content"><h1 id="use-flexible-containers-for-text">Use flexible containers for text</h1>
+<h4 id="bad">Bad</h4>
+<p><img src="images/i18n/languageflags.png" alt=""></p>
 </section>
   </div>
   <div class="slide hidden" id="slide-36">
-    <section class="slide-content"><h3 id="use-flexible-containers-for-text">Use flexible containers for text</h3>
-<p>TODO</p>
+    <section class="slide-content"><h3 id="use-language-names-instead-of-flags">Use language names instead of flags</h3>
+<h4 id="good">Good</h4>
+<p><img src="images/i18n/languagenames.png" alt=""></p>
 </section>
   </div>
-  <div class="slide hidden  small" id="slide-37">
+  <div class="slide hidden  tertiary" id="slide-37">
+    <section class="slide-content"><h1 id="use-flexible-containers-for-text">Use flexible containers for text</h1>
+</section>
+  </div>
+  <div class="slide hidden  split" id="slide-38">
+    <section class="slide-content"><h3 id="use-flexible-containers-for-text">Use flexible containers for text</h3>
+<p><img src="images/i18n/fixedcontainerenglish.png" alt=""></p>
+<p><img src="images/i18n/fixedcontainergerman.png" alt=""></p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-39">
+    <section class="slide-content"><h3 id="use-flexible-containers-for-text">Use flexible containers for text</h3>
+<!-- https://www.andiamo.co.uk/resources/expansion-and-contraction-factors -->
+<table>
+  <thead>
+    <tr>
+      <th>Language</th>
+      <th>From English</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>French</td>
+      <td>+15% to +20%</td>
+    </tr>
+    <tr>
+      <td>German</td>
+      <td>+10% to +35%</td>
+    </tr>
+    <tr>
+      <td>Russian</td>
+      <td>+15%</td>
+    </tr>
+  </tbody>
+</table></section>
+  </div>
+  <div class="slide hidden  small" id="slide-40">
     <section class="slide-content"><h1 id="don-t-use-dangerouslysetinnerhtml">Don’t use dangerouslySetInnerHTML</h1>
 </section>
   </div>
-  <div class="slide hidden" id="slide-38">
+  <div class="slide hidden" id="slide-41">
     <section class="slide-content"><h3 id="don-t-use-dangerouslysetinnerhtml">Don’t use dangerouslySetInnerHTML</h3>
 <h4 id="bad">Bad</h4>
 <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">span</span>
@@ -1049,24 +1137,24 @@ a:active {
 </code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-39">
+  <div class="slide hidden" id="slide-42">
     <section class="slide-content"><video src="images/i18n/puppies.mp4" autoplay loop></video></section>
   </div>
-  <div class="slide hidden  secondary" id="slide-40">
+  <div class="slide hidden  secondary" id="slide-43">
     <section class="slide-content"><h1 id="a-few-things-about-wayfair">A few things about Wayfair</h1>
 </section>
   </div>
-  <div class="slide hidden" id="slide-41">
+  <div class="slide hidden" id="slide-44">
     <section class="slide-content"><h3 id="translation-branches-">Translation branches 🦄</h3>
 <p><code>FEATURE_translate_pt_XXXXXX</code></p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-42">
+  <div class="slide hidden" id="slide-45">
     <section class="slide-content"><h3 id="unofficial-i18n-best-practices">Unofficial i18n best practices</h3>
 <p><a href="https://kb.wayfair.com/kbnode/i18n-guidelines">kb.wayfair.com/kbnode/i18n-guidelines</a></p>
 </section>
   </div>
-  <div class="slide hidden  thankyou" id="slide-43">
+  <div class="slide hidden  thankyou" id="slide-46">
     <section class="slide-content"><h3 id="">&nbsp;</h3>
 <p>Me: <a href="http://sapegin.me/">sapegin.me</a><br>
 Twitter: <a href="https://twitter.com/iamsapegin">@iamsapegin</a><br>
