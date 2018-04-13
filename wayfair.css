@@ -1,0 +1,431 @@
+:root {
+	--uiColor: rgba(58, 117, 133, 0.3);
+	--uiHoverColor: rgba(58, 117, 133, 0.8);
+	--bgColor: #faf9f6;
+	--lightBgColor: #f6f4ee;
+	--baseColor: #222;
+	--darkColor: #666;
+	--lightColor: #999;
+	--primaryColor: #3a7585;
+	--secondaryColor: #774977;
+	--tertiaryColor: #f9bb53;
+	--addColor: #1f893f;
+	--removeColor: #c2312c;
+	--markColor: #f9bb53;
+	--pagePadding: calc(3vmin + 32px);
+}
+
+/* Fonts */
+
+@font-face {
+	font-family: roboto;
+	src: url(fonts/Roboto-Regular.woff2) format('woff2');
+	font-style: normal;
+	font-weight: normal;
+}
+@font-face {
+	font-family: roboto;
+	src: url(fonts/Roboto-Bold.woff2) format('woff2');
+	font-style: normal;
+	font-weight: bold;
+}
+@font-face {
+	font-family: roboto;
+	src: url(fonts/Roboto-Italic.woff2) format('woff2');
+	font-style: italic;
+	font-weight: normal;
+}
+@font-face {
+	font-family: roboto-mono;
+	src: url(fonts/RobotoMono-Regular.woff2) format('woff2');
+	font-style: normal;
+	font-weight: normal;
+}
+
+/* Highlight.js theme */
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link,
+.hljs-built_in,
+.hljs-builtin-name {
+	color: var(--baseColor);
+}
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst,
+.hljs-regexp,
+.hljs-tag .hljs-attr {
+	color: var(--darkColor);
+}
+.hljs-comment,
+.hljs-quote,
+.hljs-number,
+.hljs-literal,
+.hljs-meta {
+	color: var(--lightColor);
+}
+.hljs-string,
+.hljs-doctag,
+.hljs-formula {
+	color: var(--primaryColor);
+}
+.hljs-tag,
+.hljs-class .hljs-title,
+.hljs-type,
+.hljs-name,
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+	color: var(--secondaryColor);
+	font-weight: normal;
+}
+.hljs-built_in,
+.hljs-builtin-name {
+	text-decoration: underline;
+}
+.hljs-subst {
+	font-weight: normal;
+}
+.hljs-emphasis {
+	font-style: italic;
+}
+.hljs-strong {
+	font-weight: bold;
+}
+.hljs-deletion {
+	background: var(--removeColor);
+}
+.hljs-addition {
+	background: var(--addColor);
+}
+
+/* Common styles */
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: roboto, sans-serif;
+	background-color: var(--bgColor);
+	color: var(--baseColor);
+	font-feature-settings: 'kern', 'pnum',
+		common-ligatures contextual historical-ligatures;
+	-webkit-font-kerning: normal;
+	font-kerning: normal;
+	font-variant-numeric: proportional-nums;
+	font-variant-ligatures: common-ligatures contextual historical-ligatures;
+}
+
+pre,
+code {
+	font-family: roboto-mono, monospace;
+}
+
+pre {
+	margin: -3vmin;
+	padding: 3vmin;
+	font-size: 4vmin;
+	line-height: 1.4;
+	background-color: var(--lightBgColor);
+}
+
+p code {
+	color: var(--darkColor);
+}
+
+mark {
+	margin: 0 0.5vmin;
+	padding: 0 0.5vmin;
+	background-color: var(--markColor);
+}
+
+img {
+	display: block;
+	width: auto;
+	height: auto;
+	max-width: calc(100vw - var(--pagePadding) * 2);
+	max-height: calc(100vh - var(--pagePadding) * 2);
+	margin: auto;
+}
+h3 + p img {
+	max-height: 70vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	padding: 0;
+	font-weight: normal;
+	border: 0;
+	line-height: 1.1;
+}
+
+h1 {
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 15vmin;
+}
+h2 {
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 12vmin;
+}
+h1:first-child,
+h2:first-child {
+	margin-top: auto;
+}
+h1:last-child,
+h2:last-child {
+	margin-bottom: auto;
+}
+h1 + h2 {
+	margin-top: 8vmin;
+}
+h1 + p {
+	margin-top: 8vmin;
+	margin-bottom: auto;
+	text-align: center;
+}
+h3 {
+	margin-bottom: 4vmin;
+	font-size: 8vmin;
+}
+h4 {
+	margin-bottom: 2vmin;
+	font-size: 6vmin;
+	font-weight: bold;
+}
+
+ul,
+ol {
+	margin: 0;
+	padding-left: 6vmin;
+}
+
+p,
+li,
+pre,
+table {
+	margin-top: 0;
+	margin-bottom: 3vmin;
+}
+
+a,
+a:link,
+a:visited,
+a:hover,
+a:focus,
+a:active {
+	color: var(--primaryColor);
+}
+a:hover,
+a:focus,
+a:active {
+	text-decoration: underline;
+}
+
+table {
+	border-collapse: collapse;
+}
+th {
+	text-align: left;
+	border-bottom: 0.5vmin solid var(--lightColor);
+}
+td,
+th {
+	padding-bottom: 1vmin;
+	padding-right: 3vmin;
+}
+
+/* UI */
+
+.slide {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--bgColor);
+}
+.slide::after {
+	content: "";
+	position: absolute;
+	right: 1.5vmin;
+    bottom: 1.5vmin;
+    width: 21vmin;
+	height: 5vmin;
+	background-image: url(images/wayfair.svg);
+	background-repeat: no-repeat;
+}
+.slide.hidden {
+	display: none;
+}
+
+.slide-content {
+	display: flex;
+	width: 100vw;
+	height: 100vh;
+	margin: 0;
+	padding: var(--pagePadding);
+	flex-direction: column;
+	font-size: 7vmin;
+}
+
+.slide-content > *:first-child:last-child {
+	margin: auto;
+}
+
+.progress-bar {
+	background-color: var(--uiColor);
+}
+
+.arrow {
+	margin-right: 2.5vmin;
+	border-width: 4vmin;
+	transition: border ease-out 0.15s;
+}
+.prev {
+	border-right-width: 5.7vmin;
+	border-right-color: var(--uiColor);
+}
+.prev:hover {
+	border-right-color: var(--uiHoverColor);
+}
+.next {
+	border-left-width: 5.7vmin;
+	border-left-color: var(--uiColor);
+}
+.next:hover {
+	border-left-color: var(--uiHoverColor);
+}
+
+.controls {
+	margin-left: -4vmin;
+	margin-bottom: 0;
+	transition: opacity ease-out 0.5s;
+}
+:-webkit-full-screen .controls {
+	opacity: 0;
+}
+:-moz-full-screen .controls {
+	opacity: 0;
+}
+:full-screen .controls {
+	opacity: 0;
+}
+
+/* Custom backgrounds */
+
+#slide-1,
+.primary {
+	background-color: var(--primaryColor);
+	color: var(--bgColor);
+}
+
+.primary a,
+.primary a:link,
+.primary a:visited,
+.primary a:hover,
+.primary a:focus,
+.primary a:active {
+	color: var(--bgColor);
+}
+
+.secondary {
+	background-color: var(--secondaryColor);
+	color: var(--bgColor);
+}
+
+.secondary a,
+.secondary a:link,
+.secondary a:visited,
+.secondary a:hover,
+.secondary a:focus,
+.secondary a:active {
+	color: var(--bgColor);
+}
+
+.tertiary {
+	background-color: var(--tertiaryColor);
+}
+
+.tertiary a,
+.tertiary a:link,
+.tertiary a:visited,
+.tertiary a:hover,
+.tertiary a:focus,
+.tertiary a:active {
+	color: var(--bgColor);
+}
+
+#slide-1::after,
+.primary::after,
+.secondary::after {
+	background-image: url(images/wayfair-white.svg);
+}
+.tertiary::after {
+	background-image: url(images/wayfair-black.svg);
+}
+
+/* Full screen images */
+
+.contain img,
+.cover img {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	max-width: none;
+	max-height: none;
+	margin: 0;
+}
+
+.contain img {
+	object-fit: contain;
+}
+
+.cover img {
+	object-fit: cover;
+}
+
+/* Smaller fonts */
+
+.small .slide-content {
+	font-size: 5vmin;
+}
+.small h1 {
+	font-size: 11vmin;
+}
+
+/* Centered text */
+
+.center {
+	text-align: center;
+}
+
+/* Two pane split */
+
+.split .slide-content {
+	display: grid;
+	grid-template-columns: 50% 50%;
+	grid-template-areas: 'heading heading' 'caption caption' 'code code';
+	grid-column-gap: 2vmin;
+}
+.split h3 {
+	grid-area: heading;
+}
+.split h4 {
+	grid-area: caption;
+}
+.split pre {
+	grid-area: code;
+}
+.split h4:nth-of-type(2),
+.split pre:nth-of-type(2) {
+	grid-column-start: 2;
+}
