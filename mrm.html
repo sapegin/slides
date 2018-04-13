@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <title>I18n best practices</title>
+  <title>Automating open source project configuration with Mrm by Artem Sapegin</title>
   <style type="text/css">
     body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -731,7 +731,6 @@ a:active {
 }
 
   </style>
-    <script async src="http://localhost:35729/livereload.js"></script>
 </head>
 <body>
     <div class="progress">
@@ -739,112 +738,269 @@ a:active {
   </div>
 
   <div class="slide  cover" id="slide-1">
-    <section class="slide-content"><h1 id="i18n-best-practices">I18n best practices</h1>
+    <section class="slide-content"><h1 id="automating-open-source-project-configuration-with-mrm">Automating open source project configuration with Mrm</h1>
 <h2 id="artem-sapegin">Artem Sapegin</h2>
 </section>
   </div>
-  <div class="slide hidden  orange" id="slide-2">
-    <section class="slide-content"><h1 id="best-practices">Best practices</h1>
+  <div class="slide hidden" id="slide-2">
+    <section class="slide-content"><h3 id="typical-open-source-project">Typical open source project</h3>
+<p><img src="images/mrm/typical-oss.png" alt=""></p>
 </section>
   </div>
-  <div class="slide hidden  teal" id="slide-3">
-    <section class="slide-content"><h1 id="don-t-concatenate-strings">Don’t concatenate strings</h1>
+  <div class="slide hidden" id="slide-3">
+    <section class="slide-content"><ul>
+<li>1 × source code file</li>
+<li>1 × test file</li>
+<li>1 × documentation file</li>
+<li>11 × support files</li>
+</ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-4">
-    <section class="slide-content"><p>// Bad</p>
-<p>
-  <Lnrs key="Greeting1">Hey </Lnrs>{name}<Lnrs key="Greeting2">, welcome back!</Lnrs>
-</p>
-
-<p>// Good</p>
-<p>
-  <Lnrs key="HomepageGreeting">Hey {name}, welcome back!</Lnrs>
-</p>
-Example: “red pencil” in English → “crayon rouge” in French (note the reversed order of words).
-
-Put punctuation inside localization strings
-Different languages may use punctuation differently (for example, different spacing) or even different characters.
-
-// Bad
-<p>
-  <Lnrs key="Username">Username</Lnrs>: <input type="text" />
-</p>
-
-<p>// Good</p>
-<p><p>
-  <Lnrs key="RegistrationUsername">Username:</Lnrs> <input type="text" />
-</p>
-Example: “Username:” in English → “Nom d’utilisateur :” in French (note the space before the colon).</p>
-<p>Don’t reuse translations in different contexts
-The same English strings maybe translated differently in different contexts.</p>
-<p>// Bad</p>
-<Lnrs key="Bookmark">Name</Lnrs>
-
-<p>// Good</p>
-<Lnrs key="ProductBookmarkButton">Name</Lnrs>
-Example: “Bookmark” (heading) and “Bookmark” (button) in English → “Закладка” and “Добавить в закладки” in Russian.
-
-WIP: Don’t hardcode pluralization
-Many languages have more complicated pluralization rules than English, and have more than two plural forms.
-
-// Bad
-props.resultCount &gt; 1 ? (
-  <Lnrs key="NumberResults">
-    {props.resultCount} results
-  </Lnrs>
-) : (
-  <Lnrs key="NumberResult">
-    {props.resultCount} result
-  </Lnrs>
-)
-
-// Good
-// TODO: we don&#39;t have a proper solution yet
-Example: “1 dog, 2 dogs, 5 dogs” in English → “1 собака, 2 собаки, 5 собак” in Russian.
-
-Escape special characters
-Characters like &amp; or ’ should be escaped using HTML entities:
-
-// Bad
-<Lnrs key="NameError">Name can’t be empty</Lnrs>
-
-<p>// Good</p>
-<p><Lnrs key="WriteAReviewErrorNameEmpty">Name can&rsquo;t be empty</Lnrs>
-Other characters: Single quotes: ‘ ’ → &lsquo; &rsquo;
-Double quotes: “ ” → &ldquo; &rdquo;
-Em (long) dash: — → &mdash;
-Ampersand: &amp; → &amp;</p>
-<p>Don’t use dangerouslySetInnerHTML or react_lnrs
-Send data from the backend that doesn’t require using dangerouslySetInnerHTML on the frontend, ideally translate on the frontend:</p>
-<p>// Bad
-import lnrs from &#39;react_lnrs&#39;;
-<span {...lnrs(this.props.errorMessage)} /></p>
-<p>// Bad
-<span dangerouslySetInnerHTML={{__html: this.props.errorMessage}} /></p>
-<p>// Good</p>
-<p><Lnrs key="WriteAReviewSuccessMessage">
-  Thanks for sharing! You&rsquo;ve been entered to win
-  a {this.props.sweepstakesAmount} shopping spree!
-</Lnrs>
-Don’t use wf.translate
-All React code should use the Lnrs component:</p>
-<p>// Bad</p>
-<p>&lt;TextInput label={wf.translate(&#39;Email&#39;, &#39;Email&#39;)} /&gt;</p>
-<p>// Good</p>
-<p>&lt;TextInput label={<Lnrs key="WriteAReviewEmail">Email</Lnrs>} /&gt;</p>
+  <div class="slide hidden  teal" id="slide-4">
+    <section class="slide-content"><h1 id="-somethingrc-"><code>.somethingrc</code></h1>
 </section>
   </div>
-  <div class="slide hidden  teal" id="slide-5">
-    <section class="slide-content"><p>A few things about Wayfair</p>
+  <div class="slide hidden  small center" id="slide-5">
+    <section class="slide-content"><p><code>.babelignore .babelrc .editorconfig .eslintignore .eslintrc .flowconfig .gitattributes .gitignore .istanbul.yml .npmignore .nvmrc .prettierignore .prettierrc .proselintrc .remarkrc .shipit .stylelintrc .textlintrc .travis.yml appveyor.yml Changelog.md Code_of_Conduct.md codecov.yml Contributing.md Issue_Template.md jsconfig.json lerna.json License.md open-bot.yaml package.json Pull_Request_Template.md Readme.md tsconfig.json</code></p>
 </section>
   </div>
   <div class="slide hidden" id="slide-6">
+    <section class="slide-content"><video src="images/mrm/nooooo.mp4" autoplay loop></video></section>
+  </div>
+  <div class="slide hidden" id="slide-7">
+    <section class="slide-content"><h2 id="-number-of-your-projects">× number of your projects</h2>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-8">
+    <section class="slide-content"><video src="images/mrm/hamster.mp4" autoplay loop></video></section>
+  </div>
+  <div class="slide hidden" id="slide-9">
+    <section class="slide-content"><h2 id="support-files-are-_slightly-different_-in-different-projects">Support files are <em>slightly different</em> in different projects</h2>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-10">
+    <section class="slide-content"><video src="images/mrm/puppies.mp4" autoplay loop></video></section>
+  </div>
+  <div class="slide hidden" id="slide-11">
+    <section class="slide-content"><h2 id="templates-are-ok-for-bootstrapping-new-projects">Templates are OK for bootstrapping new projects</h2>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-12">
+    <section class="slide-content"><h2 id="updates-are-hard">Updates are hard</h2>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-13">
+    <section class="slide-content"><h2 id="we-need-codemods-for-config-files">We need codemods for config files</h2>
+</section>
+  </div>
+  <div class="slide hidden  orange" id="slide-14">
+    <section class="slide-content"><h1 id="mrm">Mrm</h1>
+<h2 id="-github-com-sapegin-mrm-https-github-com-sapegin-mrm-"><a href="https://github.com/sapegin/mrm">github.com/sapegin/mrm</a></h2>
+</section>
+  </div>
+  <div class="slide hidden  teal" id="slide-15">
+    <section class="slide-content"><h1 id="example-gitignore-task">Example: gitignore task</h1>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-16">
+    <section class="slide-content"><pre><code>npx mrm gitignore</code></pre>
+</section>
+  </div>
+  <div class="slide hidden  contain" id="slide-17">
+    <section class="slide-content"><p><img src="images/mrm/mrm-gitignore-diff.png" alt=""></p>
+</section>
+  </div>
+  <div class="slide hidden  teal" id="slide-18">
+    <section class="slide-content"><h1 id="example-license-task">Example: license task</h1>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-19">
+    <section class="slide-content"><pre><code class="lang-bash">npx mrm license</code></pre>
+</section>
+  </div>
+  <div class="slide hidden  contain" id="slide-20">
+    <section class="slide-content"><p><img src="images/mrm/mrm-license-diff.png" alt=""></p>
+</section>
+  </div>
+  <div class="slide hidden  teal" id="slide-21">
+    <section class="slide-content"><h1 id="example-jest-task">Example: Jest task</h1>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-22">
+    <section class="slide-content"><pre><code>npx mrm jest</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-23">
     <section class="slide-content"><ul>
-<li>FEATURE_translate_pt_XXXXXX</li>
-<li><a href="https://kb.wayfair.com/kbnode/i18n-guidelines">https://kb.wayfair.com/kbnode/i18n-guidelines</a> (not official yet)
-*</li>
+<li>Adds npm scripts</li>
+<li>Config in <code>package.json</code></li>
+<li><code>.gitignore</code>, <code>.npmignore</code>, <code>.eslintignore</code></li>
+<li>Installs Jest</li>
+<li>babel-jest, ts-jest, Enzyme if needed</li>
+<li>Removes Mocha and AVA</li>
+<li>And more</li>
 </ul>
+</section>
+  </div>
+  <div class="slide hidden  contain" id="slide-24">
+    <section class="slide-content"><p><img src="images/mrm/mrm-jest.png" alt=""></p>
+</section>
+  </div>
+  <div class="slide hidden  contain" id="slide-25">
+    <section class="slide-content"><p><img src="images/mrm/mrm-jest-diff.png" alt=""></p>
+</section>
+  </div>
+  <div class="slide hidden  orange" id="slide-26">
+    <section class="slide-content"><h1 id="details">Details</h1>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-27">
+    <section class="slide-content"><h3 id="default-tasks">Default tasks</h3>
+<p>CodeCov, EditorConfig, ESLint, Jest, lint-staged, Prettier, semantic-release, React Styleguidist, stylelint, Travis CI, TypeScript, package.json, contributing guidelines, license and readme files</p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-28">
+    <section class="slide-content"><h3 id="minimal-configuration">Minimal configuration</h3>
+<ul>
+<li>Project: dependencies</li>
+<li>Environment: Git or npm configs</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-29">
+    <section class="slide-content"><h3 id="minimal-changes">Minimal changes</h3>
+<ul>
+<li>Tries to keep formatting</li>
+<li>Keep comments in JSON</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-30">
+    <section class="slide-content"><h3 id="configuration">Configuration</h3>
+<ul>
+<li><p>Command line:</p>
+<pre><code>npx mrm license --config:licenseFile README</code></pre>
+</li>
+<li><p>Config file:</p>
+<ul>
+<li><code>~/.mrm/config.json</code></li>
+<li><code>~/dotfiles/mrm/config.json</code></li>
+</ul>
+</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-31">
+    <section class="slide-content"><h3 id="sharing-tasks">Sharing tasks</h3>
+<ul>
+<li><code>mrm-task-&lt;TASK&gt;</code></li>
+<li><code>mrm-preset-&lt;PRESET&gt;</code></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden  orange" id="slide-32">
+    <section class="slide-content"><h1 id="writing-custom-tasks">Writing custom tasks</h1>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-33">
+    <section class="slide-content"><h3 id="api-for-writing-tasks-mrm-core-">API for writing tasks — <code>mrm-core</code></h3>
+<ul>
+<li>JSON, YAML, INI, new line separated text files</li>
+<li>npm install / uninstall</li>
+<li>File operations</li>
+<li>EditorConfig utilities</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-34">
+    <section class="slide-content"><h3 id="simplest-task">Simplest task</h3>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> { lines } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mrm-core'</span>);
+<span class="hljs-built_in">module</span>.exports = () =&gt; {
+  <span class="hljs-comment">// Read .gitignore if it exists</span>
+  lines(<span class="hljs-string">'.gitignore'</span>)
+    <span class="hljs-comment">// Add lines that do not exist in a file yet,</span>
+    <span class="hljs-comment">// but keep all existing lines</span>
+    .add([<span class="hljs-string">'node_modules/'</span>, <span class="hljs-string">'.DS_Store'</span>])
+    <span class="hljs-comment">// Update or create a file</span>
+    .save();
+};</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-35">
+    <section class="slide-content"><h3 id="configurable-task">Configurable task</h3>
+<pre><code class="lang-js"><span class="hljs-built_in">module</span>.exports = config =&gt; {
+  <span class="hljs-comment">// npm mrm eslint --config:eslintPreset airbnb</span>
+  <span class="hljs-keyword">const</span> { indent, eslintPreset } = config
+    .defaults({
+      <span class="hljs-comment">// Default value</span>
+      eslintPreset: <span class="hljs-string">'eslint:recommended'</span>
+    })
+    <span class="hljs-comment">// Required option</span>
+    .require(<span class="hljs-string">'indent'</span>)
+    .values();
+  <span class="hljs-comment">/* _ */</span>
+};</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-36">
+    <section class="slide-content"><h3 id="json-files">JSON files</h3>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> { json } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mrm-core'</span>);
+<span class="hljs-built_in">module</span>.exports = config =&gt; {
+  <span class="hljs-comment">// Read .eslintrc if it exists</span>
+  json(<span class="hljs-string">'.eslintrc'</span>)
+    <span class="hljs-comment">// Merge content with new options</span>
+    .merge({
+      parser: <span class="hljs-string">'babel-eslint'</span>,
+      extends: <span class="hljs-string">'eslint:recommended'</span>
+    })
+    .save();
+};</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-37">
+    <section class="slide-content"><h3 id="-package-json-files"><code>package.json</code> files</h3>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> { packageJson } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mrm-core'</span>);
+<span class="hljs-built_in">module</span>.exports = config =&gt; {
+  <span class="hljs-comment">// Read project’s package.json</span>
+  packageJson()
+    <span class="hljs-comment">// Add lint script</span>
+    .setScript(<span class="hljs-string">'lint'</span>, <span class="hljs-string">'eslint . --cache --fix'</span>)
+    <span class="hljs-comment">// Add pretest script</span>
+    .prependScript(<span class="hljs-string">'pretest'</span>, <span class="hljs-string">'npm run lint'</span>)
+    .save();
+};</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-38">
+    <section class="slide-content"><h3 id="npm-dependencies">npm dependencies</h3>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> { packageJson, install } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mrm-core'</span>);
+<span class="hljs-built_in">module</span>.exports = config =&gt; {
+  <span class="hljs-keyword">const</span> packages = [<span class="hljs-string">'eslint'</span>];
+  <span class="hljs-keyword">const</span> pkg = packageJson();
+  <span class="hljs-keyword">if</span> (pkg.get(<span class="hljs-string">'devDependencies.babel-core'</span>)) {
+    packages.push(<span class="hljs-string">'babel-eslint'</span>);
+  }
+  <span class="hljs-comment">// Install npm dependencies</span>
+  install(packages);
+};</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-39">
+    <section class="slide-content"><h1 id="and-much-more">And much more</h1>
+<p><a href="https://github.com/sapegin/mrm-core">github.com/sapegin/mrm-core</a></p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-40">
+    <section class="slide-content"><video src="images/mrm/happy.mp4" autoplay loop></video></section>
+  </div>
+  <div class="slide hidden" id="slide-41">
+    <section class="slide-content"><h3 id="thank-you-and-automate-your-configs">Thank you and automate your configs</h3>
+<p>Mrm: <a href="https://github.com/sapegin/mrm">github.com/sapegin/mrm</a><br>
+Slides: <a href="https://sapegin.github.io/slides/mrm">bit.ly/mrm-slides</a><br>
+Me: <a href="http://sapegin.me/">sapegin.me</a><br>
+Twitter: <a href="https://twitter.com/iamsapegin">@iamsapegin</a><br>
+GitHub: <a href="https://github.com/sapegin">sapegin</a></p>
+<p><img src="images/dogs.jpg" style="height:30vh"></p>
 </section>
   </div>
 

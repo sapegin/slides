@@ -788,21 +788,6 @@ th {
 	grid-column-start: 2;
 }
 
-/* Thank you animation */
-
-.thankyou h3::before {
-	content: "";
-	animation-name: thankyou-amimation;
-    animation-duration: 4s;
-    animation-iteration-count: infinite;
-}
-@keyframes thankyou-amimation {
-	0% { content: "Thank you!" }
-	25% { content: "Danke schön!" }
-	50% { content: "Merci!" }
-	75% { content: "Спасибо!" }
-}
-
   </style>
 </head>
 <body>
@@ -820,13 +805,13 @@ th {
 </section>
   </div>
   <div class="slide hidden" id="slide-3">
-    <section class="slide-content"><h3 id="internationalization-i18n-">Internationalization (i18n)</h3>
-<p>Making the app ready to be localized.</p>
+    <section class="slide-content"><h3 id="localization-l10n-">Localization (l10n)</h3>
+<p>Adaptation of an app for a specific target market.</p>
 </section>
   </div>
   <div class="slide hidden" id="slide-4">
-    <section class="slide-content"><h3 id="localization-l10n-">Localization (l10n)</h3>
-<p>Adaptation of an app for a specific target (usually local) market.</p>
+    <section class="slide-content"><h3 id="internationalization-i18n-">Internationalization (i18n)</h3>
+<p>Making the app ready to be localized.</p>
 </section>
   </div>
   <div class="slide hidden" id="slide-5">
@@ -879,7 +864,7 @@ th {
 </section>
   </div>
   <div class="slide hidden" id="slide-12">
-    <section class="slide-content"><h3 id="typography">Typography</h3>
+    <section class="slide-content"><h3 id="typography-">Typography 😭</h3>
 <!-- https://en.wikipedia.org/wiki/Quotation_mark -->
 <ul>
 <li>‘…’ “…” — English (UK)</li>
@@ -934,8 +919,8 @@ th {
   <div class="slide hidden" id="slide-20">
     <section class="slide-content"><h3 id="don-t-concatenate-strings">Don’t concatenate strings</h3>
 <ul>
-<li>“red pencil” — English</li>
-<li>“crayon rouge” — French</li>
+<li>“<mark>red</mark> pencil” — English</li>
+<li>“crayon <mark>rouge</mark>” — French</li>
 </ul>
 </section>
   </div>
@@ -970,12 +955,12 @@ th {
   <div class="slide hidden" id="slide-25">
     <section class="slide-content"><h3 id="don-t-reuse-translations-in-different-contexts">Don’t reuse translations in different contexts</h3>
 <h4 id="bad">Bad</h4>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">Lnrs</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"Bookmark"</span>&gt;</span>Name<span class="hljs-tag">&lt;/<span class="hljs-name">Lnrs</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">Lnrs</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"Bookmark"</span>&gt;</span>Name<span class="hljs-tag">&lt;/<span class="hljs-name">Lnrs</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">Lnrs</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"Bookmark"</span>&gt;</span>Bookmark<span class="hljs-tag">&lt;/<span class="hljs-name">Lnrs</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">Lnrs</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"Bookmark"</span>&gt;</span>Bookmark<span class="hljs-tag">&lt;/<span class="hljs-name">Lnrs</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 </code></pre>
 <h4 id="good">Good</h4>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">Lnrs</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"ProductBookmarkHeading"</span>&gt;</span>Name<span class="hljs-tag">&lt;/<span class="hljs-name">Lnrs</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">Lnrs</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"ProductBookmarkButton"</span>&gt;</span>Name<span class="hljs-tag">&lt;/<span class="hljs-name">Lnrs</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">Lnrs</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"ProductBookmarkHeading"</span>&gt;</span>Bookmark<span class="hljs-tag">&lt;/<span class="hljs-name">Lnrs</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">Lnrs</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"ProductBookmarkButton"</span>&gt;</span>Bookmark<span class="hljs-tag">&lt;/<span class="hljs-name">Lnrs</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 </code></pre>
 </section>
   </div>
@@ -1021,78 +1006,32 @@ th {
 </section>
   </div>
   <div class="slide hidden  tertiary" id="slide-31">
-    <section class="slide-content"><h1 id="use-proper-typography-characters">Use proper typography characters</h1>
-</section>
-  </div>
-  <div class="slide hidden" id="slide-32">
-    <section class="slide-content"><h3 id="use-proper-typography-characters">Use proper typography characters</h3>
-<h4 id="bad">Bad</h4>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">Lnrs</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"NameError"</span>&gt;</span>
-  Name can't be empty
-<span class="hljs-tag">&lt;/<span class="hljs-name">Lnrs</span>&gt;</span>
-</code></pre>
-<h4 id="good">Good</h4>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">Lnrs</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"WriteAReviewErrorNameEmpty"</span>&gt;</span>
-  Name can&amp;rsquo;t be empty
-<span class="hljs-tag">&lt;/<span class="hljs-name">Lnrs</span>&gt;</span>
-</code></pre>
-</section>
-  </div>
-  <div class="slide hidden" id="slide-33">
-    <section class="slide-content"><h3 id="use-proper-typography-characters">Use proper typography characters</h3>
-<h4 id="english">English</h4>
-<table>
-  <tbody>
-    <tr>
-      <td>Single quotes</td>
-      <td>‘ ’</td>
-      <td><code>&amp;lsquo; &amp;rsquo;</code></td>
-    </tr>
-    <tr>
-      <td>Double quotes</td>
-      <td>“ ”</td>
-      <td><code>&amp;ldquo; &amp;rdquo;</code></td>
-    </tr>
-    <tr>
-      <td>Em (long) dash</td>
-      <td>—</td>
-      <td><code>&amp;mdash;</code></td>
-    </tr>
-    <tr>
-      <td>Ampersand</td>
-      <td>&amp;</td>
-      <td><code>&amp;amp;</code></td>
-    </tr>
-  </tbody>
-</table></section>
-  </div>
-  <div class="slide hidden  tertiary" id="slide-34">
     <section class="slide-content"><h1 id="use-language-names-instead-offlags">Use language names instead of&nbsp;flags</h1>
 </section>
   </div>
-  <div class="slide hidden" id="slide-35">
+  <div class="slide hidden" id="slide-32">
     <section class="slide-content"><h3 id="use-language-names-instead-of-flags">Use language names instead of flags</h3>
 <h4 id="bad">Bad</h4>
 <p><img src="images/i18n/languageflags.png" alt=""></p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-36">
+  <div class="slide hidden" id="slide-33">
     <section class="slide-content"><h3 id="use-language-names-instead-of-flags">Use language names instead of flags</h3>
 <h4 id="good">Good</h4>
 <p><img src="images/i18n/languagenames.png" alt=""></p>
 </section>
   </div>
-  <div class="slide hidden  tertiary" id="slide-37">
+  <div class="slide hidden  tertiary" id="slide-34">
     <section class="slide-content"><h1 id="use-flexible-containers-for-text">Use flexible containers for text</h1>
 </section>
   </div>
-  <div class="slide hidden  split" id="slide-38">
+  <div class="slide hidden  split" id="slide-35">
     <section class="slide-content"><h3 id="use-flexible-containers-for-text">Use flexible containers for text</h3>
 <p><img src="images/i18n/fixedcontainerenglish.png" alt=""></p>
 <p><img src="images/i18n/fixedcontainergerman.png" alt=""></p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-39">
+  <div class="slide hidden" id="slide-36">
     <section class="slide-content"><h3 id="use-flexible-containers-for-text">Use flexible containers for text</h3>
 <!-- https://www.andiamo.co.uk/resources/expansion-and-contraction-factors -->
 <table>
@@ -1118,44 +1057,32 @@ th {
   </tbody>
 </table></section>
   </div>
-  <div class="slide hidden  small" id="slide-40">
-    <section class="slide-content"><h1 id="don-t-use-dangerouslysetinnerhtml">Don’t use dangerouslySetInnerHTML</h1>
+  <div class="slide hidden" id="slide-37">
+    <section class="slide-content"><video src="images/i18n/puppies.mp4" autoplay loop></video></section>
+  </div>
+  <div class="slide hidden  secondary" id="slide-38">
+    <section class="slide-content"><h1 id="a-few-words-about-wayfair">A few words about Wayfair</h1>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-39">
+    <section class="slide-content"><h3 id="translation-branches-">Translation branches 🦄</h3>
+<p><code>FEATURE_translate_pt_XXXXXX</code></p>
+<p><img src="images/i18n/pttranslate.png" alt=""></p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-40">
+    <section class="slide-content"><h3 id="resources">Resources</h3>
+<ul>
+<li><a href="https://kb.wayfair.com/kbnode/i18n-guidelines">kb.wayfair.com/kbnode/i18n-guidelines</a></li>
+<li>#sf-i18n-platform</li>
+</ul>
 </section>
   </div>
   <div class="slide hidden" id="slide-41">
-    <section class="slide-content"><h3 id="don-t-use-dangerouslysetinnerhtml">Don’t use dangerouslySetInnerHTML</h3>
-<h4 id="bad">Bad</h4>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">span</span>
-  <span class="hljs-attr">dangerouslySetInnerHTML</span>=<span class="hljs-string">{{__html:</span> <span class="hljs-attr">errorMessage</span>}}
-/&gt;</span>
-</code></pre>
-<h4 id="good">Good</h4>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">Lnrs</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"WriteAReviewSuccessMessage"</span>&gt;</span>
-  Thanks for sharing! You&amp;rsquo;ve been entered
-  to win a {amount} shopping spree!
-<span class="hljs-tag">&lt;/<span class="hljs-name">Lnrs</span>&gt;</span>
-</code></pre>
-</section>
+    <section class="slide-content"><video src="images/i18n/shipit.mp4" autoplay loop></video></section>
   </div>
   <div class="slide hidden" id="slide-42">
-    <section class="slide-content"><video src="images/i18n/puppies.mp4" autoplay loop></video></section>
-  </div>
-  <div class="slide hidden  secondary" id="slide-43">
-    <section class="slide-content"><h1 id="a-few-things-about-wayfair">A few things about Wayfair</h1>
-</section>
-  </div>
-  <div class="slide hidden" id="slide-44">
-    <section class="slide-content"><h3 id="translation-branches-">Translation branches 🦄</h3>
-<p><code>FEATURE_translate_pt_XXXXXX</code></p>
-</section>
-  </div>
-  <div class="slide hidden" id="slide-45">
-    <section class="slide-content"><h3 id="unofficial-i18n-best-practices">Unofficial i18n best practices</h3>
-<p><a href="https://kb.wayfair.com/kbnode/i18n-guidelines">kb.wayfair.com/kbnode/i18n-guidelines</a></p>
-</section>
-  </div>
-  <div class="slide hidden  thankyou" id="slide-46">
-    <section class="slide-content"><h3 id="">&nbsp;</h3>
+    <section class="slide-content"><h3 id="-marquee-style-width-50-thank-you-danke-sch-n-merci-marquee-"><marquee style="width:50%">Thank you! Danke schön! Merci! Спасибо!</marquee></h3>
 <p>Me: <a href="http://sapegin.me/">sapegin.me</a><br>
 Twitter: <a href="https://twitter.com/iamsapegin">@iamsapegin</a><br>
 GitHub: <a href="https://github.com/sapegin">sapegin</a></p>
