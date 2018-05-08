@@ -551,17 +551,25 @@ h4 {
 	font-size: 4vmin;
 }
 
-ul,
-ol {
-	margin: 0;
-	padding-left: 6vmin;
-}
-
 p,
 li,
 pre {
 	margin-top: 0;
 	margin-bottom: 2vmin;
+}
+
+ul,
+ol {
+	margin: 0;
+	padding: 0;
+}
+
+ol {
+	padding-left: 6vmin;
+}
+
+li {
+	list-style-type: none;
 }
 
 a,
@@ -734,7 +742,6 @@ a:active {
 }
 
   </style>
-    <script async src="http://localhost:35729/livereload.js"></script>
 </head>
 <body>
     <div class="progress">
@@ -743,7 +750,7 @@ a:active {
 
   <div class="slide  cover" id="slide-1">
     <section class="slide-content"><h1 id="react-finland-2018-the-new-best-practices-and-the-future-of-react">React Finland 2018: the new best practices and the future of React</h1>
-<h2 id="artem-sapegin">Artem Sapegin</h2>
+<h2 id="artem-sapegin-wayfair">Artem Sapegin, Wayfair</h2>
 </section>
   </div>
   <div class="slide hidden  split" id="slide-2">
@@ -774,14 +781,13 @@ a:active {
 <ul>
 <li>Composability</li>
 <li>Encapsulation</li>
-<li>Perfect primitive</li>
 </ul>
 </section>
   </div>
   <div class="slide hidden" id="slide-6">
     <section class="slide-content"><h3 id="types-style-guide-documentation">Types + style guide = documentation</h3>
 <ul>
-<li>Flow, TypeScript, Reason</li>
+<li>PropTypes, Flow, TypeScript, Reason</li>
 <li>Styleguidist, Storybook</li>
 </ul>
 </section>
@@ -823,16 +829,26 @@ a:active {
 </section>
   </div>
   <div class="slide hidden  orange" id="slide-15">
+    <section class="slide-content"><h2 id="let-s-write-software-that-s-responsive-to-change-">Let’s write software that’s responsive to change!</h2>
+</section>
+  </div>
+  <div class="slide hidden  orange" id="slide-16">
     <section class="slide-content"><h1 id="the-future-of-react">The future of React</h1>
 </section>
   </div>
-  <div class="slide hidden" id="slide-16">
+  <div class="slide hidden" id="slide-17">
     <section class="slide-content"><h3 id="innovation-cycles">Innovation cycles</h3>
 <p><img src="images/react-finland-2018/innovation-cycles.png" alt=""></p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-17">
+  <div class="slide hidden  split" id="slide-18">
     <section class="slide-content"><h3 id="react-is-evolving">React is evolving</h3>
+<ul>
+<li>Error boundaries</li>
+<li>Fragments</li>
+<li>Portals</li>
+</ul>
+<!-- split -->
 <ul>
 <li>Async rendering</li>
 <li>Suspense</li>
@@ -840,23 +856,28 @@ a:active {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-18">
+  <div class="slide hidden  orange" id="slide-19">
+    <section class="slide-content"><h1 id="a-few-more-things-">A few more things…</h1>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-20">
     <section class="slide-content"><h3 id="react-finland-2019">React Finland 2019</h3>
 <p>Is coming!</p>
 <p><img src="images/react-finland-2018/react-finland.png" style="height:45vh"></p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-19">
+  <div class="slide hidden" id="slide-21">
     <section class="slide-content"><h3 id="component-driven-development-workshop">Component-driven development workshop</h3>
 <p>13—15 September 2018. Alicante, Spain</p>
 <p>Tickets at <a href="http://reactalicante.es/">reactalicante.es</a></p>
 <p><img src="images/react-finland-2018/react-alicante.png" style="height:45vh"></p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-20">
+  <div class="slide hidden" id="slide-22">
     <section class="slide-content"><h3 id="thank-you-kiitos-">Thank you! Kiitos!</h3>
+<!-- prettier-ignore -->
 <p>My React Finland report: <a href="???">???</a><br>
-Slides: <a href="https://sapegin.github.io/slides/mrm">bit.ly/mrm-slides</a><br>
+Slides: <a href="http://sapegin.me/speaking">sapegin.me/speaking</a><br>
 Me: <a href="http://sapegin.me/">sapegin.me</a><br>
 Twitter: <a href="https://twitter.com/iamsapegin">@iamsapegin</a></p>
 <p><img src="images/dogs.jpg" style="height:30vh"></p>
