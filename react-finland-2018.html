@@ -359,6 +359,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 :root {
 	--uiColor: rgba(0, 0, 0, 0.3);
 	--uiHoverColor: rgba(0, 0, 0, 0.8);
+	--delLineColor: rgba(0,0,0,.5);
 	--bgColor: #fff;
 	--lightBgColor: #fafafa;
 	--baseColor: #222;
@@ -570,6 +571,10 @@ ol {
 
 li {
 	list-style-type: none;
+}
+
+del {
+	text-decoration-color: var(--delLineColor);
 }
 
 a,
