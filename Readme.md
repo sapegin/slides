@@ -1,7 +1,7 @@
 # Slides of Artem Sapegin’s talks
 
-* [Custom CSS is the path to inconsistent UI](https://sapegin.github.io/slides/inconsistent-styles.html)
-* [Component-driven development with React](https://sapegin.github.io/slides/cdd.html)
+- [Custom CSS is the path to inconsistent UI](https://sapegin.github.io/slides/inconsistent-styles.html)
+- [Component-driven development with React](https://sapegin.github.io/slides/cdd.html)
 
 ## Author
 

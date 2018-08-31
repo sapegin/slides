@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "cleaver": "^0.8.7",
-    "gh-pages": "^1.1.0",
-    "prettier": "^1.11.1"
+    "gh-pages": "^1.2.0",
+    "prettier": "^1.14.2"
   }
 }
