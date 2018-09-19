@@ -1,3 +1,14 @@
+import {
+	baseColor,
+	darkColor,
+	lightColor,
+	primaryColor,
+	secondaryColor,
+	addColor,
+	removeColor,
+	monospace
+} from './tokens';
+
 export default {
 	// Styles based on https://github.com/conorhastings/react-syntax-highlighter/
 	// Colors are custom
