@@ -81,6 +81,80 @@ export default Primary
 
 ---
 
+## `Text` and `Heading`
+
+---
+
+## `Text`
+
+---
+
+https://polaris.shopify.com/components/titles-and-text/text-style
+
+---
+
+http://mineral-ui.com/components/text
+
+---
+
+## Styles
+
+* Normal text
+* Secondary text (light color)
+* Error (red color)
+
+---
+
+# Find minimal number of styles to cover most of the use cases of your app or site
+
+---
+
+## What else?
+
+* Custom HTML element
+* Alignment (left, center)
+* Whitespace (margin)
+* Truncation (with …)
+
+---
+
+## API: Selecting a style
+
+* `<Text secondary>` ;-)
+* `<Text error>` ;-)
+* `<Text secondary error>` ;-(
+
+---
+
+## API: Selecting a style
+
+* `<Text variant="secondary">` ;-)
+* `<Text variant="error">` ;-)
+
+---
+
+# Make impossible states impossible
+
+---
+
+## API: Selecting a style
+
+* `<Text color="gray" size="small">` ;-(
+* `<Text variant="secondary">` ;-)
+
+---
+
+## API: Custom HTML element
+
+* `<Text>` → `<p>` ;-(
+* `<Text inline>` → `<span>` ;-(
+* `<Text is="span">` → `<span>` ;-)
+* `<Text is="header">` → `<header>` ;-)
+
+---
+
+
+
 ## &lt;Text>
 
 ```html
@@ -92,7 +166,7 @@ export default Primary
     Salukis are “sight” hounds—hunting by sight—and
     run their quarry down to kill or retrieve it.
   </Text>
-  <Text small>Don’t leave any food on a
+  <Text variant="secondary">Don’t leave any food on a
     table when saluki is around.</Text>
 </div>
 ```
