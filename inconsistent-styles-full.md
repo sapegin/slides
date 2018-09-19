@@ -8,7 +8,7 @@ import { Head, Image, Split, SplitWithHeading, Primary, Secondary } from './them
 
 export default Primary
 
-# Custom CSS is the path to inconsistent
+# Custom CSS is the path to inconsistent UI
 
 ---
 export default Secondary
