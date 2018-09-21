@@ -21,6 +21,10 @@ export default Secondary
 
 ---
 
+http://wow.sapegin.me/6d959cd6b79f/Image%202018-09-21%20at%2010.37.05%20PM.png
+
+---
+
 ## Sources of custom CSS
 
 - Typography
@@ -47,26 +51,65 @@ export default SplitWithHeading
 ```
 
 ---
+
+😭
+
+---
 export default Primary
 
-# Why not variables?
+How can we fix that?
+
+---
+export default Primary
+
+## Design tokens
 
 ---
 
-Variables can help with consistency
+https://marvelapp.com/styleguide/design/color-scheme
+https://pricelinelabs.github.io/design-system/color/
+https://polaris.shopify.com/design/colors#section-color-palette
 
 ---
 
-## But
+https://cloudflare.github.io/cf-ui/#cf-design-gradients
 
-- More writing and thinking
-- Hard to ensure correct usage
-- May be hard to update
 
 ---
-export default Secondary
 
-# What’s the solution?
+https://vueds.com/example/#!/Design%20Tokens (font sizes)
+
+---
+
+https://design-system.pluralsight.com/core/spacing/
+
+---
+
+https://www.lightningdesignsystem.com/design-tokens/
+
+---
+export default SplitWithHeading
+
+## Custom CSS
+
+```scss
+.description {
+  margin-bottom: $spacing--3;
+  font-size: $fontSize--base;
+}
+```
+
+```scss
+.count {
+  margin-left: $spacing--2;
+  font-size: $fontSize--small;
+  color: $color--light;
+}
+```
+
+---
+
+😐
 
 ---
 export default Primary
@@ -153,25 +196,40 @@ http://mineral-ui.com/components/text
 
 ---
 
+## `Heading`
 
+---
 
-## &lt;Text>
+https://vueds.com/example/#!/Elements?id=heading
+
+---
+
+## API: Selecting size / heading level
+
+* `<Heading level={1}>` ;-)
+* `<Heading level={2}>` ;-)
+* `<Heading level={3} is="h2">` ;-)
+
+---
 
 ```html
-<div>
-  <Header level={2}>Saluki</Header>
-  <Text>
-    The Saluki is classed as a sighthound
-    and is typically deep-chested and long-legged.
-    Salukis are “sight” hounds—hunting by sight—and
-    run their quarry down to kill or retrieve it.
-  </Text>
-  <Text variant="secondary">Don’t leave any food on a
-    table when saluki is around.</Text>
-</div>
+<Heading level={1}>Saluki</Heading>
+<Text>
+  The Saluki is classed as a sighthound
+  and is typically deep-chested and long-legged.
+  Salukis are “sight” hounds—hunting by sight—and
+  run their quarry down to kill or retrieve it.
+</Text>
+<Text variant="secondary">Don’t leave any food on a
+  table when saluki is around.</Text>
 ```
 
 ---
+
+😀
+
+---
+
 
 ## Whitespace
 
@@ -179,6 +237,17 @@ http://mineral-ui.com/components/text
 - Glue components together
 
 ---
+
+## Spacing scales
+
+http://wow.sapegin.me/a17c3f2bce59/Image%202018-09-21%20at%2010.34.49%20PM.png
+
+---
+
+-----------------------------------------------------------------
+
+TODO
+
 
 ## [Nathan Curtis’ framework](https://medium.com/eightshapes-llc/space-in-design-systems-188bcbae0d62)
 
@@ -285,3 +354,14 @@ Slides: [bit.ly/consistent-css](https://sapegin.github.io/slides/inconsistent-st
 - [Max Stoiber](https://mxstbr.com/)
 - [Priyanka Godbole](https://blog.prototypr.io/10-practical-steps-to-create-a-predictable-accessible-and-harmonious-typography-system-a-case-6c85d901bedd)
 - [Nathan Curtis](https://medium.com/eightshapes-llc/space-in-design-systems-188bcbae0d62)
+
+-----------------------------------------------------
+
+---
+
+## Naming scales ?
+
+* x-small small medium large x-large
+* xs s m l xl
+* alpha beta gamma delta epsilon
+
