@@ -90,7 +90,7 @@ https://www.lightningdesignsystem.com/design-tokens/
 ---
 export default SplitWithHeading
 
-## Custom CSS
+## Custom CSS with design tokens
 
 ```scss
 .description {

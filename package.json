@@ -24,8 +24,8 @@
   "devDependencies": {
     "cleaver": "^0.8.7",
     "gh-pages": "^1.2.0",
-    "mdx-deck": "^1.7.1",
-    "prettier": "^1.14.2"
+    "mdx-deck": "^1.7.4",
+    "prettier": "^1.14.3"
   },
   "dependencies": {
     "mdx-deck-code-surfer": "^0.4.1",
