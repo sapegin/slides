@@ -1,6 +1,8 @@
 export { theme } from './theme'
 
-import { Head, Image, Split, SplitWithHeading, Primary, Secondary } from './theme'
+import { Head, Image, Split, SplitWithHeading, Primary, Secondary, Bar } from './theme'
+
+import Stack from 'stack-styled'
 
 <Head>
   <title>Custom CSS is the path to inconsistent UI by Artem Sapegin</title>
@@ -17,15 +19,15 @@ export default Secondary
 
 ---
 
-http://bradfrost.com/wp-content/uploads/2013/07/pnc-buttons.jpg
+![](./images/inconsistent-styles-full/buttons.jpg)
 
 ---
 
-http://wow.sapegin.me/6d959cd6b79f/Image%202018-09-21%20at%2010.37.05%20PM.png
+![](./images/inconsistent-styles-full/text.png)
 
 ---
 
-<Image src="./public/images/inconsistent-styles/doors.jpg" alt="Inconsistency in the UI" />
+<Image src="./images/inconsistent-styles-full/doors.jpg" alt="Inconsistency in the UI" />
 
 ---
 export default SplitWithHeading
@@ -53,17 +55,17 @@ export default SplitWithHeading
 
 ---
 
-## CSS is too powerful
+# CSS is too powerful
+
+---
+export default Secondary
+
+# How can we fix that?
 
 ---
 export default Primary
 
-How can we fix that?
-
----
-export default Primary
-
-## Design tokens
+# Design tokens
 
 ---
 
@@ -92,18 +94,18 @@ export default SplitWithHeading
 
 ## Custom CSS with design tokens
 
-```scss
+```css
 .description {
-  margin-bottom: $spacing--3;
-  font-size: $fontSize--base;
+  margin-bottom: var(--spacing--3);
+  font-size: var(--fontSize--base);
 }
 ```
 
-```scss
+```css
 .count {
-  margin-left: $spacing--2;
-  font-size: $fontSize--small;
-  color: $color--light;
+  margin-left: var(--spacing--2);
+  font-size: var(--fontSize--small);
+  color: var(--color--light);
 }
 ```
 
@@ -113,29 +115,30 @@ export default SplitWithHeading
 
 ---
 
-## Not all token combinations are good
+# Not all token combinations are good
 
 ---
 
-```scss
+```css
 .cantreadthis {
-  font-size: $fontSize--x-small;
-  color: $color--light;
+  font-size: var(--fontSize--x-small);
+  color: var(--color--light);
   opacity: 0.5;
 }
 ```
 
 ---
+export default Secondary
 
-## Can we do better?
-
----
-
-## YES!
+# Can we do better?
 
 ---
 
-## Stop writing CSS!
+# YES!
+
+---
+
+# Stop writing CSS!
 
 ---
 export default Primary
@@ -151,18 +154,14 @@ export default Primary
 - Layout
 
 ---
+export default Secondary
 
 ## Typography
 
-![](images/inconsistent-styles/text.png)
-
 ---
+export default Secondary
 
-## `Text` and `Heading`
-
----
-
-## `Text`
+# `Text`
 
 ---
 
@@ -229,6 +228,7 @@ http://mineral-ui.com/components/text
 * `<Text is="header">` → `<header>` ;-)
 
 ---
+export default Secondary
 
 ## `Heading`
 
@@ -263,18 +263,40 @@ https://vueds.com/example/#!/Elements?id=heading
 😀
 
 ---
+export default Secondary
 
-
-## Whitespace (TODO)
-
-- Paddings inside components
-- Glue components together
+## Whitespace
 
 ---
+export default SplitWithHeading
 
 ## Spacing scales
 
-http://wow.sapegin.me/a17c3f2bce59/Image%202018-09-21%20at%2010.34.49%20PM.png
+<React.Fragment>
+  <h3>Linear progression</h3>
+  <Stack gap={2}>
+    <Bar width="12.5%">4px</Bar>
+    <Bar width="25%">8px</Bar>
+    <Bar width="37.5%">12px</Bar>
+    <Bar width="50%">16px</Bar>
+    <Bar width="62.5%">20px</Bar>
+    <Bar width="75%">24px</Bar>
+    <Bar width="87.5%">28px</Bar>
+    <Bar width="100%">32px</Bar>
+  </Stack>
+</React.Fragment>
+
+<React.Fragment>
+  <h3>Geometric progression</h3>
+  <Stack gap={2}>
+    <Bar width="3.125%">2px</Bar>
+    <Bar width="6.25%">4px</Bar>
+    <Bar width="12.5%">8px</Bar>
+    <Bar width="25%">16px</Bar>
+    <Bar width="50%">32px</Bar>
+    <Bar width="100%">64px</Bar>
+  </Stack>
+</React.Fragment>
 
 ---
 
@@ -296,6 +318,20 @@ const space = {
   l: '32px',
   xl: '64px',
   xxl: '128px'
+};
+```
+
+---
+
+```js
+const space = {
+  xxs: '0.125rem',
+  xs: '0.25rem',
+  s: '0.5rem',
+  m: '1rem',
+  l: '2rem',
+  xl: '3rem',
+  xxl: '4rem'
 };
 ```
 
@@ -327,7 +363,7 @@ const Button = props => (
 
 ---
 
-### Margins
+## Margins
 
 ```jsx
 <Box
@@ -343,7 +379,7 @@ const Button = props => (
 
 ---
 
-### Margins
+## Margins
 
 ```jsx
 <Box mb="xl">
@@ -360,16 +396,36 @@ const Button = props => (
 
 ```jsx
 <Flex
-  alignItems=""
-  justifyContent=""
-  flexDirection=""
-  flexWrap=""
+  alignItems="center"
+  justifyContent="center"
+  flexDirection="row"
+  flexWrap="wrap"
+  // ...
 />
 ```
 
 ---
 
 ## Flexbox layouts
+
+```jsx
+<Flex>
+  <Box flex={1}>
+    <Input
+      type="email"
+      value=""
+      required
+      placeholder="Email"
+      aria-label="Email"
+    />
+  </Box>
+  <Box pl="m">
+    <Button variant="primary" type="submit">
+      Subscribe
+    </Button>
+  </Box>
+</Flex>
+```
 
 ---
 
@@ -383,13 +439,56 @@ const Button = props => (
 
 ## Responsive layouts
 
----
-
-## CSS Grid layouts
+TODO
 
 ---
 
 ## CSS Grid layouts
+
+```jsx
+<Stack
+  gap="m"
+  gridColumn=""
+  gridRow=""
+  gridAutoFlow=""
+  gridAutoRows=""
+  // ...
+/>
+```
+
+---
+
+## CSS Grid layouts
+
+```jsx
+<Stack gap="m" minWidth={200}>
+  <img src="dog1.jpg" alt="First dog" />
+  <img src="dog2.jpg" alt="Second dog" />
+  <img src="dog2.jpg" alt="Third dog" />
+  {/* .... */}
+</Stack>
+```
+
+---
+
+## Example
+
+```jsx
+<Stack gridTemplateColumns="minmax(16px, 1fr) minmax(auto, 57ch) minmax(16px, 1fr)">
+  <Stack gridColumn="1/4">
+    <img src="dog1.jpg" alt="First dog" style={{ maxWidth: '100%' }} />
+  </Stack>
+  <Stack gridColumn="2">
+    <Heading level={1}>Down the Rabbit Hole</Heading>
+    <Text>Alice was beginning to get very tired of sitting by her sister on the
+    bank, and of having nothing to do: once or twice she had peeped into the book
+    her sister was reading, but it had no pictures or conversations in it,
+    “and what is the use of a book,” thought Alice “without pictures or
+    conversation?”</Text>
+    {/* .... */}
+  </Stack>
+</Stack>
+```
 
 ---
 
@@ -405,7 +504,7 @@ const Button = props => (
 - Built-in accessibility
 
 ---
-export default Primary
+export default Secondary
 
 # Consistent by default<br/>Custom when required by&nbsp;design, not&nbsp;randomly custom
 
@@ -425,7 +524,7 @@ export default Primary
 
 Slides: [bit.ly/consistent-css](https://sapegin.github.io/slides/inconsistent-styles)<br/> Me: [sapegin.me](http://sapegin.me/)<br/> Twitter: [@iamsapegin](https://twitter.com/iamsapegin)<br/> GitHub: [sapegin](https://github.com/sapegin)
 
-<img src="images/inconsistent-styles/dogs.jpg" style={{height: '35vh'}}/>
+<img src="./images/dogs.jpg" style={{height: '35vh'}}/>
 
 ---
 
