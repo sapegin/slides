@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "cleaver": "^0.8.7",
+    "file-loader": "^2.0.0",
     "gh-pages": "^2.0.0",
     "mdx-deck": "^1.7.7",
     "prettier": "^1.14.3",

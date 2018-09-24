@@ -19,15 +19,15 @@ export default Secondary
 
 ---
 
-![](./images/inconsistent-styles-full/buttons.jpg)
+<img src={require("file-loader!./images/inconsistent-styles-full/buttons.jpg")} alt="Inconsistent buttons" />
 
 ---
 
-![](./images/inconsistent-styles-full/text.png)
+<img src={require("file-loader!./images/inconsistent-styles-full/text.png")} alt="Inconsistent text" />
 
 ---
 
-<Image src="./images/inconsistent-styles-full/doors.jpg" alt="Inconsistency in the UI" />
+<Image src={require("file-loader!./images/inconsistent-styles-full/doors.jpg")} alt="Inconsistency in the UI" />
 
 ---
 export default SplitWithHeading
@@ -524,7 +524,7 @@ export default Secondary
 
 Slides: [bit.ly/consistent-css](https://sapegin.github.io/slides/inconsistent-styles)<br/> Me: [sapegin.me](http://sapegin.me/)<br/> Twitter: [@iamsapegin](https://twitter.com/iamsapegin)<br/> GitHub: [sapegin](https://github.com/sapegin)
 
-<img src="./images/dogs.jpg" style={{height: '35vh'}}/>
+<img src={require("file-loader!./images/dogs.jpg")} style={{height: '35vh'}} />
 
 ---
 
