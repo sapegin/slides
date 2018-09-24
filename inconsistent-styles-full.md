@@ -17,7 +17,7 @@ export default Secondary
 
 ---
 
-<Image src="./public/images/inconsistent-styles/doors.jpg" alt="Inconsistency in the UI" />
+http://bradfrost.com/wp-content/uploads/2013/07/pnc-buttons.jpg
 
 ---
 
@@ -25,10 +25,7 @@ http://wow.sapegin.me/6d959cd6b79f/Image%202018-09-21%20at%2010.37.05%20PM.png
 
 ---
 
-## Sources of custom CSS
-
-- Typography
-- Whitespace
+<Image src="./public/images/inconsistent-styles/doors.jpg" alt="Inconsistency in the UI" />
 
 ---
 export default SplitWithHeading
@@ -55,6 +52,10 @@ export default SplitWithHeading
 😭
 
 ---
+
+## CSS is too powerful
+
+---
 export default Primary
 
 How can we fix that?
@@ -73,7 +74,6 @@ https://polaris.shopify.com/design/colors#section-color-palette
 ---
 
 https://cloudflare.github.io/cf-ui/#cf-design-gradients
-
 
 ---
 
@@ -112,9 +112,43 @@ export default SplitWithHeading
 😐
 
 ---
+
+## Not all token combinations are good
+
+---
+
+```scss
+.cantreadthis {
+  font-size: $fontSize--x-small;
+  color: $color--light;
+  opacity: 0.5;
+}
+```
+
+---
+
+## Can we do better?
+
+---
+
+## YES!
+
+---
+
+## Stop writing CSS!
+
+---
 export default Primary
 
-# Components
+# Primitive components
+
+---
+
+## Sources of custom CSS
+
+- Typography
+- Whitespace
+- Layout
 
 ---
 
@@ -212,7 +246,7 @@ https://vueds.com/example/#!/Elements?id=heading
 
 ---
 
-```html
+```jsx
 <Heading level={1}>Saluki</Heading>
 <Text>
   The Saluki is classed as a sighthound
@@ -231,7 +265,7 @@ https://vueds.com/example/#!/Elements?id=heading
 ---
 
 
-## Whitespace
+## Whitespace (TODO)
 
 - Paddings inside components
 - Glue components together
@@ -244,100 +278,146 @@ http://wow.sapegin.me/a17c3f2bce59/Image%202018-09-21%20at%2010.34.49%20PM.png
 
 ---
 
------------------------------------------------------------------
+## Scale naming
 
-TODO
-
-
-## [Nathan Curtis’ framework](https://medium.com/eightshapes-llc/space-in-design-systems-188bcbae0d62)
-
-![](images/inconsistent-styles/whitespace.png)
+* x-small small medium large x-large
+* xs s m l xl
+* alpha beta gamma delta epsilon
+* 1, 2, 3, 4 5
 
 ---
 
-## [React Spaceman](https://github.com/sapegin/react-spaceman)
-
-- 8px grid
-- `xxs` (2px) to `xxl` (128px)
-- geometric progression
-
-&nbsp;
-
-[github.com/sapegin/react-spaceman](https://github.com/sapegin/react-spaceman)
-
----
-
-## React Spaceman
-
-```html
-<Panel
-  below="xxs|xs|s|m|l|xl|xxl"
-  inset="xxs|xs|s|m|l|xl|xxl"
-  x="xxs|xs|s|m|l|xl|xxl"
-  y="xxs|xs|s|m|l|xl|xxl"
-  between="xxs|xs|s|m|l|xl|xxl"
-  squish
-  inline
->...</Panel>
+```js
+const space = {
+  xxs: '2px',
+  xs: '4px',
+  s: '8px',
+  m: '16px',
+  l: '32px',
+  xl: '64px',
+  xxl: '128px'
+};
 ```
 
 ---
 
-## Space inside components
+## Paddings
 
-```js
-import Panel from 'react-spaceman';
+```jsx
+<Box
+  p="xl"
+  pt="xl"
+  pr="xl"
+  pb="xl"
+  pl="xl"
+  px="xl"
+  py="xl"
+/>
+```
+
+---
+
+## Paddings
+
+```jsx
 const Button = props => (
-  <Panel
-    inset="m"
-    squish
-    tag="button"
-    className={classes.root}
-    tagProps={props}
-  >
-    {props.children}
-  </Panel>
+  <Box is="button" px="m" py="s" {...props} />
 );
 ```
 
 ---
 
-## Glue components together
+### Margins
 
-![](images/inconsistent-styles/glue.png)
+```jsx
+<Box
+  m="xl"
+  mt="xl"
+  mr="xl"
+  mb="xl"
+  ml="xl"
+  mx="xl"
+  my="xl"
+/>
+```
 
 ---
 
-## Glue components together
+### Margins
 
-```html
-<Panel inset="m" between="m">
-  <Panel between="s">
-    <h3>Saluki</h3>
-    <div>The Saluki is classed as a…</div>
-  </Panel>
-  <Panel between="s" inline>
-    <Tag href="/sighthounds">Sighthounds</Tag>
-    <Tag href="/dogs">Dogs</Tag>
-  </Panel>
-  <Button>Buy a puppy</Button>
-</Panel>
+```jsx
+<Box mb="xl">
+  <Box mb="l">
+    <Heading level={1}>Saluki</Heading>
+  </Box>
+  <Text>The Saluki is classed as a sighthound...</Text>
+</Box>
 ```
+
+---
+
+## Flexbox layouts
+
+```jsx
+<Flex
+  alignItems=""
+  justifyContent=""
+  flexDirection=""
+  flexWrap=""
+/>
+```
+
+---
+
+## Flexbox layouts
+
+---
+
+## Responsive layouts
+
+```jsx
+<Box width={[ 1, 1/2, 1/4 ]} />
+```
+
+---
+
+## Responsive layouts
+
+---
+
+## CSS Grid layouts
+
+---
+
+## CSS Grid layouts
 
 ---
 
 ## Components
 
 - Limited freedom → consistency
-- Avoid custom CSS for many components
+- Discoverable API
+- Faster development
+- Readable code
 - Easier code reviews
 - Easier to document
 - TypeScript and Flow
+- Built-in accessibility
 
 ---
 export default Primary
 
 # Consistent by default<br/>Custom when required by&nbsp;design, not&nbsp;randomly custom
+
+---
+
+## Tools
+
+* [Text](https://github.com/component-driven/component-driven-development/tree/master/src/components/core/Text)
+* [Heading](https://github.com/component-driven/component-driven-development/tree/master/src/components/core/Heading)
+* [styled-system](https://jxnblk.com/styled-system/)
+* [Rebass Grid](https://rebassjs.org/grid)
+* [Stack Styled](https://sapegin.github.io/stack-styled/)
 
 ---
 
@@ -354,14 +434,4 @@ Slides: [bit.ly/consistent-css](https://sapegin.github.io/slides/inconsistent-st
 - [Max Stoiber](https://mxstbr.com/)
 - [Priyanka Godbole](https://blog.prototypr.io/10-practical-steps-to-create-a-predictable-accessible-and-harmonious-typography-system-a-case-6c85d901bedd)
 - [Nathan Curtis](https://medium.com/eightshapes-llc/space-in-design-systems-188bcbae0d62)
-
------------------------------------------------------
-
----
-
-## Naming scales ?
-
-* x-small small medium large x-large
-* xs s m l xl
-* alpha beta gamma delta epsilon
-
+- [Brad Frost](http://bradfrost.com/blog/post/interface-inventory/)
