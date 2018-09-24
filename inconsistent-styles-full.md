@@ -1,6 +1,6 @@
 export { theme } from './theme'
 
-import { Head, Heading, Image, Split, SplitWithHeading, Primary, Secondary, Bar } from './theme'
+import { Head, Heading, Image, Split, SplitWithHeading, Primary, Secondary, Boom, Bar } from './theme'
 
 import Stack from 'stack-styled'
 
@@ -134,7 +134,7 @@ export default Secondary
 
 ---
 
-<Heading boom>YES!</Heading>
+<Boom>YES!</Boom>
 
 ---
 
