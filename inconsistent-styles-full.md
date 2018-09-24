@@ -1,6 +1,6 @@
 export { theme } from './theme'
 
-import { Head, Image, Split, SplitWithHeading, Primary, Secondary, Bar } from './theme'
+import { Head, Heading, Image, Split, SplitWithHeading, Primary, Secondary, Bar } from './theme'
 
 import Stack from 'stack-styled'
 
@@ -10,12 +10,12 @@ import Stack from 'stack-styled'
 
 export default Primary
 
-# Custom CSS is the path to inconsistent UI
+<Heading>Custom CSS is the path to inconsistent UI</Heading>
 
 ---
 export default Secondary
 
-# What’s the issue?
+<Heading>What’s the issue?</Heading>
 
 ---
 
@@ -55,17 +55,17 @@ export default SplitWithHeading
 
 ---
 
-# CSS is too powerful
+<Heading>CSS is too powerful</Heading>
 
 ---
 export default Secondary
 
-# How can we fix that?
+<Heading>How can we fix that?</Heading>
 
 ---
 export default Primary
 
-# Design tokens
+<Heading>Design tokens</Heading>
 
 ---
 
@@ -115,7 +115,7 @@ export default SplitWithHeading
 
 ---
 
-# Not all token combinations are good
+<Heading is="p">Not all token combinations are good</Heading>
 
 ---
 
@@ -130,20 +130,20 @@ export default SplitWithHeading
 ---
 export default Secondary
 
-# Can we do better?
+<Heading>Can we do better?</Heading>
 
 ---
 
-# YES!
+<Heading boom>YES!</Heading>
 
 ---
 
-# Stop writing CSS!
+<Heading>Stop writing CSS!</Heading>
 
 ---
 export default Primary
 
-# Primitive components
+<Heading>Primitive components</Heading>
 
 ---
 
@@ -156,12 +156,12 @@ export default Primary
 ---
 export default Secondary
 
-## Typography
+<Heading is="h2">Typography</Heading>
 
 ---
 export default Secondary
 
-# `Text`
+<Heading is="h3">Text</Heading>
 
 ---
 
@@ -181,7 +181,7 @@ http://mineral-ui.com/components/text
 
 ---
 
-# Find minimal number of styles to cover most of the use cases of your app or site
+<Heading>Find minimal number of styles to cover most of the use cases of your app or site</Heading>
 
 ---
 
@@ -209,7 +209,7 @@ http://mineral-ui.com/components/text
 
 ---
 
-# Make impossible states impossible
+<Heading is="p">Make impossible states impossible</Heading>
 
 ---
 
@@ -230,7 +230,7 @@ http://mineral-ui.com/components/text
 ---
 export default Secondary
 
-## `Heading`
+<Heading is="h3">Heading</Heading>
 
 ---
 
@@ -254,8 +254,10 @@ https://vueds.com/example/#!/Elements?id=heading
   Salukis are “sight” hounds—hunting by sight—and
   run their quarry down to kill or retrieve it.
 </Text>
-<Text variant="secondary">Don’t leave any food on a
-  table when saluki is around.</Text>
+<Text variant="secondary">
+  Don’t leave any food on a table when saluki
+  is around.
+</Text>
 ```
 
 ---
@@ -265,38 +267,36 @@ https://vueds.com/example/#!/Elements?id=heading
 ---
 export default Secondary
 
-## Whitespace
+<Heading is="h2">Whitespace</Heading>
 
 ---
 export default SplitWithHeading
 
 ## Spacing scales
 
-<React.Fragment>
-  <h3>Linear progression</h3>
-  <Stack gap={2}>
-    <Bar width="12.5%">4px</Bar>
-    <Bar width="25%">8px</Bar>
-    <Bar width="37.5%">12px</Bar>
-    <Bar width="50%">16px</Bar>
-    <Bar width="62.5%">20px</Bar>
-    <Bar width="75%">24px</Bar>
-    <Bar width="87.5%">28px</Bar>
-    <Bar width="100%">32px</Bar>
-  </Stack>
-</React.Fragment>
+### Linear progression
 
-<React.Fragment>
-  <h3>Geometric progression</h3>
-  <Stack gap={2}>
-    <Bar width="3.125%">2px</Bar>
-    <Bar width="6.25%">4px</Bar>
-    <Bar width="12.5%">8px</Bar>
-    <Bar width="25%">16px</Bar>
-    <Bar width="50%">32px</Bar>
-    <Bar width="100%">64px</Bar>
-  </Stack>
-</React.Fragment>
+<Stack gap={2}>
+  <Bar width="12.5%">4px</Bar>
+  <Bar width="25%">8px</Bar>
+  <Bar width="37.5%">12px</Bar>
+  <Bar width="50%">16px</Bar>
+  <Bar width="62.5%">20px</Bar>
+  <Bar width="75%">24px</Bar>
+  <Bar width="87.5%">28px</Bar>
+  <Bar width="100%">32px</Bar>
+</Stack>
+
+### Geometric progression
+
+<Stack gap={2}>
+  <Bar width="3.125%">2px</Bar>
+  <Bar width="6.25%">4px</Bar>
+  <Bar width="12.5%">8px</Bar>
+  <Bar width="25%">16px</Bar>
+  <Bar width="50%">32px</Bar>
+  <Bar width="100%">64px</Bar>
+</Stack>
 
 ---
 
@@ -400,7 +400,6 @@ const Button = props => (
   justifyContent="center"
   flexDirection="row"
   flexWrap="wrap"
-  // ...
 />
 ```
 
@@ -452,7 +451,6 @@ TODO
   gridRow=""
   gridAutoFlow=""
   gridAutoRows=""
-  // ...
 />
 ```
 
@@ -506,7 +504,7 @@ TODO
 ---
 export default Secondary
 
-# Consistent by default<br/>Custom when required by&nbsp;design, not&nbsp;randomly custom
+<Heading is="p">Consistent by default. Custom when required by&nbsp;design, not&nbsp;randomly custom</Heading>
 
 ---
 
@@ -520,7 +518,7 @@ export default Secondary
 
 ---
 
-## Thank you and use components
+### Thank you and use components!
 
 Slides: [bit.ly/consistent-css](https://sapegin.github.io/slides/inconsistent-styles)<br/> Me: [sapegin.me](http://sapegin.me/)<br/> Twitter: [@iamsapegin](https://twitter.com/iamsapegin)<br/> GitHub: [sapegin](https://github.com/sapegin)
 

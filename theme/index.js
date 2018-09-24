@@ -6,3 +6,4 @@ export { default as Secondary } from './layouts/Secondary';
 export { default as SplitWithHeading } from './layouts/SplitWithHeading';
 export { default as Bar } from './components/Bar';
 export { default as Code } from './components/Code';
+export { default as Heading } from './components/Heading';

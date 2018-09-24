@@ -1,5 +1,4 @@
 import theme from 'mdx-deck/themes';
-import { modularScale } from 'polished';
 import {
 	uiColor,
 	uiHoverColor,
@@ -13,11 +12,10 @@ import {
 	addColor,
 	removeColor,
 	font,
-	monospace
+	monospace,
+	fontSizes
 } from './tokens';
 import codeTheme from './codeTheme';
-
-const fontSizes = [1, 2, 3, 4, 5].map(x => modularScale(x));
 
 export default {
 	...theme,
@@ -39,21 +37,23 @@ export default {
 		fontKerning: 'normal',
 		fontVariantNumeric: 'proportional-nums',
 		fontVariantLigatures: 'common-ligatures contextual historical-ligatures',
-		'& .Slide': {
-			color: 'red'
+		img: {
+			maxWidth: '95vw',
+			maxHeight: '92vh'
+		},
+		li: {
+			marginBottom: '0.75vmax'
 		}
 	},
 	heading: {
 		margin: 0,
-		lineHeight: 1.15,
+		lineHeight: 1.1,
+		textAlign: 'center',
 		'& + *': {
-			marginTop: '16px'
+			marginTop: '2vmax'
 		},
 		'& + img': {
 			maxHeight: 'calc(100vh - 10rem)' // Heading + dots below
-		},
-		'&:first-child:last-child': {
-			textAlign: 'center'
 		}
 	},
 	h1: {

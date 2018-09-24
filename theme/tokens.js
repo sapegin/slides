@@ -1,3 +1,5 @@
+import { modularScale } from 'polished';
+
 export const uiColor = 'rgba(0, 0, 0, 0.3)';
 export const uiHoverColor = 'rgba(0, 0, 0, 0.8)';
 export const bgColor = '#fff';
@@ -12,3 +14,7 @@ export const removeColor = '#bb2c2c';
 
 export const font = 'Roboto, sans-serif';
 export const monospace = 'Roboto Mono, monospace';
+
+export const fontSizes = [2, 3.5, 5, 6.5, 8].map(x =>
+	modularScale(x).replace(/em/, 'vmax')
+);

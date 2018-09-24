@@ -6,7 +6,8 @@ import {
 	secondaryColor,
 	addColor,
 	removeColor,
-	monospace
+	monospace,
+	fontSizes
 } from './tokens';
 
 export default {
@@ -16,15 +17,16 @@ export default {
 		'code[class*="language-"]': {
 			color: darkColor,
 			fontFamily: monospace,
+			fontSize: fontSizes[0],
 			textAlign: 'left',
 			whiteSpace: 'pre',
 			wordSpacing: 'normal',
 			wordBreak: 'normal',
 			wordWrap: 'normal',
 			lineHeight: '1.5',
-			MozTabSize: '4',
-			OTabSize: '4',
-			tabSize: '4',
+			MozTabSize: '2',
+			OTabSize: '2',
+			tabSize: '2',
 			WebkitHyphens: 'none',
 			MozHyphens: 'none',
 			msHyphens: 'none',
@@ -40,9 +42,9 @@ export default {
 			wordBreak: 'normal',
 			wordWrap: 'normal',
 			lineHeight: '1.5',
-			MozTabSize: '4',
-			OTabSize: '4',
-			tabSize: '4',
+			MozTabSize: '2',
+			OTabSize: '2',
+			tabSize: '2',
 			WebkitHyphens: 'none',
 			MozHyphens: 'none',
 			msHyphens: 'none',
