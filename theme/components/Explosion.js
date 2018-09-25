@@ -9,7 +9,7 @@ const dt = 20;
 const bounce = 0.7;
 const endVelocity = 20;
 const stagger = 200;
-const pregnancy = 700;
+const pregnancy = 1000;
 const population = 2000;
 const clones = [];
 
@@ -31,40 +31,35 @@ const Root = styled.div`
 class Explosion extends React.Component {
 	rootRef = React.createRef();
 
-	componentDidMount() {
-		this.observer = new IntersectionObserver(this.handleIntersection, {
-			root: this.rootRef.current
-		});
-		console.log('XxXXXXX');
-		//this.launch();
-	}
-
 	componentWillUnmount() {
 		if (this.timer) {
 			clearTimeout(this.timer);
 		}
 	}
 
-	componentWillReceiveProps() {
-		console.log(this.props.deck);
+	componentDidUpdate() {
+		console.log('AAAA', this.props.deck.active);
 		if (this.props.deck.active) {
-			this.rootRef.current.innerHTML = '';
+			window.requestAnimationFrame(this.launch);
+		} else {
+			if (this.timer) {
+				clearTimeout(this.timer);
+			}
 		}
 	}
 
-	componentDidUpdate() {}
-
-	shouldComponentUpdate() {
-		return false;
+	shouldComponentUpdate(preProps) {
+		return preProps.deck.active !== this.props.deck.active;
 	}
 
-	handleIntersection = () => {
-		console.log('XXXXXX INTERSECT!');
-	};
+	getContainer() {
+		return this.rootRef.current;
+	}
 
 	launch = () => {
+		console.log('LAUNCH!');
+		const container = this.getContainer();
 		const fallToLeft = Math.random() >= 0.5;
-		const body = this.rootRef.current;
 		const windowWidth = document.body.offsetWidth;
 		const windowHeight = document.body.offsetHeight;
 
@@ -82,7 +77,7 @@ class Explosion extends React.Component {
 			copy.style.left = pos.left + 'px';
 			copy.style.top = pos.top + 'px';
 
-			body.appendChild(copy);
+			container.appendChild(copy);
 
 			return copy;
 		};
@@ -127,7 +122,10 @@ class Explosion extends React.Component {
 		obj.textContent = this.props.symbol;
 		startFall(obj, obj.offsetHeight, stagger);
 
-		this.timer = setTimeout(this.launch, random(pregnancy));
+		this.timer = setTimeout(
+			() => window.requestAnimationFrame(this.launch),
+			random(pregnancy)
+		);
 	};
 
 	render() {
