@@ -8,3 +8,4 @@ export { default as SplitWithHeading } from './layouts/SplitWithHeading';
 export { default as Bar } from './components/Bar';
 export { default as Code } from './components/Code';
 export { default as Heading } from './components/Heading';
+export { default as Explosion } from './components/Explosion';

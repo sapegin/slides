@@ -1,6 +1,6 @@
 export { theme } from './theme'
 
-import { Head, Heading, Image, Split, SplitWithHeading, Primary, Secondary, Boom, Bar } from './theme'
+import { Head, Heading, Image, Split, SplitWithHeading, Primary, Secondary, Boom, Explosion, Bar } from './theme'
 
 import Stack from 'stack-styled'
 
@@ -15,7 +15,7 @@ export default Primary
 ---
 export default Secondary
 
-<Heading>What’s the issue?</Heading>
+<Heading is="p">What’s the issue?</Heading>
 
 ---
 
@@ -51,7 +51,7 @@ export default SplitWithHeading
 
 ---
 
-😭
+<Explosion symbol="😭" />
 
 ---
 
@@ -60,7 +60,7 @@ export default SplitWithHeading
 ---
 export default Secondary
 
-<Heading>How can we fix that?</Heading>
+<Heading is="p">How can we fix that?</Heading>
 
 ---
 export default Primary
@@ -130,11 +130,11 @@ export default SplitWithHeading
 ---
 export default Secondary
 
-<Heading>Can we do better?</Heading>
+<Heading is="p">Can we do better?</Heading>
 
 ---
 
-<Boom>YES!</Boom>
+<Boom is="p">YES!</Boom>
 
 ---
 
@@ -306,6 +306,7 @@ export default SplitWithHeading
 * xs s m l xl
 * alpha beta gamma delta epsilon
 * 1, 2, 3, 4 5
+* 1000, 2000, 3000, 4000, 5000
 
 ---
 
