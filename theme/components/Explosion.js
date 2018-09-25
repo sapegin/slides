@@ -94,15 +94,23 @@ class Explosion extends React.Component {
 			if (Math.abs(newTop - (windowHeight - elemHeight)) < 5) {
 				if (dy < 0 || dy > endVelocity) {
 					dy *= -1 * bounce;
-					setTimeout(function() {
-						fallIteration(copy, elemHeight, newPos, dx, dy);
-					}, dt);
+					setTimeout(
+						() =>
+							window.requestAnimationFrame(() =>
+								fallIteration(copy, elemHeight, newPos, dx, dy)
+							),
+						dt
+					);
 				}
 			} else {
 				dy = dy - g;
-				setTimeout(function() {
-					fallIteration(copy, elemHeight, newPos, dx, dy);
-				}, dt);
+				setTimeout(
+					() =>
+						window.requestAnimationFrame(() =>
+							fallIteration(copy, elemHeight, newPos, dx, dy)
+						),
+					dt
+				);
 			}
 		};
 
