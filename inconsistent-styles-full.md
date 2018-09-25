@@ -133,8 +133,9 @@ export default Secondary
 <Heading is="p">Can we do better?</Heading>
 
 ---
+export default Boom
 
-<Boom is="p">YES!</Boom>
+<Heading is="p" huge>YES!</Heading>
 
 ---
 
@@ -196,16 +197,16 @@ http://mineral-ui.com/components/text
 
 ## API: Selecting a style
 
-* `<Text secondary>` ;-)
-* `<Text error>` ;-)
-* `<Text secondary error>` ;-(
+* `<Text secondary>` 😀
+* `<Text error>` 😀
+* `<Text secondary error>` 😭
 
 ---
 
 ## API: Selecting a style
 
-* `<Text variant="secondary">` ;-)
-* `<Text variant="error">` ;-)
+* `<Text variant="secondary">` 😀
+* `<Text variant="error">` 😀
 
 ---
 
@@ -215,17 +216,17 @@ http://mineral-ui.com/components/text
 
 ## API: Selecting a style
 
-* `<Text color="gray" size="small">` ;-(
-* `<Text variant="secondary">` ;-)
+* `<Text color="gray" size="small">` 😭
+* `<Text variant="secondary">` 😀
 
 ---
 
 ## API: Custom HTML element
 
-* `<Text>` → `<p>` ;-(
-* `<Text inline>` → `<span>` ;-(
-* `<Text is="span">` → `<span>` ;-)
-* `<Text is="header">` → `<header>` ;-)
+* `<Text>` → `<p>` 😭
+* `<Text inline>` → `<span>` 😭
+* `<Text is="span">` → `<span>` 😀
+* `<Text is="header">` → `<header>` 😀
 
 ---
 export default Secondary
@@ -240,9 +241,9 @@ https://vueds.com/example/#!/Elements?id=heading
 
 ## API: Selecting size / heading level
 
-* `<Heading level={1}>` ;-)
-* `<Heading level={2}>` ;-)
-* `<Heading level={3} is="h2">` ;-)
+* `<Heading level={1}>` 😀
+* `<Heading level={2}>` 😀
+* `<Heading level={3} is="h2">` 😀
 
 ---
 
@@ -503,9 +504,9 @@ TODO
 - Built-in accessibility
 
 ---
-export default Secondary
+export default Boom
 
-<Heading is="p">Consistent by default. Custom when required by&nbsp;design, not&nbsp;randomly custom</Heading>
+<Heading is="p">Keep styles in primitive components and compose your app UI from these components</Heading>
 
 ---
 

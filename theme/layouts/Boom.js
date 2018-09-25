@@ -21,10 +21,6 @@ const Root = styled(Invert)`
 	animation: ${animation} 20s ease infinite;
 `;
 
-const Boom = props => (
-	<Root>
-		<Heading boom {...props} />
-	</Root>
-);
+const Boom = ({ children }) => <Root>{children}</Root>;
 
 export default Boom;

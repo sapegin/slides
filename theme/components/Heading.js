@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const fontSize = props => {
 	const { length } = props.children;
-	if (props.boom) {
+	if (props.huge) {
 		return '30vmax';
 	}
 	if (length <= 30) {
@@ -15,7 +15,7 @@ const fontSize = props => {
 const Root = styled.h1`
 	max-width: 90vw;
 	font-size: ${fontSize};
-	font-weight: ${props => (props.boom ? 'bold' : 'normal')};
+	font-weight: ${props => (props.huge ? 'bold' : 'normal')};
 	line-height: 1.1;
 	text-align: center;
 `;
