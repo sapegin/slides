@@ -4,47 +4,28 @@ import { withDeck } from 'mdx-deck';
 
 // Based on https://github.com/peterkhayes/solitaireVictory
 
+const fontSize = 80;
 const g = -3;
 const dt = 20;
 const bounce = 0.7;
 const endVelocity = 20;
 const stagger = 200;
 const pregnancy = 1000;
-const population = 2000;
-const clones = [];
-
-// TODO: Remove everythin on switching to another slide
 
 const random = max => Math.floor(Math.random() * max) + 1;
-
-const Root = styled.div`
-	position: relative;
-	width: 100vw;
-	height: 100vh;
-	font-size: 8vmax;
-
-	div {
-		position: absolute;
-	}
-`;
 
 class Explosion extends React.Component {
 	rootRef = React.createRef();
 
 	componentWillUnmount() {
-		if (this.timer) {
-			clearTimeout(this.timer);
-		}
+		this.deactivate();
 	}
 
 	componentDidUpdate() {
-		console.log('AAAA', this.props.deck.active);
 		if (this.props.deck.active) {
-			window.requestAnimationFrame(this.launch);
+			this.activate();
 		} else {
-			if (this.timer) {
-				clearTimeout(this.timer);
-			}
+			this.deactivate();
 		}
 	}
 
@@ -52,83 +33,39 @@ class Explosion extends React.Component {
 		return preProps.deck.active !== this.props.deck.active;
 	}
 
-	getContainer() {
-		return this.rootRef.current;
+	activate() {
+		this.windowWidth = document.body.offsetWidth;
+		this.windowHeight = document.body.offsetHeight;
+
+		const canvas = this.rootRef.current;
+		canvas.width = this.windowWidth;
+		canvas.height = this.windowHeight;
+		this.ctx = canvas.getContext('2d');
+
+		window.requestAnimationFrame(this.launch);
+	}
+
+	deactivate() {
+		if (this.timer) {
+			clearTimeout(this.timer);
+		}
+	}
+
+	drawSymbol(left, top) {
+		this.ctx.font = `${fontSize}px Helvetica`;
+		this.ctx.fillText(this.props.symbol, left, top);
 	}
 
 	launch = () => {
-		console.log('LAUNCH!');
-		const container = this.getContainer();
 		const fallToLeft = Math.random() >= 0.5;
-		const windowWidth = document.body.offsetWidth;
-		const windowHeight = document.body.offsetHeight;
 
-		const createElement = function(elem, pos) {
-			let copy;
-			if (clones.length > population) {
-				const first = clones.shift();
-				clones.push(first);
-				copy = first;
-			} else {
-				copy = elem.cloneNode(true);
-				clones.push(copy);
-			}
-
-			copy.style.left = pos.left + 'px';
-			copy.style.top = pos.top + 'px';
-
-			container.appendChild(copy);
-
-			return copy;
-		};
-
-		const fallIteration = function(elem, elemHeight, oldPos, dx, dy) {
-			const newTop = Math.min(windowHeight - elemHeight, oldPos.top + dy);
-			const newPos = {
-				left: oldPos.left + dx,
-				top: newTop
-			};
-
-			const copy = createElement(elem, newPos);
-
-			if (Math.abs(newTop - (windowHeight - elemHeight)) < 5) {
-				if (dy < 0 || dy > endVelocity) {
-					dy *= -1 * bounce;
-					setTimeout(
-						() =>
-							window.requestAnimationFrame(() =>
-								fallIteration(copy, elemHeight, newPos, dx, dy)
-							),
-						dt
-					);
-				}
-			} else {
-				dy = dy - g;
-				setTimeout(
-					() =>
-						window.requestAnimationFrame(() =>
-							fallIteration(copy, elemHeight, newPos, dx, dy)
-						),
-					dt
-				);
-			}
-		};
-
-		const startFall = function(elem, height, stagger) {
-			let dx = random(10) + 5;
-			if (fallToLeft) {
-				dx = -dx;
-			}
-			const pos = {
-				left: random(windowWidth),
-				top: random(windowHeight / 3)
-			};
-			fallIteration(elem, height, pos, dx, 0);
-		};
-
-		const obj = document.createElement('div');
-		obj.textContent = this.props.symbol;
-		startFall(obj, obj.offsetHeight, stagger);
+		let dx = random(10) + 5;
+		if (fallToLeft) {
+			dx = -dx;
+		}
+		const left = random(this.windowWidth);
+		const top = random(this.windowHeight / 3);
+		this.fallIteration(left, top, dx, 0);
 
 		this.timer = setTimeout(
 			() => window.requestAnimationFrame(this.launch),
@@ -136,8 +73,37 @@ class Explosion extends React.Component {
 		);
 	};
 
+	fallIteration = (left, top, dx, dy) => {
+		const newLeft = left + dx;
+		const newTop = Math.min(this.windowHeight + fontSize, top + dy);
+
+		this.drawSymbol(newLeft, newTop);
+
+		if (Math.abs(newTop - (this.windowHeight + fontSize)) < 5) {
+			if (dy < 0 || dy > endVelocity) {
+				dy *= -1 * bounce;
+				setTimeout(
+					() =>
+						window.requestAnimationFrame(() =>
+							this.fallIteration(newLeft, newTop, dx, dy)
+						),
+					dt
+				);
+			}
+		} else {
+			dy = dy - g;
+			setTimeout(
+				() =>
+					window.requestAnimationFrame(() =>
+						this.fallIteration(newLeft, newTop, dx, dy)
+					),
+				dt
+			);
+		}
+	};
+
 	render() {
-		return <Root innerRef={this.rootRef} />;
+		return <canvas ref={this.rootRef} />;
 	}
 }
 
