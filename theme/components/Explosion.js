@@ -32,6 +32,9 @@ class Explosion extends React.Component {
 	rootRef = React.createRef();
 
 	componentDidMount() {
+		this.observer = new IntersectionObserver(this.handleIntersection, {
+			root: this.rootRef.current
+		});
 		console.log('XxXXXXX');
 		//this.launch();
 	}
@@ -54,6 +57,10 @@ class Explosion extends React.Component {
 	shouldComponentUpdate() {
 		return false;
 	}
+
+	handleIntersection = () => {
+		console.log('XXXXXX INTERSECT!');
+	};
 
 	launch = () => {
 		const fallToLeft = Math.random() >= 0.5;
