@@ -1,6 +1,6 @@
 export { theme } from './theme'
 
-import { Head, Heading, Image, Split, SplitWithHeading, Primary, Secondary, Boom, Explosion, Bar } from './theme'
+import { Head, Heading, Image, Code, Split, SplitWithHeading, Primary, Secondary, Boom, Explosion, Bar } from './theme'
 
 import Stack from 'stack-styled'
 
@@ -19,15 +19,15 @@ export default Secondary
 
 ---
 
-<img src={require("file-loader!./images/inconsistent-styles-full/buttons.jpg")} alt="Inconsistent buttons" />
+<img src={require("file-loader!./assets/images/inconsistent-styles-full/buttons.jpg")} alt="Inconsistent buttons" />
 
 ---
 
-<img src={require("file-loader!./images/inconsistent-styles-full/text.png")} alt="Inconsistent text" />
+<img src={require("file-loader!./assets/images/inconsistent-styles-full/text.png")} alt="Inconsistent text" />
 
 ---
 
-<Image src={require("file-loader!./images/inconsistent-styles-full/doors.jpg")} alt="Inconsistency in the UI" />
+<Image src={require("file-loader!./assets/images/inconsistent-styles-full/doors.jpg")} alt="Inconsistency in the UI" />
 
 ---
 export default SplitWithHeading
@@ -70,31 +70,31 @@ export default Primary
 ---
 
 <a href="https://marvelapp.com/styleguide/design/color-scheme">
-	<img src={require("file-loader!./images/inconsistent-styles-full/design-tokens-colors.png")} alt="Design tokens: colors" />
+	<img src={require("file-loader!./assets/images/inconsistent-styles-full/design-tokens-colors.png")} alt="Design tokens: colors" />
 </a>
 
 ---
 
 <a href="https://cloudflare.github.io/cf-ui/#cf-design-gradients">
-	<img src={require("file-loader!./images/inconsistent-styles-full/design-tokens-gradients.png")} alt="Design tokens: gradients" />
+	<img src={require("file-loader!./assets/images/inconsistent-styles-full/design-tokens-gradients.png")} alt="Design tokens: gradients" />
 </a>
 
 ---
 
 <a href="https://vueds.com/example/#!/Design%20Tokens">
-	<img src={require("file-loader!./images/inconsistent-styles-full/design-tokens-fonts-spacing.png")} alt="Design tokens: fonts and spacing" />
+	<img src={require("file-loader!./assets/images/inconsistent-styles-full/design-tokens-fonts-spacing.png")} alt="Design tokens: fonts and spacing" />
 </a>
 
 ---
 
 <a href="https://www.lightningdesignsystem.com/design-tokens/">
-	<img src={require("file-loader!./images/inconsistent-styles-full/design-tokens-misc.png")} alt="Design tokens" />
+	<img src={require("file-loader!./assets/images/inconsistent-styles-full/design-tokens-misc.png")} alt="Design tokens" />
 </a>
 
 ---
 export default SplitWithHeading
 
-## Custom CSS with design tokens
+## Custom CSS & design tokens
 
 ```css
 .description {
@@ -122,7 +122,7 @@ export default SplitWithHeading
 ---
 
 ```css
-.cantreadthis {
+.cant__read_this {
   font-size: var(--fontSize--x-small);
   color: var(--color--light);
   opacity: 0.5;
@@ -169,13 +169,13 @@ export default Secondary
 ---
 
 <a href="https://polaris.shopify.com/components/titles-and-text/text-style">
-	<img src={require("file-loader!./images/inconsistent-styles-full/example-text.png")} alt="Text component" />
+	<img src={require("file-loader!./assets/images/inconsistent-styles-full/example-text.png")} alt="Text component" />
 </a>
 
 ---
 
 <a href="http://mineral-ui.com/components/text">
-	<img src={require("file-loader!./images/inconsistent-styles-full/example-text-2.png")} alt="Another text component" />
+	<img src={require("file-loader!./assets/images/inconsistent-styles-full/example-text-2.png")} alt="Another text component" />
 </a>
 
 ---
@@ -185,6 +185,7 @@ export default Secondary
 * Normal text
 * Secondary text (light color)
 * Error (red color)
+* etc.
 
 ---
 
@@ -222,7 +223,7 @@ export default Secondary
 
 ## API: Selecting a style
 
-* `<Text color="gray" size="small">` 😭
+* `<Text color="gray" size="xs">` 😭
 * `<Text variant="secondary">` 😀
 
 ---
@@ -235,23 +236,43 @@ export default Secondary
 * `<Text is="header">` → `<header>` 😀
 
 ---
+export default SplitWithHeading
+
+import Text from './assets/inconsistent-styles-full/code/Text'
+
+## Example
 
 ```jsx
 <Text>
   The Saluki is classed as a sighthound
-  and is typically deep-chested and long-legged.
-  Salukis are “sight” hounds—hunting by sight—and
-  run their quarry down to kill or retrieve it.
+  and is typically deep-chested and
+  long-legged. Salukis are “sight”
+  hounds — hunting by sight — and
+  run their quarry down to kill
+  or retrieve it.
 </Text>
 <Text variant="secondary">
-  Don’t leave any food on a table when saluki
-  is around.
+  Don’t leave any food on a table
+  when saluki is around.
 </Text>
 ```
 
+<Text>
+  The Saluki is classed as a sighthound
+  and is typically deep-chested and
+  long-legged. Salukis are “sight”
+  hounds — hunting by sight — and
+  run their quarry down to kill
+  or retrieve it.
+</Text>
+<Text variant="secondary">
+  Don’t leave any food on a table
+  when saluki is around.
+</Text>
+
 ---
 
-TODO: Example implementation
+<Code code={require("!raw-loader!./assets/inconsistent-styles-full/code/Text.js")} />
 
 ---
 export default Secondary
@@ -261,7 +282,7 @@ export default Secondary
 ---
 
 <a href="https://vueds.com/example/#/Elements/Heading">
-	<img src={require("file-loader!./images/inconsistent-styles-full/example-heading.png")} alt="Heading component" />
+	<img src={require("file-loader!./assets/images/inconsistent-styles-full/example-heading.png")} alt="Heading component" />
 </a>
 
 ---
@@ -499,9 +520,10 @@ TODO
 
 ---
 
-TODO: Example implementation
+<Code code={require("!raw-loader!./assets/inconsistent-styles-full/code/Box.js")} />
 
 ---
+export default SplitWithHeading
 
 ## Example
 
@@ -521,6 +543,8 @@ TODO: Example implementation
   </Stack>
 </Stack>
 ```
+
+<div>TODO</div>
 
 ---
 
@@ -560,7 +584,7 @@ export default Boom
 
 Slides: [bit.ly/consistent-css](https://sapegin.github.io/slides/inconsistent-styles)<br/> Me: [sapegin.me](http://sapegin.me/)<br/> Twitter: [@iamsapegin](https://twitter.com/iamsapegin)<br/> GitHub: [sapegin](https://github.com/sapegin)
 
-<img src={require("file-loader!./images/dogs.jpg")} style={{height: '35vh'}} />
+<img src={require("file-loader!./assets/images/dogs.jpg")} style={{height: '35vh'}} />
 
 ---
 

@@ -1,5 +1,6 @@
 import {
 	baseColor,
+	bgColor,
 	darkColor,
 	lightColor,
 	primaryColor,
@@ -13,6 +14,110 @@ import {
 export default {
 	// Styles based on https://github.com/conorhastings/react-syntax-highlighter/
 	// Colors are custom
+	plain: {
+		color: baseColor,
+		backgroundColor: bgColor
+	},
+	styles: [
+		{
+			types: ['attr-name', 'symbol', 'function', 'entity'],
+			style: {
+				color: baseColor
+			}
+		},
+		{
+			types: [
+				'attr-value',
+				'constant',
+				'boolean',
+				'string',
+				'selector',
+				'char',
+				'variable',
+				'class-name'
+			],
+			style: {
+				color: primaryColor
+			}
+		},
+		{
+			types: ['property', 'tag'],
+			style: {
+				color: secondaryColor
+			}
+		},
+		{
+			types: [
+				'comment',
+				'block-comment',
+				'prolog',
+				'doctype',
+				'cdata',
+				'number',
+				'punctuation',
+				'operator'
+			],
+			style: {
+				color: lightColor
+			}
+		},
+		{
+			types: ['function-name', 'keyword', 'at-rule'],
+			style: {
+				color: darkColor
+			}
+		},
+		{
+			types: ['inserted'],
+			style: {
+				color: addColor
+			}
+		},
+		{
+			types: ['deleted'],
+			style: {
+				color: removeColor
+			}
+		},
+		{
+			types: ['builtin'],
+			style: {
+				color: baseColor,
+				textDecoration: 'underline'
+			}
+		},
+		{
+			types: ['url'],
+			style: {
+				color: lightColor,
+				textDecoration: 'underline'
+			}
+		},
+		{
+			types: ['important'],
+			style: {
+				fontWeight: '400'
+			}
+		},
+		{
+			types: ['bold'],
+			style: {
+				fontWeight: 'bold'
+			}
+		},
+		{
+			types: ['italic'],
+			style: {
+				fontStyle: 'italic'
+			}
+		},
+		{
+			types: ['namespace'],
+			style: {
+				opacity: 0.7
+			}
+		}
+	],
 	style: {
 		'code[class*="language-"]': {
 			color: darkColor,
@@ -33,6 +138,7 @@ export default {
 			hyphens: 'none'
 		},
 		'pre[class*="language-"]': {
+			margin: 0,
 			padding: 0,
 			color: darkColor,
 			fontFamily: monospace,
@@ -49,8 +155,6 @@ export default {
 			MozHyphens: 'none',
 			msHyphens: 'none',
 			hyphens: 'none',
-			padding: '1em',
-			margin: '.5em 0',
 			overflow: 'auto'
 		},
 		':not(pre) > code[class*="language-"]': {

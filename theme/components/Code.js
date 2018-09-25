@@ -1,3 +1,4 @@
+import React from 'react';
 import { CodeSurfer } from 'mdx-deck-code-surfer';
 import codeTheme from '../codeTheme';
 
