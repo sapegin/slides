@@ -1,8 +1,8 @@
 export { theme } from './theme'
-
 import { Head, Heading, Image, Code, Split, SplitWithHeading, Primary, Secondary, Boom, Explosion, Bar } from './theme'
-
 import Stack from 'stack-styled'
+import XText from './assets/inconsistent-styles-full/code/Text'
+import XHeading from './assets/inconsistent-styles-full/code/Heading'
 
 <Head>
   <title>Custom CSS is the path to inconsistent UI by Artem Sapegin</title>
@@ -223,7 +223,7 @@ export default Secondary
 
 ## API: Selecting a style
 
-* `<Text color="gray" size="xs">` 😭
+* `<Text color="red" size="xs">` 😭
 * `<Text variant="secondary">` 😀
 
 ---
@@ -237,8 +237,6 @@ export default Secondary
 
 ---
 export default SplitWithHeading
-
-import Text from './assets/inconsistent-styles-full/code/Text'
 
 ## Example
 
@@ -257,18 +255,18 @@ import Text from './assets/inconsistent-styles-full/code/Text'
 </Text>
 ```
 
-<Text>
+<XText>
   The Saluki is classed as a sighthound
   and is typically deep-chested and
   long-legged. Salukis are “sight”
   hounds — hunting by sight — and
   run their quarry down to kill
   or retrieve it.
-</Text>
-<Text variant="secondary">
+</XText>
+<XText variant="secondary">
   Don’t leave any food on a table
   when saluki is around.
-</Text>
+</XText>
 
 ---
 
@@ -294,21 +292,41 @@ export default Secondary
 * `<Heading level={3} is="h2">` 😀
 
 ---
+export default SplitWithHeading
+
+## Example
 
 ```jsx
 <Heading level={1}>Saluki</Heading>
 <Text>
   The Saluki is classed as a sighthound
-  and is typically deep-chested and long-legged.
-  Salukis are “sight” hounds—hunting by sight—and
-  run their quarry down to kill or retrieve it.
+  and is typically deep-chested and
+  long-legged. Salukis are “sight”
+  hounds — hunting by sight — and
+  run their quarry down to kill
+  or retrieve it.
 </Text>
 <Heading level={2}>Caveats</Heading>
-<Text>
-  Don’t leave any food on a table when saluki
-  is around.
+<Text variant="secondary">
+  Don’t leave any food on a table
+  when saluki is around.
 </Text>
 ```
+
+<XHeading level={1}>Saluki</XHeading>
+<XText>
+  The Saluki is classed as a sighthound
+  and is typically deep-chested and
+  long-legged. Salukis are “sight”
+  hounds — hunting by sight — and
+  run their quarry down to kill
+  or retrieve it.
+</XText>
+<XHeading level={2}>Caveats</XHeading>
+<XText variant="secondary">
+  Don’t leave any food on a table
+  when saluki is around.
+</XText>
 
 ---
 
@@ -429,6 +447,7 @@ const Button = props => (
 ```
 
 ---
+export default SplitWithHeading
 
 ## Margins
 
@@ -440,6 +459,20 @@ const Button = props => (
   <Text>The Saluki is classed as a sighthound...</Text>
 </Box>
 ```
+
+<Box mb="xl">
+	<Box mb="l">
+		<XHeading level={1}>Saluki</XHeading>
+  </Box>
+	<XText>
+		The Saluki is classed as a sighthound
+		and is typically deep-chested and
+		long-legged. Salukis are “sight”
+		hounds — hunting by sight — and
+		run their quarry down to kill
+		or retrieve it.
+	</XText>
+</Box>
 
 ---
 

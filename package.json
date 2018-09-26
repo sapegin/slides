@@ -30,6 +30,7 @@
     "raw-loader": "^0.5.1"
   },
   "dependencies": {
+    "@rebass/grid": "^6.0.0-4",
     "mdx-deck-code-surfer": "^0.4.1",
     "polished": "^2.1.1",
     "stack-styled": "^0.1.0"
