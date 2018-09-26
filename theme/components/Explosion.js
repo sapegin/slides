@@ -41,6 +41,7 @@ class Explosion extends React.Component {
 		canvas.width = this.windowWidth;
 		canvas.height = this.windowHeight;
 		this.ctx = canvas.getContext('2d');
+		this.ctx.font = `${fontSize}px Helvetica`;
 
 		window.requestAnimationFrame(this.launch);
 	}
@@ -51,21 +52,17 @@ class Explosion extends React.Component {
 		}
 	}
 
-	drawSymbol(left, top) {
-		this.ctx.font = `${fontSize}px Helvetica`;
-		this.ctx.fillText(this.props.symbol, left, top);
+	drawSymbol(x, y) {
+		this.ctx.fillText(this.props.symbol, x, y);
 	}
 
 	launch = () => {
 		const fallToLeft = Math.random() >= 0.5;
+		const dx = (random(10) + 5) * (fallToLeft ? -1 : 1);
+		const x = random(this.windowWidth);
+		const y = random(this.windowHeight / 3);
 
-		let dx = random(10) + 5;
-		if (fallToLeft) {
-			dx = -dx;
-		}
-		const left = random(this.windowWidth);
-		const top = random(this.windowHeight / 3);
-		this.fallIteration(left, top, dx, 0);
+		this.fallIteration(x, y, dx, 0);
 
 		this.timer = setTimeout(
 			() => window.requestAnimationFrame(this.launch),
@@ -73,33 +70,29 @@ class Explosion extends React.Component {
 		);
 	};
 
-	fallIteration = (left, top, dx, dy) => {
-		const newLeft = left + dx;
-		const newTop = Math.min(this.windowHeight + fontSize, top + dy);
+	fallIteration = (x, y, dx, dy) => {
+		const maxY = this.windowHeight;
+		const newX = x + dx;
+		const newY = Math.min(maxY, y + dy);
 
-		this.drawSymbol(newLeft, newTop);
+		this.drawSymbol(newX, newY);
 
-		if (Math.abs(newTop - (this.windowHeight + fontSize)) < 5) {
-			if (dy < 0 || dy > endVelocity) {
-				dy *= -1 * bounce;
-				setTimeout(
-					() =>
-						window.requestAnimationFrame(() =>
-							this.fallIteration(newLeft, newTop, dx, dy)
-						),
-					dt
-				);
+		if (Math.abs(newY - maxY) <= 0) {
+			if (dy >= 0 && dy <= endVelocity) {
+				return;
 			}
+			dy *= -bounce;
 		} else {
 			dy = dy - g;
-			setTimeout(
-				() =>
-					window.requestAnimationFrame(() =>
-						this.fallIteration(newLeft, newTop, dx, dy)
-					),
-				dt
-			);
 		}
+
+		setTimeout(
+			() =>
+				window.requestAnimationFrame(() =>
+					this.fallIteration(newX, newY, dx, dy)
+				),
+			dt
+		);
 	};
 
 	render() {
