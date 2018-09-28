@@ -516,7 +516,7 @@ export default SplitWithHeading
   <Box flex={1}>
     <Input
       type="email"
-      value=""
+      defaultValue=""
       placeholder="Email"
       aria-label="Email"
     />
@@ -533,7 +533,7 @@ export default SplitWithHeading
   <XBox style={{flex: 1}}>
     <XInput
       type="email"
-      value=""
+      defaultValue=""
       placeholder="Email"
       aria-label="Email"
     />
@@ -566,7 +566,7 @@ export default SplitWithHeading
   <Box flex={1}>
     <Input
       type="email"
-      value=""
+      defaultValue=""
       placeholder="Email"
       aria-label="Email"
     />
@@ -584,7 +584,7 @@ export default SplitWithHeading
   <XBox style={{flex: 1}}>
     <XInput
       type="email"
-      value=""
+      defaultValue=""
       placeholder="Email"
       aria-label="Email"
     />
@@ -696,7 +696,21 @@ export default SplitWithHeading
 
 ---
 
-<Code code={require("!raw-loader!./assets/inconsistent-styles-full/code/Text.js")} />
+<Code
+  // title={() => <h2>Example implementation</h2>}
+  code={require("!raw-loader!./assets/inconsistent-styles-full/code/Text.js")}
+  lang="javascript"
+  steps={[
+    { lines: [2] },
+    { lines: [3] },
+    { lines: [5] },
+    { lines: [7] },
+    { range: [9, 10] },
+    { range: [11, 17] },
+    { range: [18, 24] },
+    { range: [27, 30] },
+  ]}
+/>
 
 ---
 
