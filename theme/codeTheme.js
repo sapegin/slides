@@ -20,7 +20,7 @@ export default {
 	},
 	styles: [
 		{
-			types: ['attr-name', 'symbol', 'function', 'entity'],
+			types: ['attr-name', 'symbol', 'entity', 'keyword'],
 			style: {
 				color: baseColor
 			}
@@ -62,7 +62,7 @@ export default {
 			}
 		},
 		{
-			types: ['function-name', 'keyword', 'at-rule'],
+			types: ['function-name', 'at-rule'],
 			style: {
 				color: darkColor
 			}
@@ -82,8 +82,14 @@ export default {
 		{
 			types: ['builtin'],
 			style: {
+				color: baseColor
+			}
+		},
+		{
+			types: ['function'],
+			style: {
 				color: baseColor,
-				textDecoration: 'underline'
+				fontWeight: 'bold'
 			}
 		},
 		{
@@ -197,7 +203,8 @@ export default {
 			color: lightColor
 		},
 		function: {
-			color: baseColor
+			color: baseColor,
+			fontWeight: 'bold'
 		},
 		property: {
 			color: secondaryColor
@@ -222,11 +229,10 @@ export default {
 			color: darkColor
 		},
 		keyword: {
-			color: darkColor
+			color: baseColor
 		},
 		builtin: {
-			color: baseColor,
-			textDecoration: 'underline'
+			color: baseColor
 		},
 		string: {
 			color: primaryColor

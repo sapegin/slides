@@ -1,8 +1,12 @@
 export { theme } from './theme'
 import { Head, Heading, Image, Code, Split, SplitWithHeading, Primary, Secondary, Boom, Explosion, Bar } from './theme'
+import { Box } from '@rebass/grid'
 import Stack from 'stack-styled'
 import XText from './assets/inconsistent-styles-full/code/Text'
 import XHeading from './assets/inconsistent-styles-full/code/Heading'
+import XBox from './assets/inconsistent-styles-full/code/Box'
+import XInput from './assets/inconsistent-styles-full/code/Input'
+import XButton from './assets/inconsistent-styles-full/code/Button'
 
 <Head>
   <title>Custom CSS is the path to inconsistent UI by Artem Sapegin</title>
@@ -285,7 +289,7 @@ export default Secondary
 
 ---
 
-## API: Selecting size / heading level
+## API: Selecting size & heading level
 
 * `<Heading level={1}>` 😀
 * `<Heading level={2}>` 😀
@@ -313,20 +317,22 @@ export default SplitWithHeading
 </Text>
 ```
 
-<XHeading level={1}>Saluki</XHeading>
-<XText>
-  The Saluki is classed as a sighthound
-  and is typically deep-chested and
-  long-legged. Salukis are “sight”
-  hounds — hunting by sight — and
-  run their quarry down to kill
-  or retrieve it.
-</XText>
-<XHeading level={2}>Caveats</XHeading>
-<XText variant="secondary">
-  Don’t leave any food on a table
-  when saluki is around.
-</XText>
+<React.Fragment>
+  <XHeading level={1}>Saluki</XHeading>
+  <XText>
+    The Saluki is classed as a sighthound
+    and is typically deep-chested and
+    long-legged. Salukis are “sight”
+    hounds — hunting by sight — and
+    run their quarry down to kill
+    or retrieve it.
+  </XText>
+  <XHeading level={2}>Caveats</XHeading>
+  <XText variant="secondary">
+    Don’t leave any food on a table
+    when saluki is around.
+  </XText>
+</React.Fragment>
 
 ---
 
@@ -452,18 +458,26 @@ export default SplitWithHeading
 ## Margins
 
 ```jsx
-<Box mb="xl">
+<Box mb="xl" is="section">
   <Box mb="l">
     <Heading level={1}>Saluki</Heading>
   </Box>
-  <Text>The Saluki is classed as a sighthound...</Text>
+  <Text>The Saluki is classed...</Text>
+</Box>
+<Box mb="xl" is="section">
+  <Box mb="l">
+    <Heading level={2}>Caveats</Heading>
+  </Box>
+  <Text variant="secondary">
+    Don’t leave any food on a table...
+  </Text>
 </Box>
 ```
 
-<Box mb="xl">
-	<Box mb="l">
+<XBox mb="l">
+	<XBox mb="m">
 		<XHeading level={1}>Saluki</XHeading>
-  </Box>
+  </XBox>
 	<XText>
 		The Saluki is classed as a sighthound
 		and is typically deep-chested and
@@ -472,7 +486,16 @@ export default SplitWithHeading
 		run their quarry down to kill
 		or retrieve it.
 	</XText>
-</Box>
+</XBox>
+<XBox mb="l">
+  <XBox mb="m">
+    <XHeading level={2}>Caveats</XHeading>
+  </XBox>
+  <XText variant="secondary">
+    Don’t leave any food on a table
+    when saluki is around.
+  </XText>
+</XBox>
 
 ---
 
@@ -488,16 +511,16 @@ export default SplitWithHeading
 ```
 
 ---
+export default SplitWithHeading
 
 ## Flexbox layouts
 
 ```jsx
-<Flex>
+<Flex is="form">
   <Box flex={1}>
     <Input
       type="email"
       value=""
-      required
       placeholder="Email"
       aria-label="Email"
     />
@@ -510,19 +533,72 @@ export default SplitWithHeading
 </Flex>
 ```
 
+<XBox style={{display: 'flex'}}>
+  <XBox style={{flex: 1}}>
+    <XInput
+      type="email"
+      value=""
+      placeholder="Email"
+      aria-label="Email"
+    />
+  </XBox>
+  <XBox pl="m">
+    <XButton variant="primary" type="submit">
+      Subscribe
+    </XButton>
+  </XBox>
+</XBox>
+
 ---
 
 ## Responsive layouts
 
 ```jsx
-<Box width={[ 1, 1/2, 1/4 ]} />
+<Box
+  width={[ 1, 1/2, 1/4 ]}
+  m={[ 's', 'm', 'l' ]}
+/>
 ```
 
 ---
+export default SplitWithHeading
 
 ## Responsive layouts
 
-TODO
+```jsx
+<Flex is="form" flexWrap="wrap">
+  <Box flex={1}>
+    <Input
+      type="email"
+      value=""
+      placeholder="Email"
+      aria-label="Email"
+    />
+  </Box>
+  <Box pl={[0, 'm']} pt={['m', 0]}
+      width={[1, 'auto']}>
+    <Button variant="primary" type="submit">
+      Subscribe
+    </Button>
+  </Box>
+</Flex>
+```
+
+<XBox style={{display: 'flex', flexWrap: 'wrap' }}>
+  <XBox style={{flex: 1}}>
+    <XInput
+      type="email"
+      value=""
+      placeholder="Email"
+      aria-label="Email"
+    />
+  </XBox>
+  <XBox pt="m"style={{width: '100%'}}>
+    <XButton variant="primary" type="submit">
+      Subscribe
+    </XButton>
+  </XBox>
+</XBox>
 
 ---
 
@@ -531,53 +607,100 @@ TODO
 ```jsx
 <Stack
   gap="m"
-  gridColumn=""
-  gridRow=""
-  gridAutoFlow=""
-  gridAutoRows=""
+  gridColumn="..."
+  gridRow="..."
+  gridAutoFlow="..."
+  gridAutoRows="..."
 />
 ```
 
 ---
+export default SplitWithHeading
 
 ## CSS Grid layouts
 
 ```jsx
-<Stack gap="m" minWidth={200}>
-  <img src="dog1.jpg" alt="First dog" />
-  <img src="dog2.jpg" alt="Second dog" />
-  <img src="dog2.jpg" alt="Third dog" />
-  {/* .... */}
-</Stack>
+<Grid gap="m"
+  gridTemplateColumns="
+    repeat(
+      auto-fit,
+      minmax(200px, 1fr)
+    )
+">
+  <Image src="dog1.jpg" alt="Dessi" />
+  <Image src="dog2.jpg" alt="Tsiri" />
+  <Image src="dog3.jpg" alt="Twiggy" />
+</Grid>
 ```
+
+<Stack gap={3} minWidth={200}>
+  <img src={require("file-loader!./assets/images/inconsistent-styles-full/dog1.jpg")} alt="" style={{maxWidth: '100%'}} />
+  <img src={require("file-loader!./assets/images/inconsistent-styles-full/dog2.jpg")} alt="" style={{maxWidth: '100%'}} />
+  <img src={require("file-loader!./assets/images/inconsistent-styles-full/dog3.jpg")} alt="" style={{maxWidth: '100%'}} />
+  <img src={require("file-loader!./assets/images/inconsistent-styles-full/dog4.jpg")} alt="" style={{maxWidth: '100%'}} />
+  <img src={require("file-loader!./assets/images/inconsistent-styles-full/dog5.jpg")} alt="" style={{maxWidth: '100%'}} />
+  <img src={require("file-loader!./assets/images/inconsistent-styles-full/dog6.jpg")} alt="" style={{maxWidth: '100%'}} />
+</Stack>
 
 ---
 
 <Code code={require("!raw-loader!./assets/inconsistent-styles-full/code/Box.js")} />
 
 ---
-export default SplitWithHeading
 
 ## Example
 
 ```jsx
-<Stack gridTemplateColumns="minmax(16px, 1fr) minmax(auto, 57ch) minmax(16px, 1fr)">
-  <Stack gridColumn="1/4">
-    <img src="dog1.jpg" alt="First dog" style={{ maxWidth: '100%' }} />
-  </Stack>
-  <Stack gridColumn="2">
-    <Heading level={1}>Down the Rabbit Hole</Heading>
-    <Text>Alice was beginning to get very tired of sitting by her sister on the
-    bank, and of having nothing to do: once or twice she had peeped into the book
-    her sister was reading, but it had no pictures or conversations in it,
-    “and what is the use of a book,” thought Alice “without pictures or
-    conversation?”</Text>
+<Grid gridTemplateColumns={`
+  minmax(${theme.space.m}, 1fr)
+  minmax(auto, 57ch)
+  minmax(${theme.space.m}, 1fr)
+}`>
+  <Grid gridColumn="1/4">
+    <Box mb="m">
+      <Image src="tsiri.jpg" alt="Tsiri" />
+    </Box>
+  </Grid>
+  <Grid gridColumn="2">
+    <Heading level={1}>Saluki</Heading>
     {/* .... */}
-  </Stack>
-</Stack>
+  </Grid>
+</Grid>
 ```
 
-<div>TODO</div>
+---
+
+<Stack gridTemplateColumns="minmax(1rem, 1fr) minmax(auto, 55rem) minmax(1rem, 1fr)">
+  <Stack gridColumn="1/4">
+    <XBox mb="m">
+      <img src={require("file-loader!./assets/images/inconsistent-styles-full/tsiri.jpg")} alt="" style={{maxWidth: '100%'}} />
+    </XBox>
+  </Stack>
+  <Stack gridColumn="2">
+    <XBox mb="l">
+      <XBox mb="m">
+        <XHeading level={1}>Saluki</XHeading>
+      </XBox>
+      <XText>
+        The Saluki is classed as a sighthound
+        and is typically deep-chested and
+        long-legged. Salukis are “sight”
+        hounds — hunting by sight — and
+        run their quarry down to kill
+        or retrieve it.
+      </XText>
+    </XBox>
+    <XBox mb="l">
+      <XBox mb="m">
+        <XHeading level={2}>Caveats</XHeading>
+      </XBox>
+      <XText variant="secondary">
+        Don’t leave any food on a table
+        when saluki is around.
+      </XText>
+    </XBox>
+  </Stack>
+</Stack>
 
 ---
 
@@ -587,6 +710,11 @@ export default SplitWithHeading
 - Discoverable API
 - Faster development
 - Readable code
+
+---
+
+## Components
+
 - Easier code reviews
 - Easier to document
 - TypeScript and Flow
@@ -595,7 +723,7 @@ export default SplitWithHeading
 ---
 export default Boom
 
-<Heading is="p">Keep styles in primitive components and compose your app UI from these components</Heading>
+<Heading is="p">Hide CSS in components and compose your app UI from them</Heading>
 
 ---
 

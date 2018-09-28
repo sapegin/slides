@@ -50,7 +50,7 @@ export default {
 		lineHeight: 1.1,
 		textAlign: 'center',
 		'& + *': {
-			marginTop: '2vmax'
+			marginTop: '2vmax !important'
 		},
 		'& + img': {
 			maxHeight: 'calc(100vh - 10rem)' // Heading + dots below
