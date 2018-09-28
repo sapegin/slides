@@ -16,7 +16,7 @@
     "watch:inconsistent-styles": "cleaver watch inconsistent-styles.md",
     "build:mrm": "cleaver mrm.md",
     "watch:mrm": "cleaver watch mrm.md",
-    "build:inconsistent-styles-full": "mdx-deck build --out-dir public/inconsistent-styles-full inconsistent-styles-full.mdx",
+    "build:inconsistent-styles-full": "mdx-deck build --no-html --out-dir public/inconsistent-styles-full inconsistent-styles-full.mdx",
     "watch:inconsistent-styles-full": "mdx-deck inconsistent-styles-full.mdx",
     "format": "prettier --write '**/*.{js,css,md}'",
     "posttest": "npm run format"
