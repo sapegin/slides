@@ -1,7 +1,10 @@
+import React from 'react';
 import styled from 'styled-components';
 import theme from './theme';
 
-const Text = styled.p`
+const Base = ({ is: Component, ...props }) => <Component {...props} />;
+
+const Text = styled(Base)`
 	margin: 0;
 	font-family: ${theme.fonts.base};
 	line-height: ${theme.lineHeights.base};
@@ -22,6 +25,7 @@ const Text = styled.p`
 `;
 
 Text.defaultProps = {
+	is: 'p',
 	variant: 'primary'
 };
 
