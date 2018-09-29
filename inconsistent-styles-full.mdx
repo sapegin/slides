@@ -1,5 +1,5 @@
 export { theme } from './theme'
-import { Head, Heading, Image, Code, Split, SplitWithHeading, Primary, Secondary, Boom, Explosion, Bar } from './theme'
+import { Head, Heading, Image, Appear, Code, Split, SplitWithHeading, CoverWayfair, Primary, Secondary, Boom, Explosion, Bar } from './theme'
 import { Box } from '@rebass/grid'
 import Stack from 'stack-styled'
 import XText from './assets/inconsistent-styles-full/code/Text'
@@ -12,9 +12,15 @@ import XButton from './assets/inconsistent-styles-full/code/Button'
   <title>Custom CSS is the path to inconsistent UI by Artem Sapegin</title>
 </Head>
 
-export default Primary
+export default CoverWayfair
 
 <Heading>Custom CSS is the path to inconsistent UI</Heading>
+
+---
+
+<img src={require("file-loader!./assets/images/react-styleguidist.svg")} alt="React Styleguidist" style={{display: 'block', margin: 'auto'}} />
+
+[react-styleguidist.js.org](https://react-styleguidist.js.org/)
 
 ---
 export default Secondary
@@ -31,7 +37,19 @@ export default Secondary
 
 ---
 
-<Image src={require("file-loader!./assets/images/inconsistent-styles-full/doors.jpg")} alt="Inconsistency in the UI" />
+<img src={require("file-loader!./assets/images/inconsistent-styles-full/doors.jpg")} alt="Inconsistency in the UI" />
+
+---
+
+## Custom CSS
+
+<ul>
+  <Appear>
+    <li>Typography</li>
+    <li>Whitespace</li>
+    <li>Layout</li>
+  </Appear>
+</ul>
 
 ---
 export default SplitWithHeading
@@ -96,6 +114,19 @@ export default Primary
 </a>
 
 ---
+
+## Design tokens
+
+<ul>
+  <Appear>
+    <li>Sass variables</li>
+    <li>CSS custom properties</li>
+    <li>JavaScript variables</li>
+    <li>JSON</li>
+  </Appear>
+</ul>
+
+---
 export default SplitWithHeading
 
 ## Custom CSS & design tokens
@@ -153,14 +184,6 @@ export default Primary
 <Heading>Primitive components</Heading>
 
 ---
-
-## Sources of custom CSS
-
-- Typography
-- Whitespace
-- Layout
-
----
 export default Secondary
 
 <Heading is="h2">Typography</Heading>
@@ -187,8 +210,8 @@ export default Secondary
 ## Styles
 
 * Normal text
-* Secondary text (light color)
-* Error (red color)
+* Secondary text (gray or small)
+* Error (red)
 * etc.
 
 ---
@@ -199,25 +222,44 @@ export default Secondary
 
 ## What else?
 
-* Custom HTML element
-* Alignment (left, center)
-* Whitespace (margin)
-* Truncation (with …)
+<ul>
+  <Appear>
+    <li>Custom HTML element</li>
+    <li>Alignment (left, center)</li>
+    <li>Whitespace (margin)</li>
+    <li>Truncation (with …)</li>
+  </Appear>
+</ul>
 
 ---
 
 ## API: Selecting a style
 
-* `<Text secondary>` 😀
-* `<Text error>` 😀
-* `<Text secondary error>` 😭
+<ul>
+  <Appear>
+    <li><code>&lt;Text primary&gt;</code> 😀</li>
+    <li><code>&lt;Text secondary&gt;</code> 😀</li>
+    <li><code>&lt;Text primary secondary&gt;</code> 😭</li>
+  </Appear>
+</ul>
 
 ---
 
 ## API: Selecting a style
 
+* `<Text variant="primary">` 😀
 * `<Text variant="secondary">` 😀
-* `<Text variant="error">` 😀
+
+---
+
+## API: Selecting a style
+
+<ul>
+  <Appear>
+    <li><code>&lt;Text color="red" size="xs"&gt;</code> 😭</li>
+    <li><code>&lt;Text variant="secondary"&gt;</code> 😀</li>
+  </Appear>
+</ul>
 
 ---
 
@@ -225,19 +267,16 @@ export default Secondary
 
 ---
 
-## API: Selecting a style
-
-* `<Text color="red" size="xs">` 😭
-* `<Text variant="secondary">` 😀
-
----
-
 ## API: Custom HTML element
 
-* `<Text>` → `<p>` 😭
-* `<Text inline>` → `<span>` 😭
-* `<Text is="span">` → `<span>` 😀
-* `<Text is="header">` → `<header>` 😀
+<ul>
+  <Appear>
+    <li><code>&lt;Text&gt;</code> → <code>&lt;p&gt;</code> 😐</li>
+    <li><code>&lt;Text inline&gt;</code> → <code>&lt;span&gt;</code> 😭</li>
+    <li><code>&lt;Text is="span"&gt;</code> → <code>&lt;span&gt;</code> 😀</li>
+    <li><code>&lt;Text is="header"&gt;</code> → <code>&lt;header&gt;</code> 😀</li>
+  </Appear>
+</ul>
 
 ---
 export default SplitWithHeading
@@ -253,7 +292,7 @@ export default SplitWithHeading
   run their quarry down to kill
   or retrieve it.
 </Text>
-<Text variant="secondary">
+<Text is="small" variant="secondary">
   Don’t leave any food on a table
   when saluki is around.
 </Text>
@@ -285,7 +324,7 @@ export default Secondary
 
 ---
 
-## API: Selecting size & heading level
+## API: Selecting heading level
 
 * `<Heading level={1}>` 😀
 * `<Heading level={2}>` 😀
@@ -307,7 +346,7 @@ export default SplitWithHeading
   or retrieve it.
 </Text>
 <Heading level={2}>Caveats</Heading>
-<Text variant="secondary">
+<Text is="small" variant="secondary">
   Don’t leave any food on a table
   when saluki is around.
 </Text>
@@ -372,11 +411,15 @@ export default SplitWithHeading
 
 ## Scale naming
 
-* x-small small medium large x-large
-* xs s m l xl
-* alpha beta gamma delta epsilon
-* 1, 2, 3, 4 5
-* 1000, 2000, 3000, 4000, 5000
+<ul>
+  <Appear>
+    <li>x-small small medium large x-large</li>
+    <li>xs s m l xl</li>
+    <li>alpha beta gamma delta epsilon</li>
+    <li>1 2 3 4 5</li>
+    <li>1000 2000 3000 4000 5000</li>
+  </Appear>
+</ul>
 
 ---
 
@@ -408,7 +451,7 @@ const space = {
 
 ---
 
-## Paddings
+## Padding
 
 ```jsx
 <Box
@@ -424,7 +467,7 @@ const space = {
 
 ---
 
-## Paddings
+## Padding
 
 ```jsx
 const Button = props => (
@@ -464,7 +507,7 @@ export default SplitWithHeading
   <Box mb="l">
     <Heading level={2}>Caveats</Heading>
   </Box>
-  <Text variant="secondary">
+  <Text is="small" variant="secondary">
     Don’t leave any food on a table...
   </Text>
 </Box>
@@ -601,7 +644,7 @@ export default SplitWithHeading
 ## CSS Grid layouts
 
 ```jsx
-<Stack
+<Grid
   gap="m"
   gridColumn="..."
   gridRow="..."
@@ -640,28 +683,6 @@ export default SplitWithHeading
 
 ---
 
-## Example
-
-```jsx
-<Grid gridTemplateColumns={`
-  minmax(${theme.space.m}, 1fr)
-  minmax(auto, 57ch)
-  minmax(${theme.space.m}, 1fr)
-}`>
-  <Grid gridColumn="1/4">
-    <Box mb="m">
-      <Image src="tsiri.jpg" alt="Tsiri" />
-    </Box>
-  </Grid>
-  <Grid gridColumn="2">
-    <Heading level={1}>Saluki</Heading>
-    {/* .... */}
-  </Grid>
-</Grid>
-```
-
----
-
 <Stack gridTemplateColumns="minmax(1rem, 1fr) minmax(auto, 55rem) minmax(1rem, 1fr)">
   <Stack gridColumn="1/4">
     <XBox mb="m">
@@ -696,6 +717,28 @@ export default SplitWithHeading
 
 ---
 
+## Example
+
+```jsx
+<Grid gridTemplateColumns={`
+  minmax(${theme.space.m}, 1fr)
+  minmax(auto, 57ch)
+  minmax(${theme.space.m}, 1fr)
+}`>
+  <Grid gridColumn="1/4">
+    <Box mb="m">
+      <Image src="tsiri.jpg" alt="Tsiri" />
+    </Box>
+  </Grid>
+  <Grid gridColumn="2">
+    <Heading level={1}>Saluki</Heading>
+    {/* .... */}
+  </Grid>
+</Grid>
+```
+
+---
+
 <Code
   // title={() => <h2>Example implementation</h2>}
   code={require("!raw-loader!./assets/inconsistent-styles-full/code/Text.js")}
@@ -716,19 +759,27 @@ export default SplitWithHeading
 
 ## Components
 
-- Limited freedom → consistency
-- Discoverable API
-- Faster development
-- Readable code
+<ul>
+  <Appear>
+    <li>Limited freedom → consistency</li>
+    <li>Discoverable API</li>
+    <li>Faster development</li>
+    <li>Readable code</li>
+  </Appear>
+</ul>
 
 ---
 
 ## Components
 
-- Easier code reviews
-- Easier to document
-- TypeScript and Flow
-- Built-in accessibility
+<ul>
+  <Appear>
+    <li>Easier code reviews</li>
+    <li>Easier to document</li>
+    <li>TypeScript and Flow</li>
+    <li>Built-in accessibility</li>
+  </Appear>
+</ul>
 
 ---
 export default Boom
@@ -753,7 +804,7 @@ export default Boom
 
 ### Thank you and use components!
 
-Slides: [bit.ly/consistent-css](https://sapegin.github.io/slides/inconsistent-styles)<br/> Me: [sapegin.me](http://sapegin.me/)<br/> Twitter: [@iamsapegin](https://twitter.com/iamsapegin)<br/> GitHub: [sapegin](https://github.com/sapegin)
+Slides: [bit.ly/usecomponents](https://sapegin.github.io/slides/inconsistent-styles-full/)<br/> Me: [sapegin.me](http://sapegin.me/)<br/> Twitter: [@iamsapegin](https://twitter.com/iamsapegin)<br/> GitHub: [sapegin](https://github.com/sapegin)
 
 <img src={require("file-loader!./assets/images/dogs.jpg")} style={{height: '35vh'}} />
 

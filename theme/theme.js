@@ -42,6 +42,7 @@ export default {
 			maxHeight: '92vh'
 		},
 		li: {
+			fontSize: fontSizes[1],
 			marginBottom: '0.75vmax'
 		}
 	},
