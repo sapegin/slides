@@ -739,26 +739,9 @@ const Button = props => (
 
 ## Naïve implementation
 
-```jsx
-import styled from '@emotion/styled';
-import theme from './theme';
+import SlideBoxCssInJs from './assets/inconsistent-styles-full/slides/Box-cssinjs'
 
-const Box = styled.div`
-	min-width: 0;
-	margin: $\{props => theme.space[props.m]};
-	margin-left: $&#123;props => theme.space[props.ml]};
-	margin-top: $&#123;props => theme.space[props.mt]};
-	margin-right: $&#123;props => theme.space[props.mr]};
-	margin-bottom: $&#123;props => theme.space[props.mb]};
-	padding: $&#123;props => theme.space[props.p]};
-	padding-left: $&#123;props => theme.space[props.pl]};
-	padding-top: $&#123;props => theme.space[props.pt]};
-	padding-right: $&#123;props => theme.space[props.pr]};
-	padding-bottom: $&#123;props => theme.space[props.pb]};
-`;
-
-export default Box;
-```
+<SlideBoxCssInJs />
 
 ---
 
