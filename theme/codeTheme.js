@@ -125,24 +125,6 @@ export default {
 		}
 	],
 	style: {
-		'code[class*="language-"]': {
-			color: darkColor,
-			fontFamily: monospace,
-			fontSize: fontSizes[0],
-			textAlign: 'left',
-			whiteSpace: 'pre',
-			wordSpacing: 'normal',
-			wordBreak: 'normal',
-			wordWrap: 'normal',
-			lineHeight: '1.2',
-			MozTabSize: '2',
-			OTabSize: '2',
-			tabSize: '2',
-			WebkitHyphens: 'none',
-			MozHyphens: 'none',
-			msHyphens: 'none',
-			hyphens: 'none'
-		},
 		'pre[class*="language-"]': {
 			margin: 0,
 			padding: 0,
@@ -153,7 +135,6 @@ export default {
 			wordSpacing: 'normal',
 			wordBreak: 'normal',
 			wordWrap: 'normal',
-			lineHeight: '1.1',
 			MozTabSize: '2',
 			OTabSize: '2',
 			tabSize: '2',

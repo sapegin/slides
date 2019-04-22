@@ -20,7 +20,8 @@ import codeTheme from './codeTheme';
 
 export default {
 	// aspectRatio: 9 / 16,
-	// mdx-deck will load fronts from Google Fonts
+	googleFont:
+		'https://fonts.googleapis.com/css?family=Fira+Mono:400,700|PT+Sans:400,700&amp;subset=latin-ext',
 	font,
 	monospace,
 	fontSizes,
@@ -30,7 +31,9 @@ export default {
 		link: baseColor,
 		heading: 'inherit',
 		primary: primaryColor,
-		secondary: secondaryColor
+		secondary: secondaryColor,
+		pre: darkColor,
+		code: darkColor
 	},
 	css: {
 		fontFeatureSettings: `'kern', 'pnum', common-ligatures contextual historical-ligatures`,
@@ -43,11 +46,13 @@ export default {
 			maxHeight: '92vh'
 		},
 		li: {
-			fontSize: fontSizes[1],
+			fontSize: fontSizes.m,
 			marginBottom: '0.75vmax'
 		},
 		'p pre, li pre': {
-			display: 'inline-block'
+			display: 'inline-block',
+			fontSize: fontSizes.m,
+			lineHeight: 1.2
 		}
 	},
 	heading: {
@@ -64,8 +69,14 @@ export default {
 	h1: {
 		fontWeight: 'normal'
 	},
+	h2: {
+		fontWeight: 'normal',
+		fontSize: fontSizes.xl
+	},
 	pre: {
-		textAlign: 'left'
+		textAlign: 'left',
+		fontSize: fontSizes.s,
+		lineHeight: '1.3'
 	},
 	ol: {
 		textAlign: 'left'

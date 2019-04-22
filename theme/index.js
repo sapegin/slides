@@ -8,7 +8,6 @@ export { default as Boom } from './layouts/Boom';
 export { default as SplitWithHeading } from './layouts/SplitWithHeading';
 export { default as Box } from './components/Box';
 export { default as Bar } from './components/Bar';
-export { default as Code } from './components/Code';
 export { default as Flex } from './components/Flex';
 export { default as Heading } from './components/Heading';
 export { default as Explosion } from './components/Explosion';

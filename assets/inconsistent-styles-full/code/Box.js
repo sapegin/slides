@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import theme from './theme';
 
 const Box = styled.div`
+	min-width: 0;
 	margin: ${props => theme.space[props.m]};
 	margin-left: ${props => theme.space[props.ml]};
 	margin-top: ${props => theme.space[props.mt]};
