@@ -1,7 +1,10 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import theme from './theme';
 
 const Input = styled.input`
+	display: block;
+	width: 100%;
+	height: 4rem;
 	padding: ${theme.space.s};
 	font-family: ${theme.fonts.base};
 	font-size: ${theme.fontSizes.base};
@@ -10,8 +13,7 @@ const Input = styled.input`
 	border: ${theme.borders.base} solid ${theme.colors.primary};
 	border-radius: ${theme.radii.base};
 	box-sizing: border-box;
-	display: block;
-	width: 100%;
+
 	/* Remove red outline on required input in Firefox */
 	box-shadow: none;
 

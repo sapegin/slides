@@ -1,7 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
-import Flex from 'mdx-deck/dist/Flex';
-import Box from 'mdx-deck/dist/Box';
+import styled from '@emotion/styled';
+import Flex from '../components/Flex';
+import Box from '../components/Box';
 
 const Root = styled.div`
 	display: flex;
@@ -15,7 +15,7 @@ const Container = styled(Flex)`
 `;
 
 const SplitWithHeading = ({ children }) => {
-	const [heading, ...rest] = React.Children.toArray(children.props.children);
+	const [heading, ...rest] = React.Children.toArray(children);
 	const half = rest.length / 2;
 	const left = rest.slice(0, half);
 	const right = rest.slice(half);

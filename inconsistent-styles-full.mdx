@@ -1,20 +1,19 @@
 export { theme } from './theme'
-import { Head, Heading, Image, Appear, Code, Split, SplitWithHeading, CoverWayfair, Primary, Secondary, Boom, Explosion, Bar } from './theme'
-import { Box } from '@rebass/grid'
-import Stack from 'stack-styled'
+import React from 'react';
+import { Box, Head, Heading, Image, Appear, Code, Split, SplitWithHeading, CoverWayfair, Primary, Secondary, Boom, Explosion, Bar } from './theme'
+import Stack from 'stack-styled/emotion/Stack'
 import XText from './assets/inconsistent-styles-full/code/Text'
 import XHeading from './assets/inconsistent-styles-full/code/Heading'
 import XBox from './assets/inconsistent-styles-full/code/Box'
 import XInput from './assets/inconsistent-styles-full/code/Input'
 import XButton from './assets/inconsistent-styles-full/code/Button'
 
-<Head>
-  <title>Custom CSS is the path to inconsistent UI by Artem Sapegin</title>
-</Head>
-
-export default CoverWayfair
-
-<Heading>Custom CSS is the path to inconsistent UI</Heading>
+<CoverWayfair>
+  <Head>
+    <title>Custom CSS is the path to inconsistent UI by Artem Sapegin</title>
+  </Head>
+  <Heading>Custom CSS is the path to inconsistent UI</Heading>
+</CoverWayfair>
 
 ---
 
@@ -23,9 +22,10 @@ export default CoverWayfair
 [react-styleguidist.js.org](https://react-styleguidist.js.org/)
 
 ---
-export default Secondary
 
-<Heading is="p">What’s the issue?</Heading>
+<Secondary>
+  <Heading as="p">What’s the issue?</Heading>
+</Secondary>
 
 ---
 
@@ -52,7 +52,8 @@ export default Secondary
 </ul>
 
 ---
-export default SplitWithHeading
+
+<SplitWithHeading>
 
 ## Custom CSS
 
@@ -71,6 +72,8 @@ export default SplitWithHeading
 }
 ```
 
+</SplitWithHeading>
+
 ---
 
 <Explosion symbol="😭" />
@@ -80,14 +83,16 @@ export default SplitWithHeading
 <Heading>CSS is too powerful</Heading>
 
 ---
-export default Secondary
 
-<Heading is="p">How can we fix that?</Heading>
+<Secondary>
+  <Heading as="p">How can we fix that?</Heading>
+</Secondary>
 
 ---
-export default Primary
 
-<Heading>Design tokens</Heading>
+<Primary>
+  <Heading>Design tokens</Heading>
+</Primary>
 
 ---
 
@@ -127,7 +132,8 @@ export default Primary
 </ul>
 
 ---
-export default SplitWithHeading
+
+<SplitWithHeading>
 
 ## Custom CSS & design tokens
 
@@ -146,13 +152,15 @@ export default SplitWithHeading
 }
 ```
 
+</SplitWithHeading>
+
 ---
 
 <Explosion symbol="😐" />
 
 ---
 
-<Heading is="p">Not all token combinations are good</Heading>
+<Heading as="p">Not all token combinations are good</Heading>
 
 ---
 
@@ -165,33 +173,38 @@ export default SplitWithHeading
 ```
 
 ---
-export default Secondary
 
-<Heading is="p">Can we do better?</Heading>
+<Secondary>
+  <Heading as="p">Can we do better?</Heading>
+</Secondary>
 
 ---
-export default Boom
 
-<Heading is="p" huge>YES!</Heading>
+<Boom>
+  <Heading as="p" huge>YES!</Heading>
+</Boom>
 
 ---
 
 <Heading>Stop writing CSS!</Heading>
 
 ---
-export default Primary
 
-<Heading>Primitive components</Heading>
-
----
-export default Secondary
-
-<Heading is="h2">Typography</Heading>
+<Primary>
+  <Heading>Primitive components</Heading>
+</Primary>
 
 ---
-export default Secondary
 
-<Heading is="h3">Text</Heading>
+<Secondary>
+  <Heading as="h2">Typography</Heading>
+</Secondary>
+
+---
+
+<Secondary>
+  <Heading as="h3">Text</Heading>
+</Secondary>
 
 ---
 
@@ -247,8 +260,12 @@ export default Secondary
 
 ## API: Selecting a style
 
-* `<Text variant="primary">` 😀
-* `<Text variant="secondary">` 😀
+<ul>
+  <Appear>
+    <li><code>&lt;Text variant="primary"&gt;</code> 😀</li>
+    <li><code>&lt;Text variant="secondary"&gt;</code> 😀</li>
+  </Appear>
+</ul>
 
 ---
 
@@ -263,7 +280,7 @@ export default Secondary
 
 ---
 
-<Heading is="p">Make impossible states impossible</Heading>
+<Heading as="p">Make impossible states impossible</Heading>
 
 ---
 
@@ -273,13 +290,14 @@ export default Secondary
   <Appear>
     <li><code>&lt;Text&gt;</code> → <code>&lt;p&gt;</code> 😐</li>
     <li><code>&lt;Text inline&gt;</code> → <code>&lt;span&gt;</code> 😭</li>
-    <li><code>&lt;Text is="span"&gt;</code> → <code>&lt;span&gt;</code> 😀</li>
-    <li><code>&lt;Text is="header"&gt;</code> → <code>&lt;header&gt;</code> 😀</li>
+    <li><code>&lt;Text as="span"&gt;</code> → <code>&lt;span&gt;</code> 😀</li>
+    <li><code>&lt;Text as="header"&gt;</code> → <code>&lt;header&gt;</code> 😀</li>
   </Appear>
 </ul>
 
 ---
-export default SplitWithHeading
+
+<SplitWithHeading>
 
 ## Example
 
@@ -292,7 +310,7 @@ export default SplitWithHeading
   run their quarry down to kill
   or retrieve it.
 </Text>
-<Text is="small" variant="secondary">
+<Text as="small" variant="secondary">
   Don’t leave any food on a table
   when saluki is around.
 </Text>
@@ -311,10 +329,13 @@ export default SplitWithHeading
   when saluki is around.
 </XText>
 
----
-export default Secondary
+</SplitWithHeading>
 
-<Heading is="h3">Heading</Heading>
+---
+
+<Secondary>
+  <Heading as="h3">Heading</Heading>
+</Secondary>
 
 ---
 
@@ -326,12 +347,17 @@ export default Secondary
 
 ## API: Selecting heading level
 
-* `<Heading level={1}>` 😀
-* `<Heading level={2}>` 😀
-* `<Heading level={3} is="h2">` 😀
+<ul>
+  <Appear>
+    <li><code>&lt;Heading level=&#123;1}&gt;</code> 😀</li>
+    <li><code>&lt;Heading level=&#123;2}&gt;</code> 😀</li>
+    <li><code>&lt;Heading level=&#123;3} as="h2"&gt;</code> 😀</li>
+  </Appear>
+</ul>
 
 ---
-export default SplitWithHeading
+
+<SplitWithHeading>
 
 ## Example
 
@@ -346,7 +372,7 @@ export default SplitWithHeading
   or retrieve it.
 </Text>
 <Heading level={2}>Caveats</Heading>
-<Text is="small" variant="secondary">
+<Text as="small" variant="secondary">
   Don’t leave any food on a table
   when saluki is around.
 </Text>
@@ -369,17 +395,21 @@ export default SplitWithHeading
   </XText>
 </React.Fragment>
 
+</SplitWithHeading>
+
 ---
 
 <Explosion symbol="😀" />
 
 ---
-export default Secondary
 
-<Heading is="h2">Whitespace</Heading>
+<Secondary>
+  <Heading as="h2">Whitespace</Heading>
+</Secondary>
 
 ---
-export default SplitWithHeading
+
+<SplitWithHeading>
 
 ## Spacing scales
 
@@ -406,6 +436,8 @@ export default SplitWithHeading
   <Bar width="50%">32px</Bar>
   <Bar width="100%">64px</Bar>
 </Stack>
+
+</SplitWithHeading>
 
 ---
 
@@ -471,7 +503,7 @@ const space = {
 
 ```jsx
 const Button = props => (
-  <Box is="button" px="m" py="s" {...props} />
+  <Box as="button" px="m" py="s" {...props} />
 );
 ```
 
@@ -492,22 +524,23 @@ const Button = props => (
 ```
 
 ---
-export default SplitWithHeading
+
+<SplitWithHeading>
 
 ## Margins
 
 ```jsx
-<Box mb="xl" is="section">
+<Box mb="xl" as="section">
   <Box mb="l">
     <Heading level={1}>Saluki</Heading>
   </Box>
   <Text>The Saluki is classed...</Text>
 </Box>
-<Box mb="xl" is="section">
+<Box mb="xl" as="section">
   <Box mb="l">
     <Heading level={2}>Caveats</Heading>
   </Box>
-  <Text is="small" variant="secondary">
+  <Text as="small" variant="secondary">
     Don’t leave any food on a table...
   </Text>
 </Box>
@@ -536,6 +569,8 @@ export default SplitWithHeading
   </XText>
 </XBox>
 
+</SplitWithHeading>
+
 ---
 
 ## Flexbox layouts
@@ -550,12 +585,13 @@ export default SplitWithHeading
 ```
 
 ---
-export default SplitWithHeading
+
+<SplitWithHeading>
 
 ## Flexbox layouts
 
 ```jsx
-<Flex is="form">
+<Flex as="form">
   <Box flex={1}>
     <Input
       type="email"
@@ -588,6 +624,8 @@ export default SplitWithHeading
   </XBox>
 </XBox>
 
+</SplitWithHeading>
+
 ---
 
 ## Responsive layouts
@@ -600,12 +638,13 @@ export default SplitWithHeading
 ```
 
 ---
-export default SplitWithHeading
+
+<SplitWithHeading>
 
 ## Responsive layouts
 
 ```jsx
-<Flex is="form" flexWrap="wrap">
+<Flex as="form" flexWrap="wrap">
   <Box flex={1}>
     <Input
       type="email"
@@ -639,6 +678,8 @@ export default SplitWithHeading
   </XBox>
 </XBox>
 
+</SplitWithHeading>
+
 ---
 
 ## CSS Grid layouts
@@ -654,7 +695,8 @@ export default SplitWithHeading
 ```
 
 ---
-export default SplitWithHeading
+
+<SplitWithHeading>
 
 ## CSS Grid layouts
 
@@ -680,6 +722,8 @@ export default SplitWithHeading
   <img src={require("file-loader!./assets/images/inconsistent-styles-full/dog5.jpg")} alt="" style={{maxWidth: '100%'}} />
   <img src={require("file-loader!./assets/images/inconsistent-styles-full/dog6.jpg")} alt="" style={{maxWidth: '100%'}} />
 </Stack>
+
+</SplitWithHeading>
 
 ---
 
@@ -739,21 +783,34 @@ export default SplitWithHeading
 
 ---
 
-<Code
-  // title={() => <h2>Example implementation</h2>}
-  code={require("!raw-loader!./assets/inconsistent-styles-full/code/Text.js")}
-  lang="javascript"
-  steps={[
-    { lines: [2] },
-    { lines: [3] },
-    { lines: [5] },
-    { lines: [7] },
-    { range: [9, 10] },
-    { range: [11, 17] },
-    { range: [18, 24] },
-    { range: [27, 30] },
-  ]}
-/>
+<Secondary>
+  <Heading as="h2">Implementation</Heading>
+</Secondary>
+
+---
+
+## Naïve implementation
+
+```js
+import styled from 'styled-components';
+import theme from './theme';
+
+const Box = styled.div`
+  min-width: 0;
+	margin: ${props => theme.space[props.m]};
+	margin-left: ${props => theme.space[props.ml]};
+	margin-top: ${props => theme.space[props.mt]};
+	margin-right: ${props => theme.space[props.mr]};
+	margin-bottom: ${props => theme.space[props.mb]};
+	padding: ${props => theme.space[props.p]};
+	padding-left: ${props => theme.space[props.pl]};
+	padding-top: ${props => theme.space[props.pt]};
+	padding-right: ${props => theme.space[props.pr]};
+	padding-bottom: ${props => theme.space[props.pb]};
+`;
+
+export default Box;
+```
 
 ---
 
@@ -782,9 +839,10 @@ export default SplitWithHeading
 </ul>
 
 ---
-export default Boom
 
-<Heading is="p">Hide CSS in components and compose your app UI from them</Heading>
+<Boom>
+  <Heading as="p">Hide CSS in components and compose your app UI from them</Heading>
+</Boom>
 
 ---
 

@@ -1,24 +1,14 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { Invert } from 'mdx-deck/layouts';
-import { Flex, Box } from '@rebass/grid';
+import Flex from '../components/Flex';
+import Box from '../components/Box';
 import Wayfair from './Wayfair';
 
-const Container = styled(Flex)`
-	width: 100vw;
-	height: 100vh;
-`;
-
-const Author = styled(Box)`
-	font-size: 2.5vw;
-`;
-
-const Logo = styled(Wayfair)`
-	width: 15vw;
-`;
-
 const CoverWayfair = props => (
-	<Container
+	<Flex
+		width="100vw"
+		height="100vh"
 		flexDirection="column"
 		alignItems="center"
 		justifyContent="center"
@@ -29,10 +19,12 @@ const CoverWayfair = props => (
 			{props.children}
 		</Flex>
 		<Flex width={1} p={4} alignItems="center">
-			<Author mr="auto">Artem Sapegin</Author>
-			<Logo variation="white" />
+			<Box mr="auto" fontSize="2.5vw">
+				Artem Sapegin
+			</Box>
+			<Wayfair variation="white" width="15vw" />
 		</Flex>
-	</Container>
+	</Flex>
 );
 
 export default CoverWayfair;

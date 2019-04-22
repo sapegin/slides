@@ -134,7 +134,7 @@ export default {
 			wordSpacing: 'normal',
 			wordBreak: 'normal',
 			wordWrap: 'normal',
-			lineHeight: '1.5',
+			lineHeight: '1.2',
 			MozTabSize: '2',
 			OTabSize: '2',
 			tabSize: '2',
@@ -153,15 +153,14 @@ export default {
 			wordSpacing: 'normal',
 			wordBreak: 'normal',
 			wordWrap: 'normal',
-			lineHeight: '1.5',
+			lineHeight: '1.1',
 			MozTabSize: '2',
 			OTabSize: '2',
 			tabSize: '2',
 			WebkitHyphens: 'none',
 			MozHyphens: 'none',
 			msHyphens: 'none',
-			hyphens: 'none',
-			overflow: 'auto'
+			hyphens: 'none'
 		},
 		':not(pre) > code[class*="language-"]': {
 			whiteSpace: 'normal'

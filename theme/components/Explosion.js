@@ -1,6 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
-import { withDeck } from 'mdx-deck';
+import PropTypes from 'prop-types';
 
 // Based on https://github.com/peterkhayes/solitaireVictory
 
@@ -14,68 +13,62 @@ const pregnancy = 1000;
 
 const random = max => Math.floor(Math.random() * max) + 1;
 
-class Explosion extends React.Component {
-	rootRef = React.createRef();
+export default function Explosion({ symbol }) {
+	const rootRef = React.useRef();
 
-	componentWillUnmount() {
-		this.deactivate();
+	React.useEffect(() => {
+		activate();
+		return deactivate;
+	});
+
+	let ctx;
+	let timer;
+	let windowWidth;
+	let windowHeight;
+
+	function activate() {
+		windowWidth = document.body.offsetWidth;
+		windowHeight = document.body.offsetHeight;
+
+		const canvas = rootRef.current;
+		canvas.width = windowWidth;
+		canvas.height = windowHeight;
+		ctx = canvas.getContext('2d');
+		ctx.font = `${fontSize}px Helvetica`;
+
+		window.requestAnimationFrame(launch);
 	}
 
-	componentDidUpdate() {
-		if (this.props.deck.active) {
-			this.activate();
-		} else {
-			this.deactivate();
+	function deactivate() {
+		if (timer) {
+			clearTimeout(timer);
 		}
 	}
 
-	shouldComponentUpdate(preProps) {
-		return preProps.deck.active !== this.props.deck.active;
+	function drawSymbol(x, y) {
+		ctx.fillText(symbol, x, y);
 	}
 
-	activate() {
-		this.windowWidth = document.body.offsetWidth;
-		this.windowHeight = document.body.offsetHeight;
-
-		const canvas = this.rootRef.current;
-		canvas.width = this.windowWidth;
-		canvas.height = this.windowHeight;
-		this.ctx = canvas.getContext('2d');
-		this.ctx.font = `${fontSize}px Helvetica`;
-
-		window.requestAnimationFrame(this.launch);
-	}
-
-	deactivate() {
-		if (this.timer) {
-			clearTimeout(this.timer);
-		}
-	}
-
-	drawSymbol(x, y) {
-		this.ctx.fillText(this.props.symbol, x, y);
-	}
-
-	launch = () => {
+	function launch() {
 		const fallToLeft = Math.random() >= 0.5;
 		const dx = (random(10) + 5) * (fallToLeft ? -1 : 1);
-		const x = random(this.windowWidth);
-		const y = random(this.windowHeight / 3);
+		const x = random(windowWidth);
+		const y = random(windowHeight / 3);
 
-		this.fallIteration(x, y, dx, 0);
+		fallIteration(x, y, dx, 0);
 
-		this.timer = setTimeout(
-			() => window.requestAnimationFrame(this.launch),
+		timer = setTimeout(
+			() => window.requestAnimationFrame(launch),
 			random(pregnancy)
 		);
-	};
+	}
 
-	fallIteration = (x, y, dx, dy) => {
-		const maxY = this.windowHeight;
+	function fallIteration(x, y, dx, dy) {
+		const maxY = windowHeight;
 		const newX = x + dx;
 		const newY = Math.min(maxY, y + dy);
 
-		this.drawSymbol(newX, newY);
+		drawSymbol(newX, newY);
 
 		if (Math.abs(newY - maxY) <= 0) {
 			if (dy >= 0 && dy <= endVelocity) {
@@ -88,16 +81,14 @@ class Explosion extends React.Component {
 
 		setTimeout(
 			() =>
-				window.requestAnimationFrame(() =>
-					this.fallIteration(newX, newY, dx, dy)
-				),
+				window.requestAnimationFrame(() => fallIteration(newX, newY, dx, dy)),
 			dt
 		);
-	};
-
-	render() {
-		return <canvas ref={this.rootRef} />;
 	}
+
+	return <canvas ref={rootRef} />;
 }
 
-export default withDeck(Explosion);
+Explosion.propTypes = {
+	symbol: PropTypes.string.isRequired
+};

@@ -1,4 +1,5 @@
-import theme from 'mdx-deck/themes';
+import { pre, createCode } from '@mdx-deck/themes/syntax-highlighter-prism';
+
 import {
 	uiColor,
 	uiHoverColor,
@@ -18,7 +19,7 @@ import {
 import codeTheme from './codeTheme';
 
 export default {
-	...theme,
+	// aspectRatio: 9 / 16,
 	// mdx-deck will load fronts from Google Fonts
 	font,
 	monospace,
@@ -44,6 +45,9 @@ export default {
 		li: {
 			fontSize: fontSizes[1],
 			marginBottom: '0.75vmax'
+		},
+		'p pre, li pre': {
+			display: 'inline-block'
 		}
 	},
 	heading: {
@@ -60,5 +64,17 @@ export default {
 	h1: {
 		fontWeight: 'normal'
 	},
-	prism: codeTheme
+	pre: {
+		textAlign: 'left'
+	},
+	ol: {
+		textAlign: 'left'
+	},
+	ul: {
+		textAlign: 'left'
+	},
+	components: {
+		pre,
+		code: createCode(codeTheme)
+	}
 };

@@ -21,18 +21,17 @@
     "format": "prettier --write '**/*.{js,css,md}'",
     "posttest": "npm run format"
   },
-  "devDependencies": {
-    "cleaver": "^0.8.7",
-    "file-loader": "^2.0.0",
-    "gh-pages": "^2.0.0",
-    "mdx-deck": "^1.7.7",
-    "prettier": "^1.14.3",
-    "raw-loader": "^0.5.1"
-  },
   "dependencies": {
-    "@rebass/grid": "^6.0.0-4",
-    "mdx-deck-code-surfer": "^0.4.1",
-    "polished": "^2.1.1",
-    "stack-styled": "^0.1.0"
+    "cleaver": "^0.8.7",
+    "file-loader": "^3.0.1",
+    "gh-pages": "^2.0.1",
+    "mdx-deck": "^2.3.0",
+    "mdx-deck-code-surfer": "^0.5.5",
+    "polished": "^3.2.0",
+    "prettier": "^1.17.0",
+    "prop-types": "^15.7.2",
+    "raw-loader": "^2.0.0",
+    "react": "^16.8.6",
+    "stack-styled": "^1.0.0"
   }
 }
