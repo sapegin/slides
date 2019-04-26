@@ -1,6 +1,6 @@
 export { theme } from './theme'
 import React from 'react';
-import { Box, Head, Heading, Image, Appear, Split, SplitWithHeading, CoverWayfair, Primary, Secondary, Boom, Explosion, Bar } from './theme'
+import { Box, Head, Heading, Image, Appear, Center, Split, SplitWithHeading, CoverWayfair, Primary, Secondary, Code, List, Boom, Bar, Delay } from './theme'
 import Stack from 'stack-styled/emotion/Stack'
 import XText from './assets/inconsistent-styles-full/code/Text'
 import XHeading from './assets/inconsistent-styles-full/code/Heading'
@@ -17,13 +17,31 @@ import XButton from './assets/inconsistent-styles-full/code/Button'
 
 ---
 
-TODO: Slide about me
+<Split>
+
+<>
+
+### Artem Sapegin
+
+[@iamsapegin](https://twitter.com/iamsapegin)<br/>
+Wayfair<br />
+Berlin, Germany
+
+</>
+
+<video src={require("file-loader!./assets/images/me.mov")} autoplay="autoplay" loop="loop" style={{objectFit: 'cover', width: '100%', height: '100vh'}}></video>
+
+</Split>
 
 ---
+
+<Center>
 
 <img src={require("file-loader!./assets/images/react-styleguidist.svg")} alt="React Styleguidist" style={{display: 'block', margin: 'auto'}} />
 
 [react-styleguidist.js.org](https://react-styleguidist.js.org/)
+
+</Center>
 
 ---
 
@@ -33,27 +51,30 @@ TODO: Slide about me
 
 ---
 
-<img src={require("file-loader!./assets/images/inconsistent-styles-full/buttons.jpg")} alt="Inconsistent buttons" />
+<Center>
+  <img src={require("file-loader!./assets/images/inconsistent-styles-full/buttons.jpg")} alt="Inconsistent buttons" />
+</Center>
 
 ---
 
-<img src={require("file-loader!./assets/images/inconsistent-styles-full/text.png")} alt="Inconsistent text" />
+<Center>
+  <img src={require("file-loader!./assets/images/inconsistent-styles-full/text.png")} alt="Inconsistent text" />
+</Center>
 
 ---
 
-<img src={require("file-loader!./assets/images/inconsistent-styles-full/doors.jpg")} alt="Inconsistency in the UI" />
+<Center>
+  <img src={require("file-loader!./assets/images/inconsistent-styles-full/doors.jpg")} alt="Inconsistency in the UI" />
+</Center>
 
 ---
 
-## Custom CSS
+## Sources of custom CSS
 
-<ul>
-  <Appear>
-    <li>Typography</li>
-    <li>Whitespace</li>
-    <li>Layout</li>
-  </Appear>
-</ul>
+<List>
+  <li>Typography</li>
+  <li>Whitespace & layout</li>
+</List>
 
 ---
 
@@ -80,16 +101,16 @@ TODO: Slide about me
 
 ---
 
-<Explosion symbol="😭" />
+<Center>
+  <Heading as="p">CSS is too expressive</Heading>
+</Center>
 
----
-
-<Heading>CSS is too powerful</Heading>
+<!-- With CSS you can create infinite button designs but in your app you probably want only one button design. -->
 
 ---
 
 <Secondary>
-  <Heading as="p">How can we fix that?</Heading>
+  <Heading as="p">Can we fix that?</Heading>
 </Secondary>
 
 ---
@@ -100,40 +121,52 @@ TODO: Slide about me
 
 ---
 
-<a href="https://marvelapp.com/styleguide/design/color-scheme">
-	<img src={require("file-loader!./assets/images/inconsistent-styles-full/design-tokens-colors.png")} alt="Design tokens: colors" />
-</a>
+<Center>
+  <a href="https://marvelapp.com/styleguide/design/color-scheme">
+    <img src={require("file-loader!./assets/images/inconsistent-styles-full/design-tokens-colors.png")} alt="Design tokens: colors" />
+  </a>
+</Center>
 
 ---
 
-<a href="https://cloudflare.github.io/cf-ui/#cf-design-gradients">
-	<img src={require("file-loader!./assets/images/inconsistent-styles-full/design-tokens-gradients.png")} alt="Design tokens: gradients" />
-</a>
+<Center>
+  <a href="https://cloudflare.github.io/cf-ui/#cf-design-gradients">
+    <img src={require("file-loader!./assets/images/inconsistent-styles-full/design-tokens-gradients.png")} alt="Design tokens: gradients" />
+  </a>
+</Center>
 
 ---
 
-<a href="https://vueds.com/example/#!/Design%20Tokens">
-	<img src={require("file-loader!./assets/images/inconsistent-styles-full/design-tokens-fonts-spacing.png")} alt="Design tokens: fonts and spacing" />
-</a>
+<Center>
+  <a href="https://vueds.com/example/#!/Design%20Tokens">
+    <img src={require("file-loader!./assets/images/inconsistent-styles-full/design-tokens-fonts-spacing.png")} alt="Design tokens: fonts and spacing" />
+  </a>
+</Center>
 
 ---
 
-<a href="https://www.lightningdesignsystem.com/design-tokens/">
-	<img src={require("file-loader!./assets/images/inconsistent-styles-full/design-tokens-misc.png")} alt="Design tokens" />
-</a>
+<Center>
+  <a href="https://www.lightningdesignsystem.com/design-tokens/">
+    <img src={require("file-loader!./assets/images/inconsistent-styles-full/design-tokens-misc.png")} alt="Design tokens" />
+  </a>
+</Center>
 
 ---
 
-## Design tokens
+<Boom>
+  <Heading as="p">Design tokens are everything you use more than once in your styles</Heading>
+</Boom>
 
-<ul>
-  <Appear>
-    <li>Sass variables</li>
-    <li>CSS custom properties</li>
-    <li>JavaScript variables</li>
-    <li>JSON</li>
-  </Appear>
-</ul>
+---
+
+## Design tokens implementation
+
+<List>
+  <li>Sass variables</li>
+  <li>CSS custom properties</li>
+  <li>JavaScript constants</li>
+  <li>JSON</li>
+</List>
 
 ---
 
@@ -160,21 +193,32 @@ TODO: Slide about me
 
 ---
 
-<Explosion symbol="😐" />
+<Center>
+  <Heading as="p">Not all token combinations are good</Heading>
+</Center>
 
 ---
 
-<Heading as="p">Not all token combinations are good</Heading>
+<SplitWithHeading>
 
----
+## Bad token combinations
+
+<div style={{width: "40vw"}}>
 
 ```css
 .cant__read_this {
   font-size: var(--fontSize--x-small);
   color: var(--color--light);
-  opacity: 0.5;
 }
 ```
+
+</div>
+
+<div style={{width: "40vw"}}>
+  <div style={{fontSize: '2vmax', color: '#eee'}}>Can you read me?!</div>
+</div>
+
+</SplitWithHeading>
 
 ---
 
@@ -185,12 +229,8 @@ TODO: Slide about me
 ---
 
 <Boom>
-  <Heading as="p" huge>YES!</Heading>
+  <Heading>Stop writing CSS!</Heading>
 </Boom>
-
----
-
-<Heading>Stop writing CSS!</Heading>
 
 ---
 
@@ -201,103 +241,96 @@ TODO: Slide about me
 ---
 
 <Secondary>
-  <Heading as="h2">Typography</Heading>
+  <Heading as="h2"><b>1. Typography</b><br />2. Spacing & layout</Heading>
 </Secondary>
 
 ---
 
-<Secondary>
-  <Heading as="h3">Text</Heading>
-</Secondary>
+<Center>
+  <a href="https://polaris.shopify.com/components/titles-and-text/text-style">
+    <img src={require("file-loader!./assets/images/inconsistent-styles-full/example-text.png")} alt="Text component" />
+  </a>
+</Center>
 
 ---
 
-<a href="https://polaris.shopify.com/components/titles-and-text/text-style">
-	<img src={require("file-loader!./assets/images/inconsistent-styles-full/example-text.png")} alt="Text component" />
-</a>
-
----
-
-<a href="http://mineral-ui.com/components/text">
-	<img src={require("file-loader!./assets/images/inconsistent-styles-full/example-text-2.png")} alt="Another text component" />
-</a>
+<Center>
+  <a href="http://mineral-ui.com/components/text">
+    <img src={require("file-loader!./assets/images/inconsistent-styles-full/example-text-2.png")} alt="Another text component" />
+  </a>
+</Center>
 
 ---
 
 ## Text styles
 
-* Normal text
-* Secondary text (gray or small)
-* Error (red)
-* etc.
+<ul>
+  <li>Normal text</li>
+  <li style={{color: '#979797', fontSize: '80%'}}>Secondary text</li>
+  <li style={{color: '#930'}}>Error</li>
+  <li>etc.</li>
+</ul>
 
 ---
 
-<Heading>Minimal number of styles for most of your use cases</Heading>
+<Boom>
+  <Heading>Minimal number of styles for most of your use cases</Heading>
+</Boom>
 
 ---
 
 ## What else?
 
-<ul>
-  <Appear>
-    <li>Custom HTML element</li>
-    <li>Alignment (left, center)</li>
-    <li>Whitespace (margin)</li>
-    <li>Truncation (with …)</li>
-  </Appear>
-</ul>
+<List>
+  <li>Custom HTML element (p, span, label)</li>
+  <li>Alignment (left, center)</li>
+  <li>Whitespace (margin)</li>
+</List>
 
 ---
 
-## API: Selecting a style
+## API: selecting a style
 
-<ul>
-  <Appear>
-    <li><code>&lt;Text primary&gt;</code> 😀</li>
-    <li><code>&lt;Text secondary&gt;</code> 😀</li>
-    <li><code>&lt;Text primary secondary&gt;</code> 😭</li>
-  </Appear>
-</ul>
+<List>
+  <li><code>&lt;Text primary&gt;</code> 😀</li>
+  <li><code>&lt;Text secondary&gt;</code> 😀</li>
+  <li><code>&lt;Text primary secondary&gt;</code> 😭</li>
+</List>
 
 ---
 
-## API: Selecting a style
+## API: selecting a style
 
-<ul>
-  <Appear>
-    <li><code>&lt;Text variant="primary"&gt;</code> 😀</li>
-    <li><code>&lt;Text variant="secondary"&gt;</code> 😀</li>
-  </Appear>
-</ul>
+<List>
+  <li><code>&lt;Text variant="primary"&gt;</code> 😀</li>
+  <li><code>&lt;Text variant="secondary"&gt;</code> 😀</li>
+</List>
 
 ---
 
-## API: Selecting a style
-
-<ul>
-  <Appear>
-    <li><code>&lt;Text color="red" size="xs"&gt;</code> 😭</li>
-    <li><code>&lt;Text variant="secondary"&gt;</code> 😀</li>
-  </Appear>
-</ul>
+<Boom>
+  <Heading as="p">Make impossible states impossible</Heading>
+</Boom>
 
 ---
 
-<Heading as="p">Make impossible states impossible</Heading>
+## API: rigidity vs flexibility
+
+<List>
+  <li><code>&lt;Text variant="secondary"&gt;</code> 😀</li>
+  <li><code>&lt;Text color="red" size="xs"&gt;</code> 😀</li>
+</List>
 
 ---
 
-## API: Custom HTML element
+## API: custom HTML element
 
-<ul>
-  <Appear>
-    <li><code>&lt;Text&gt;</code> → <code>&lt;p&gt;</code> 😐</li>
-    <li><code>&lt;Text inline&gt;</code> → <code>&lt;span&gt;</code> 😭</li>
-    <li><code>&lt;Text as="span"&gt;</code> → <code>&lt;span&gt;</code> 😀</li>
-    <li><code>&lt;Text as="header"&gt;</code> → <code>&lt;header&gt;</code> 😀</li>
-  </Appear>
-</ul>
+<List>
+  <li><code>&lt;Text&gt;</code> → <code>&lt;p&gt;</code> 😀</li>
+  <li><code>&lt;Text inline&gt;</code> → <code>&lt;span&gt;</code> 😐</li>
+  <li><code>&lt;Text label&gt;</code> → <code>&lt;label&gt;</code> 😭</li>
+  <li><code>&lt;Text as="label"&gt;</code> → <code>&lt;label&gt;</code> 😀</li>
+</List>
 
 ---
 
@@ -337,36 +370,12 @@ TODO: Slide about me
 
 ---
 
-<Secondary>
-  <Heading as="h3">Heading</Heading>
-</Secondary>
-
----
-
-<a href="https://vueds.com/example/#/Elements/Heading">
-	<img src={require("file-loader!./assets/images/inconsistent-styles-full/example-heading.png")} alt="Heading component" />
-</a>
-
----
-
-## API: Selecting heading level
-
-<ul>
-  <Appear>
-    <li><code>&lt;Heading level=&#123;1}&gt;</code> 😀</li>
-    <li><code>&lt;Heading level=&#123;2}&gt;</code> 😀</li>
-    <li><code>&lt;Heading level=&#123;3} as="h2"&gt;</code> 😀</li>
-  </Appear>
-</ul>
-
----
-
 <SplitWithHeading>
 
 ## Example
 
 ```jsx
-<Heading level={1}>Saluki</Heading>
+<Heading size={1}>Saluki</Heading>
 <Text>
   The Saluki is classed as a sighthound
   and is typically deep-chested and
@@ -375,7 +384,7 @@ TODO: Slide about me
   run their quarry down to kill
   or retrieve it.
 </Text>
-<Heading level={2}>Caveats</Heading>
+<Heading size={2}>Caveats</Heading>
 <Text as="small" variant="secondary">
   Don’t leave any food on a table
   when saluki is around.
@@ -403,13 +412,16 @@ TODO: Slide about me
 
 ---
 
-<Explosion symbol="😀" />
+<Secondary>
+  <Heading as="h2">1. Typography<br /><b>2. Spacing & layout</b></Heading>
+</Secondary>
+
 
 ---
 
-<Secondary>
-  <Heading as="h2">Whitespace</Heading>
-</Secondary>
+<Center>
+  <img src={require("file-loader!./assets/images/inconsistent-styles-full/doors.jpg")} alt="Inconsistency in the UI" />
+</Center>
 
 ---
 
@@ -447,17 +459,19 @@ TODO: Slide about me
 
 ## Scale naming
 
-<ul>
-  <Appear>
-    <li>x-small small medium large x-large</li>
-    <li>xs s m l xl</li>
-    <li>alpha beta gamma delta epsilon</li>
-    <li>1 2 3 4 5</li>
-    <li>1000 2000 3000 4000 5000</li>
-  </Appear>
-</ul>
+<List>
+  <li>x-small small medium large x-large</li>
+  <li>xs sm md lg xl</li>
+  <li>xs s m l xl</li>
+  <li>1 2 3 4 5</li>
+  <li><del>alpha beta gamma delta epsilon</del></li>
+</List>
 
 ---
+
+<SplitWithHeading>
+
+## Spacing scale
 
 ```js
 const space = {
@@ -471,8 +485,6 @@ const space = {
 };
 ```
 
----
-
 ```js
 const space = {
   xxs: '0.125rem',
@@ -485,53 +497,13 @@ const space = {
 };
 ```
 
----
-
-## Padding
-
-```jsx
-<Box
-  p="xl"
-  pt="xl"
-  pr="xl"
-  pb="xl"
-  pl="xl"
-  px="xl"
-  py="xl"
-/>
-```
-
----
-
-## Padding
-
-```jsx
-const Button = props => (
-  <Box as="button" px="m" py="s" {...props} />
-);
-```
-
----
-
-## Margins
-
-```jsx
-<Box
-  m="xl"
-  mt="xl"
-  mr="xl"
-  mb="xl"
-  ml="xl"
-  mx="xl"
-  my="xl"
-/>
-```
+</SplitWithHeading>
 
 ---
 
 <SplitWithHeading>
 
-## Margins
+## Margins and padding
 
 ```jsx
 <Box mb="xl" as="section">
@@ -539,14 +511,6 @@ const Button = props => (
     <Heading level={1}>Saluki</Heading>
   </Box>
   <Text>The Saluki is classed...</Text>
-</Box>
-<Box mb="xl" as="section">
-  <Box mb="l">
-    <Heading level={2}>Caveats</Heading>
-  </Box>
-  <Text as="small" variant="secondary">
-    Don’t leave any food on a table...
-  </Text>
 </Box>
 ```
 
@@ -562,15 +526,6 @@ const Button = props => (
 		run their quarry down to kill
 		or retrieve it.
 	</XText>
-</XBox>
-<XBox mb="l">
-  <XBox mb="m">
-    <XHeading level={2}>Caveats</XHeading>
-  </XBox>
-  <XText variant="secondary">
-    Don’t leave any food on a table
-    when saluki is around.
-  </XText>
 </XBox>
 
 </SplitWithHeading>
@@ -635,54 +590,12 @@ const Button = props => (
 ## Responsive layouts
 
 ```jsx
+//         mobile  tablet  desktop
 <Box
-  width={[ 1, 1/2, 1/4 ]}
-  m={[ 's', 'm', 'l' ]}
+  width={[ 1,      1/2,    1/4    ]}
+  m={[     's',    'm',    'l'    ]}
 />
 ```
-
----
-
-<SplitWithHeading>
-
-## Responsive layouts
-
-```jsx
-<Flex as="form" flexWrap="wrap">
-  <Box flexGrow={1}>
-    <Input
-      type="email"
-      defaultValue=""
-      placeholder="Email"
-      aria-label="Email"
-    />
-  </Box>
-  <Box pl={[0, 'm']} pt={['m', 0]}
-      width={[1, 'auto']}>
-    <Button variant="primary" type="submit">
-      Subscribe
-    </Button>
-  </Box>
-</Flex>
-```
-
-<XBox style={{display: 'flex', flexWrap: 'wrap' }}>
-  <XBox style={{flexGrow: 1}}>
-    <XInput
-      type="email"
-      defaultValue=""
-      placeholder="Email"
-      aria-label="Email"
-    />
-  </XBox>
-  <XBox pt="m"style={{width: '100%'}}>
-    <XButton variant="primary" type="submit">
-      Subscribe
-    </XButton>
-  </XBox>
-</XBox>
-
-</SplitWithHeading>
 
 ---
 
@@ -690,7 +603,7 @@ const Button = props => (
 
 ```jsx
 <Grid
-  gap="m"
+  gridGap="m"
   gridColumn="..."
   gridRow="..."
   gridAutoFlow="..."
@@ -705,7 +618,7 @@ const Button = props => (
 ## CSS Grid layouts
 
 ```jsx
-<Grid gap="m"
+<Grid gridGap="m"
   gridTemplateColumns="
     repeat(
       auto-fit,
@@ -737,72 +650,83 @@ const Button = props => (
 
 ---
 
-## Naïve implementation
+## Plain CSS
 
-import SlideBoxCssInJs from './assets/inconsistent-styles-full/slides/Box-cssinjs'
-
-<SlideBoxCssInJs />
+<Code language="jsx" code={require("!raw-loader!./assets/inconsistent-styles-full/code/Box-css.js").default} />
 
 ---
 
-## [styled-system](https://styled-system.com/)
+## Naïve CSS in JS
 
-* Build primitive UI components
-* Control styles with props
-* Design tokens
-* Responsive props
-* Margins, padding, colors, fonts, Flexbox, CSS Grid, etc.
-* styled-components, Emotion, etc.
+<Code language="jsx" code={require("!raw-loader!./assets/inconsistent-styles-full/code/Box.js").default.replace('@emotion/styled', 'styled-components')} />
+
+---
+
+## [styled-system](https://styled-system.com/)<br/><small>by Brent Jackson</small>
+
+<List>
+  <li>Build primitive UI components</li>
+  <li>Control styles with props</li>
+  <li>Design tokens</li>
+  <li>Responsive props</li>
+  <li>Margins, padding, colors, fonts, Flexbox, CSS Grid, etc.</li>
+  <li>styled-components, Emotion, etc.</li>
+</List>
 
 ---
 
 ## styled-system
 
-```js
-import styled from 'styled-components';
-import { space } from 'styled-system';
-
-export default styled.div`
-	min-width: 0;
-	$&#123;space};
-`;
-```
+<Code language="jsx" code={require("!raw-loader!./assets/inconsistent-styles-full/code/Box-system.js").default} />
 
 ---
 
-## Components
-
-<ul>
-  <Appear>
-    <li>Limited freedom → consistency</li>
-    <li>Discoverable API</li>
-    <li>Faster development</li>
-    <li>Code reuse</li>
-  </Appear>
-</ul>
+<Primary>
+  <Heading>Recap</Heading>
+</Primary>
 
 ---
 
-## Components
+## Why use primitives
 
-<ul>
-  <Appear>
-    <li>Easier code reviews</li>
-    <li>Easier to document</li>
-    <li>TypeScript and Flow</li>
-    <li>Built-in accessibility</li>
-  </Appear>
-</ul>
+<List columns={2}>
+  <li>Consistency</li>
+  <li>Discoverable API</li>
+  <li>Faster development</li>
+  <li>Code reuse</li>
+  <li>Code reviews</li>
+  <li>Documentation</li>
+  <li>Accessibility</li>
+  <li>Common language</li>
+</List>
 
 ---
 
 <Boom>
-  <Heading as="p">Hide CSS in components and compose your app UI from them</Heading>
+  <Heading as="p">CSS → Preprocessors → CSS in JS → Primitives</Heading>
 </Boom>
+
+<!-- I belive you shound't write CSS in the application code but hide it in primitive components, and compose your use interface from these components. -->
 
 ---
 
-<Explosion symbol="🃏" />
+<Center>
+  <img src={require("file-loader!./assets/images/inconsistent-styles-full/napkin.jpg")} alt="Mockup on a napkin" />
+</Center>
+
+<!-- Because with a good design system you can create a perfect user interface even if it's drawn on a napkin -->
+
+---
+
+<Center>
+
+<a href="https://component-driven.io">
+  <img src={require("file-loader!./assets/images/component-driven.svg")} alt="component-driven.io" style={{display: 'block', margin: 'auto'}} />
+</a>
+
+[component-driven.io](https://component-driven.io/)
+
+</Center>
 
 ---
 

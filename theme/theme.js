@@ -41,6 +41,7 @@ export default {
 		fontKerning: 'normal',
 		fontVariantNumeric: 'proportional-nums',
 		fontVariantLigatures: 'common-ligatures contextual historical-ligatures',
+		justifyContent: 'flex-start',
 		img: {
 			maxWidth: '95vw',
 			maxHeight: '92vh'
@@ -56,7 +57,8 @@ export default {
 		}
 	},
 	heading: {
-		margin: 0,
+		marginTop: '2vmax',
+		marginBottom: 0,
 		lineHeight: 1.1,
 		textAlign: 'center',
 		'& + *': {

@@ -4,10 +4,11 @@
 	"overrides": [{
 	  "files": "*.md",
 	  "options": {
-		"proseWrap": "never",
-		"printWidth": 70,
-		"useTabs": false,
-		"trailingComma": "none"
-	  }
-  }]
+			"proseWrap": "never",
+			"printWidth": 70,
+			"useTabs": false,
+			"trailingComma": "none"
+			}
+		}
+	]
 }
